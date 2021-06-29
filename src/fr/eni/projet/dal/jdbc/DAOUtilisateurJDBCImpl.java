@@ -177,7 +177,6 @@ public class DAOUtilisateurJDBCImpl implements DAOUtilisateur {
 
 	//Ajout Antoine selectByPseudo pour valider la connexion ====================
 	
-		@Override
 		public Utilisateur selectByPseudo(String pseudo) {
 			Utilisateur u = null;
 			

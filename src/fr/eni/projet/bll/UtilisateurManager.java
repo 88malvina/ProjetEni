@@ -17,7 +17,6 @@ public class UtilisateurManager {
 	private static DAOUtilisateur daoUtilisateur = (DAOUtilisateur) DAOFactory.getUtilisateurDAO();
 	
 	public static Utilisateur selectByPseudo(String pseudo) {
-		
 		return daoUtilisateur.selectByPseudo(pseudo);
 		
 	}
@@ -25,5 +24,8 @@ public class UtilisateurManager {
 		return daoUtilisateur.selectAll();
 	}
 	
+	public static void insert(Utilisateur u) {
+		daoUtilisateur.insert(u);
+	}
 }
 	 
