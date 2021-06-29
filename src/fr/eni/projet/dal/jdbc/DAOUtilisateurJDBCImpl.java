@@ -24,6 +24,7 @@ public class DAOUtilisateurJDBCImpl implements DAOUtilisateur {
 	
 	private String selectById = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur FROM UTILISATEURS WHERE no_utilisateur=?;";
 	
+	private String selectByPseudo = "select * from UTILISATEURS WHERE pseudo=? ";
 	
 	
 	@Override
@@ -173,5 +174,33 @@ public class DAOUtilisateurJDBCImpl implements DAOUtilisateur {
 		}
 		return u;
 	}
+
+	//Ajout Antoine selectByPseudo pour valider la connexion ====================
+	
+		@Override
+		public Utilisateur selectByPseudo(String pseudo) {
+			Utilisateur u = null;
+			
+			try (
+				Connection cnx = JdbcTools.getConnection();
+				PreparedStatement psmt = cnx.prepareStatement(selectByPseudo);) {
+			
+				psmt.setString(1, pseudo);
+				
+				ResultSet rs = psmt.executeQuery();
+				
+				if(rs.next()) {
+					u = new Utilisateur();
+					u.setPseudo(pseudo);
+					u.setMotDePasse(rs.getString("mot_de_passe"));
+					
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+
+			}
+				
+			return u;
+		}
 
 }
