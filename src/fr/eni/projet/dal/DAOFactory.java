@@ -4,12 +4,13 @@
 package fr.eni.projet.dal;
 
 import fr.eni.projet.bo.Utilisateur;
+import fr.eni.projet.dal.jdbc.DAOUtilisateurJDBCImpl;
 
 /**
- * Classe en charge de
+ * Classe en charge de fournir un DAO
  * 
- * @author Julien version DAOFactory.java v1.0
- * @date 23 juin 2021
+ * @author PConchou
+ * 
  */
 public class DAOFactory {
 
