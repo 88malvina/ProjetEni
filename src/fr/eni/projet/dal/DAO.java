@@ -2,6 +2,8 @@ package fr.eni.projet.dal;
 
 import java.util.List;
 
+import fr.eni.projet.bo.Utilisateur;
+
 /**
  * Interface générique répresentant un DAO
  * @author pconchou2021
@@ -20,4 +22,6 @@ public interface DAO <T> {
 	public List<T> selectAll();
 
 	public T selectById(int id);
+	
+	public Utilisateur selectByPseudo(String pseudo);
 }

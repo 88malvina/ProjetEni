@@ -22,5 +22,7 @@ public void insert(Utilisateur t);
 	public List<Utilisateur> selectAll();
 
 	public Utilisateur selectById(int id);
+	
+	public Utilisateur selectByPseudo(String pseudo);
 
 }
