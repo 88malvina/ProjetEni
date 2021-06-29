@@ -1,5 +1,7 @@
 package fr.eni.projet.bll;
 
+import java.util.List;
+
 import fr.eni.projet.bo.Utilisateur;
 import fr.eni.projet.dal.DAOFactory;
 import fr.eni.projet.dal.DAOUtilisateur;
@@ -18,6 +20,9 @@ public class UtilisateurManager {
 		
 		return daoUtilisateur.selectByPseudo(pseudo);
 		
+	}
+	public static List<Utilisateur> sellectAll(){
+		return daoUtilisateur.selectAll();
 	}
 	
 }

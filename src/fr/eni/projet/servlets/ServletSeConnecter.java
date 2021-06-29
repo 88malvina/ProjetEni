@@ -2,6 +2,7 @@ package fr.eni.projet.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -36,6 +37,7 @@ public class ServletSeConnecter extends HttpServlet {
 		String pseudo = request.getParameter("pseudo");
 		System.out.println(pseudo);
 		String password = request.getParameter("password");
+		System.out.println(password);
 		String souvenirDeMoi = request.getParameter("souvenirDeMoi");
 		
 		// ====== Vérification de la saisie utilisateur ====== 
@@ -46,34 +48,28 @@ public class ServletSeConnecter extends HttpServlet {
 		
 		try {
 			
-			Utilisateur utilisateur = UtilisateurManager.selectByPseudo(pseudo);
-			
-			//Vérification que l'utilisateur est en base, si c'est le cas, redirection
-			if(password.equals(utilisateur.getMotDePasse())) {
-				
-				//Intégrer un attribut "connecté" à l'utilisateur ? ici
-				
-				//Redirection à faire sur page avec les 2 lignes en dessous
-				
-				//RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jspFiles/connexionTest.jsp");
-				//rd.forward(request, response);
-				
-				
-				
-				request.setAttribute("pseudo", pseudo);
-				request.setAttribute("password", password);
-				request.setAttribute("souvenirDeMoi", souvenirDeMoi);
-				
-				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jspFiles/testReussiteConnexion.jsp");
-				rd.forward(request, response);
-				
-			} else {
-				// TODO Si l'identification est mauvaise : message d'erreur et on recharge la page
-				PrintWriter out = new PrintWriter("Erreur de log");
-				out.close();
-				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jspFiles/testEchecConnexion.jsp");
-				rd.forward(request, response);
+			//System.out.println(utilisateur.getPseudo());
+			List<Utilisateur> list= UtilisateurManager.sellectAll();
+			for(Utilisateur ut:list) {
+				if(ut.getPseudo().equals(pseudo)) {
+
+					request.setAttribute("pseudo", pseudo);
+					request.setAttribute("password", password);
+					request.setAttribute("souvenirDeMoi", souvenirDeMoi);
+					
+					RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jspFiles/testReussiteConnexion.jsp");
+					rd.forward(request, response);
+				}
+				else {
+					System.out.println("no");
+					PrintWriter out = new PrintWriter("Erreur de log");
+					out.close();
+					RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jspFiles/testEchecConnexion.jsp");
+					rd.forward(request, response);
+				}
 			}
+			//Vérification que l'utilisateur est en base, si c'est le cas, redirection
+			
 			
 		} catch (Exception e) {
 			request.setAttribute("erreur", e);
