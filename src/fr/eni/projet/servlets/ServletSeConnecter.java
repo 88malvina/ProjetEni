@@ -24,7 +24,7 @@ public class ServletSeConnecter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// On dirige vers la JSP connexion
+		// On dirige vers la JSP connexion  
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jspFiles/connexion.jsp");
 		rd.forward(request, response);
 	}
@@ -48,30 +48,30 @@ public class ServletSeConnecter extends HttpServlet {
 		
 		try {
 			
-			//System.out.println(utilisateur.getPseudo());
+			
+			RequestDispatcher rd=null;
 			List<Utilisateur> list= UtilisateurManager.sellectAll();
 			for(Utilisateur ut:list) {
 				if(ut.getPseudo().equals(pseudo)) {
-
+					
 					request.setAttribute("pseudo", pseudo);
 					request.setAttribute("password", password);
 					request.setAttribute("souvenirDeMoi", souvenirDeMoi);
 					
-					RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jspFiles/testReussiteConnexion.jsp");
-					rd.forward(request, response);
+					rd = request.getRequestDispatcher("WEB-INF/jspFiles/testReussiteConnexion.jsp");
+					
 				}
 				else {
-					System.out.println("no");
 					PrintWriter out = new PrintWriter("Erreur de log");
 					out.close();
-					RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jspFiles/testEchecConnexion.jsp");
-					rd.forward(request, response);
+					rd = request.getRequestDispatcher("WEB-INF/jspFiles/testEchecConnexion.jsp");
+					
 				}
-			}
+			}rd.forward(request, response);
 			//Vérification que l'utilisateur est en base, si c'est le cas, redirection
 			
 			
-		} catch (Exception e) {
+		}catch (Exception e) {
 			request.setAttribute("erreur", e);
 			//Envoi de l'erreur via une page ?
 			//RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jspFiles/connexionTest.jsp");
