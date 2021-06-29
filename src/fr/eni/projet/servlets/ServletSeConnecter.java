@@ -45,7 +45,7 @@ public class ServletSeConnecter extends HttpServlet {
 		// TODO Vérification de validité à faire ?
 		
 		// Vérification que l'utilisateur est bien en base de données
-		
+	
 		try {
 			
 			
