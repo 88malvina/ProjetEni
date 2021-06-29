@@ -45,7 +45,7 @@
 		</div>
 	</div>
 	<footer>
-		<h3>Eni 2021-Groupe Java Ninjas</h3>
+		<h3>Eni 2021</h3>
 	</footer>
 	
 </body>
