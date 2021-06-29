@@ -52,7 +52,7 @@ public class ServletSeConnecter extends HttpServlet {
 			RequestDispatcher rd=null;
 			List<Utilisateur> list= UtilisateurManager.sellectAll();
 			for(Utilisateur ut:list) {
-				if(ut.getPseudo().equals(pseudo)) {
+				if((ut.getPseudo().equals(pseudo)) && (ut.getMotDePasse().equals(password))) {
 					
 					request.setAttribute("pseudo", pseudo);
 					request.setAttribute("password", password);
