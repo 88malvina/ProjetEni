@@ -74,7 +74,7 @@ public class DAOEnchereJDBCImpl implements DAO<Enchere>{
 		}
 		cnx.close();
 		return  list;
-	}
+	} 
 	
 	public List<Enchere> selectEncheresByCategorie(int no_categorie) throws SQLException{
 		List<Enchere> list=new ArrayList<Enchere>();
