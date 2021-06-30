@@ -3,7 +3,7 @@ package fr.eni.projet.bo;
 public class Categorie {
 	private int no_categorie;
 	private String libelle; 
-	
+	 
 	 
 	public Categorie() {
 	}
