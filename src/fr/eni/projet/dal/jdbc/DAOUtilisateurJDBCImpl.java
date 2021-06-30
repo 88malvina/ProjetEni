@@ -30,7 +30,12 @@ public class DAOUtilisateurJDBCImpl implements DAOUtilisateur {
 	@Override
 	public void insert(Utilisateur u) {
 
-		try (Connection cnx = JdbcTools.getConnection();
+		try (
+				
+				//Remplacement par pool de connexion via ConnectionProvider
+				//Connection cnx = JdbcTools.getConnection();
+				Connection cnx = ConnectionProvider.getConnection();
+				
 				PreparedStatement psmt = cnx.prepareStatement(insert, PreparedStatement.RETURN_GENERATED_KEYS);) {
 
 			psmt.setString(1, u.getPseudo());
@@ -52,7 +57,7 @@ public class DAOUtilisateurJDBCImpl implements DAOUtilisateur {
 				u.setNoUtilisateur(rs.getInt(1));
 			}
 			
-			JdbcTools.closeConnection(cnx);
+			cnx.close();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -61,14 +66,19 @@ public class DAOUtilisateurJDBCImpl implements DAOUtilisateur {
 
 	@Override
 	public void delete(Utilisateur u) {
-		try (Connection cnx = JdbcTools.getConnection();
+		try (
+				
+				//Remplacement par pool de connexion via ConnectionProvider
+				//Connection cnx = JdbcTools.getConnection();
+				Connection cnx = ConnectionProvider.getConnection();
+				
 				PreparedStatement psmt = cnx.prepareStatement(delete, PreparedStatement.RETURN_GENERATED_KEYS);) {
 
 			psmt.setInt(1, u.getNoUtilisateur());
 			
 			psmt.executeUpdate();
 			
-			JdbcTools.closeConnection(cnx);
+			cnx.close();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -78,7 +88,11 @@ public class DAOUtilisateurJDBCImpl implements DAOUtilisateur {
 
 	@Override
 	public void update(Utilisateur u) {
-		try (Connection cnx = JdbcTools.getConnection();
+		try (
+				//Remplacement par pool de connexion via ConnectionProvider
+				//Connection cnx = JdbcTools.getConnection();
+				Connection cnx = ConnectionProvider.getConnection();
+				
 				PreparedStatement psmt = cnx.prepareStatement(update, PreparedStatement.RETURN_GENERATED_KEYS);) {
 
 			psmt.setString(1, u.getPseudo());
@@ -96,7 +110,7 @@ public class DAOUtilisateurJDBCImpl implements DAOUtilisateur {
 			
 			psmt.executeUpdate();
 			
-			JdbcTools.closeConnection(cnx);
+			cnx.close();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -108,7 +122,13 @@ public class DAOUtilisateurJDBCImpl implements DAOUtilisateur {
 		
 		List<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
 		
-		try (Connection cnx = JdbcTools.getConnection(); Statement smt = cnx.createStatement()) 
+		try (
+				//Remplacement par pool de connexion via ConnectionProvider
+				//Connection cnx = JdbcTools.getConnection();
+				Connection cnx = ConnectionProvider.getConnection();
+				
+				
+				Statement smt = cnx.createStatement()) 
 		{
 			ResultSet rs = smt.executeQuery(selectAll);
 			Utilisateur u = null;
@@ -131,7 +151,7 @@ public class DAOUtilisateurJDBCImpl implements DAOUtilisateur {
 				utilisateurs.add(u);	
 			}
 			
-			JdbcTools.closeConnection(cnx);
+			cnx.close();
 
 		} 
 		catch (SQLException e) 
@@ -145,7 +165,12 @@ public class DAOUtilisateurJDBCImpl implements DAOUtilisateur {
 	public Utilisateur selectById(int id) {
 		Utilisateur u = null;
 		
-		try (Connection cnx = JdbcTools.getConnection();
+		try (
+				
+				//Remplacement par pool de connexion via ConnectionProvider
+				//Connection cnx = JdbcTools.getConnection();
+				Connection cnx = ConnectionProvider.getConnection();
+				
 				PreparedStatement psmt = cnx.prepareStatement(selectById, PreparedStatement.RETURN_GENERATED_KEYS);) {
 
 			psmt.setInt(1, id);
@@ -167,7 +192,7 @@ public class DAOUtilisateurJDBCImpl implements DAOUtilisateur {
 				u.setCredit(rs.getInt("credit"));
 				u.setAdministrateur(rs.getBoolean("administrateur"));
 				
-				JdbcTools.closeConnection(cnx);
+				cnx.close();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -181,7 +206,11 @@ public class DAOUtilisateurJDBCImpl implements DAOUtilisateur {
 			Utilisateur u = null;
 			
 			try (
-				Connection cnx = JdbcTools.getConnection();
+				
+				//Remplacement par pool de connexion via ConnectionProvider
+				//Connection cnx = JdbcTools.getConnection();
+				Connection cnx = ConnectionProvider.getConnection();
+					
 				PreparedStatement psmt = cnx.prepareStatement(selectByPseudo);) {
 			
 				psmt.setString(1, pseudo);
@@ -192,7 +221,7 @@ public class DAOUtilisateurJDBCImpl implements DAOUtilisateur {
 					u = new Utilisateur();
 					u.setPseudo(pseudo);
 					u.setMotDePasse(rs.getString("mot_de_passe"));
-					
+					cnx.close();
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

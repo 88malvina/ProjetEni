@@ -1,19 +1,15 @@
 package fr.eni.projet.dal.jdbc;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import fr.eni.projet.dal.DALException;
-import fr.eni.projet.dal.DAO;
-import fr.eni.projet.dal.DAOEnchere;
-import fr.eni.projet.dal.jdbc.JdbcTools;
+
 import fr.eni.projet.bo.Enchere;
 import fr.eni.projet.bo.Utilisateur;
+import fr.eni.projet.dal.DAOEnchere;
 
 public class DAOEnchereJDBCImpl<T> implements DAOEnchere{
 	private String selectAll="select ARTICLES_VENDUS.nom_article, ENCHERES.montant_enchere, ENCHERES.date_enchere, UTILISATEURS.pseudo from ENCHERES \r\n"
@@ -50,11 +46,18 @@ public class DAOEnchereJDBCImpl<T> implements DAOEnchere{
 	}
 
 	
+	
 	@Override
 	public List<T> selectAll() throws SQLException {
+
 		List<Enchere> list=new ArrayList<Enchere>();
 		Enchere enchere=null;
-		Connection cnx = JdbcTools.getConnection();
+		
+		//Remplacement par pool de connexion ligne close en bas du code
+		//Connection cnx = JdbcTools.getConnection();
+		
+		Connection cnx = ConnectionProvider.getConnection();
+		
 		Statement smt = cnx.createStatement(); 
 		
 			ResultSet rs = smt.executeQuery(selectAll);
@@ -66,6 +69,7 @@ public class DAOEnchereJDBCImpl<T> implements DAOEnchere{
 			enchere.setUtilisateur(rs.getString("pseudo"));
 			list.add(enchere);
 		}
+		cnx.close();
 		return (List<T>) list;
 	}
 
