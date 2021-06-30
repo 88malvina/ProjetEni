@@ -1,8 +1,8 @@
 <!-- 
 Antoine
 Jsp en réception de la servlet Se Connecter
-Contenant un formulaire simple
-nécessitant import jstl (fichier lib et aussi ligne ci dessous)
+Contenant un formulaire simple ff
+nécessitant import jstl (fichier lib et aussi ligne ci dessous) -
 
  -->
 

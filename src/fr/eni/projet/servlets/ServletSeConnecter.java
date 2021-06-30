@@ -16,7 +16,7 @@ import fr.eni.projet.bo.Utilisateur;
 import fr.eni.projet.forms.ConnectionForm;
 
 /**
- * Antoine
+ * Antoine t
  * Servlet servant à diriger vers la JSP Connexion
  * Servlet implementation class ServletSeConnecter
  */
@@ -25,7 +25,7 @@ public class ServletSeConnecter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// On dirige vers la JSP connexion  coucou
+		// On dirige vers la JSP connexion //
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jspFiles/connexion.jsp");
 		rd.forward(request, response);
 	}

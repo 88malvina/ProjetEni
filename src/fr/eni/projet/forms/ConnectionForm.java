@@ -7,13 +7,13 @@ import fr.eni.projet.bo.Utilisateur;
 
 /**
  * Classe pour la gestion des formulaires
- * @author ablanchet2021
+ * @author ablanchet2021 t
  *
  */
 
 public class ConnectionForm {
 	
-	//Attribut de classe ici
+	//Attribut de classe ici//
 	private String resultat;
 	
 	//Methode pour verifier la connexion de l'utilisateur qui utilise la requête et qui renvoie un resultat string
