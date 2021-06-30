@@ -19,4 +19,15 @@
   <url-pattern>/fr/eni/projet/servlets/ServletVersJSPInscription</url-pattern>
   </servlet-mapping>
   
+  
+	<!-- ajout de la lib JSTL Core et du pageEncoding="UTF-8" 
+	dans toutes les JSP de l'application -->  
+
+   <jsp-config>
+       <jsp-property-group>
+           <url-pattern>*.jsp</url-pattern>
+           <include-prelude>/WEB-INF/jspFiles/taglibs.jsp</include-prelude>
+       </jsp-property-group>
+   </jsp-config>
+    
 </web-app>
