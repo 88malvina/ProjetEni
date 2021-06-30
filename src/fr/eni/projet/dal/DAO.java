@@ -1,5 +1,6 @@
 package fr.eni.projet.dal;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import fr.eni.projet.bo.Utilisateur;
@@ -19,7 +20,7 @@ public interface DAO <T> {
 	
 	public void update(T t);
 	
-	public List<T> selectAll();
+	public List<T> selectAll() throws SQLException;
 
 	public T selectById(int id);
 	

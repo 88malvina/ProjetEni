@@ -5,7 +5,7 @@ import java.util.List;
 
 import fr.eni.projet.bo.Enchere;
 
-
+ 
 public interface DAOEnchere<T> extends DAO<T>{
 public void insert(Enchere t);
 	
