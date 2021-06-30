@@ -1,5 +1,7 @@
+<%@page import="fr.eni.projet.bll.EnchereManager"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,34 +17,39 @@
 		<div class="logo">
 			<h3>ENI-Encheres</h3>
 		</div>
-	<div class="se_connecter"><a href="/ServletCréerParAntoine">S'inscrire-Se connecter</a></div>
+	<div class="se_connecter"><a href="/ProjetEni/ServletVersJSPInscription">S'inscrire</a>-<a href="/ProjetEni/ServletSeConnecter">Se connecter</a></div>
 	</div>
 	<div class="titre"><h4>Liste des enchères</h4></div>
 	Filtres:<br>
+	<form method="post" action="">
 	<label>
-	<button type="submit"><i class="fa fa-search"></i></button><input type="text" placeholder="Le nom de l'article contient" size=30">
+	<button type="submit"><i class="fa fa-search"></i></button><input name="saisieUtilisateur" type="text" placeholder="Le nom de l'article contient" size=30">
 	<br><br>
 	Catégorie :
-	<select>
+	
+	<select name="select">
 	<option value="" disabled selected>Toutes</option>
 	<option value="ameublement">Ameublement</option>
 	<option value="vetement">Vêtement</option>
 	<option value="sport">Sport & Loisirs</option>
 	</select>
 	
-	<button>Rechercher</button>
+	<button type="submit" name="rechercher">Rechercher</button>
 	</label>
+	</form>
 	<div class="liste_enchères">
 	<br>
+		
+		<c:forEach items="${encheres}" var="enchere">
 		<div class="enchère">
 		<div class="photo"><img src="https://pics.freeicons.io/uploads/icons/png/394198151553508653-512.png" width="50px" height="50px" alt="enchère"></div>
 		<div class="description">
-			<a href="">PC Gamer pour travailler</a><br>
-			Prix : 210 points<br>
-			Fin de l'enchère : <br>
-			Vendeur : 
+			<a href="">${enchere.article_vendu}</a><br>
+			Prix : ${enchere.montant_enchere} points<br>
+			Fin de l'enchère : ${enchere.date_enchere}<br>
+			Vendeur : ${enchere.utilisateur}
 		</div>
-		</div>
+		</div></c:forEach>
 	</div>
 	<footer>
 		<h3>Eni 2021</h3>

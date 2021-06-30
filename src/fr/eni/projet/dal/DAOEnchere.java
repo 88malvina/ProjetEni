@@ -15,6 +15,6 @@ public void insert(Enchere t);
 	
 	public List<T> selectAll() throws SQLException;
 	
-
 	public T selectById(int id);
+	
 }

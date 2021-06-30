@@ -3,8 +3,10 @@
  */
 package fr.eni.projet.dal;
 
+import fr.eni.projet.bo.Categorie;
 import fr.eni.projet.bo.Enchere;
 import fr.eni.projet.bo.Utilisateur;
+import fr.eni.projet.dal.jdbc.DAOCategorieJDBCImpl;
 import fr.eni.projet.dal.jdbc.DAOEnchereJDBCImpl;
 import fr.eni.projet.dal.jdbc.DAOUtilisateurJDBCImpl;
 
@@ -22,6 +24,10 @@ public class DAOFactory {
 	
 	public static DAO<Enchere> getEnchereDAO() {
 		return new DAOEnchereJDBCImpl();
+	}
+	
+	public static DAO<Categorie> getCategorieDAO() {
+		return new DAOCategorieJDBCImpl();
 	}
 	
 	
