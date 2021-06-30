@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.projet.bll.UtilisateurManager;
 import fr.eni.projet.bo.Utilisateur;
+import fr.eni.projet.forms.ConnectionForm;
 
 /**
  * Antoine
@@ -24,7 +25,7 @@ public class ServletSeConnecter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// On dirige vers la JSP connexion  
+		// On dirige vers la JSP connexion  coucou
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jspFiles/connexion.jsp");
 		rd.forward(request, response);
 	}
@@ -32,53 +33,18 @@ public class ServletSeConnecter extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// On récupère les données du formulaire
-				
-		String pseudo = request.getParameter("pseudo");
-		System.out.println(pseudo);
-		String password = request.getParameter("password");
-		System.out.println(password);
-		String souvenirDeMoi = request.getParameter("souvenirDeMoi");
+		//Instanciation du gestionnaire de formulaire et on récupère ses infos
 		
-		// ====== Vérification de la saisie utilisateur ====== 
+		ConnectionForm form = new ConnectionForm();
+		form.verifierIdentifiants(request);
+		request.setAttribute("form", form);
 		
-		// TODO Vérification de validité à faire ?
+		//Puis on retourne tout cela à la JSP
 		
-		// Vérification que l'utilisateur est bien en base de données
-	
-		try {
-			
-			
-			RequestDispatcher rd=null;
-			List<Utilisateur> list= UtilisateurManager.sellectAll();
-			for(Utilisateur ut:list) {
-				if((ut.getPseudo().equals(pseudo)) && (ut.getMotDePasse().equals(password))) {
-					
-					request.setAttribute("pseudo", pseudo);
-					request.setAttribute("password", password);
-					request.setAttribute("souvenirDeMoi", souvenirDeMoi);
-					
-					rd = request.getRequestDispatcher("WEB-INF/jspFiles/testReussiteConnexion.jsp");
-					
-				}
-				else {
-					PrintWriter out = new PrintWriter("Erreur de log");
-					out.close();
-					rd = request.getRequestDispatcher("WEB-INF/jspFiles/testEchecConnexion.jsp");
-					
-				}
-			}rd.forward(request, response);
-			//Vérification que l'utilisateur est en base, si c'est le cas, redirection
-			
-			
-		}catch (Exception e) {
-			request.setAttribute("erreur", e);
-			//Envoi de l'erreur via une page ?
-			//RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jspFiles/connexionTest.jsp");
-			//rd.forward(request, response)
-
-		}
-	
+		this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/connexion.jsp").forward(request, response);
+		System.out.println("form getresultat arrive :");
+		System.out.println(form.getResultat());
+		
 	}
 		
 }

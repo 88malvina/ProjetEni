@@ -2,11 +2,16 @@
 Antoine
 Jsp en réception de la servlet Se Connecter
 Contenant un formulaire simple
+nécessitant import jstl (fichier lib et aussi ligne ci dessous)
 
  -->
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +24,12 @@ Contenant un formulaire simple
 </style>
 
 <body>
+
+<p><c:out value="${form.resultat }" /> </p>
+
+
+
+
 <h1> Se connecter</h1>
 
 		<form action="<%=request.getContextPath()%>/ServletSeConnecter" method="post">
@@ -56,7 +67,7 @@ Contenant un formulaire simple
 				<a href="<%=request.getContextPath()%>"><input type="button" value="Annuler"/></a>
 				</div>
 				
-				<!-- TODO : lien vers la page d'inscription -->
+				<!-- TODO : lien vers la page d'inscription a faire-->
 				
 				<div class=formLabel>
 				<a href =""<%=request.getContextPath()%>/inscription"> Créer un compte</a>
