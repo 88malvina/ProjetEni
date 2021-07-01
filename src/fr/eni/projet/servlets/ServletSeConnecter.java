@@ -22,7 +22,7 @@ public class ServletSeConnecter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// On dirige vers la JSP connexion //
+		// On dirige vers la JSP connexion // coucou yyy
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jspFiles/connexion.jsp");
 		rd.forward(request, response);
 	}
