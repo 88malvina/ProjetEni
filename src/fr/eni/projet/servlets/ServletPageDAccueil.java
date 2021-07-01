@@ -32,7 +32,7 @@ public class ServletPageDAccueil extends HttpServlet {
 		
 		/*----r�cup�rer les valeurs de la table Ench�res-----*/
 		
-		
+		System.out.println("Hello");
 		try {
 			List<Enchere> list=manager.selectAll();
 			request.setAttribute("encheres", list);
