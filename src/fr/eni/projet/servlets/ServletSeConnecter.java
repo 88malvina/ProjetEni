@@ -16,13 +16,13 @@ import fr.eni.projet.bll.UtilisateurManager;
  * Antoine t
  * Servlet servant à diriger vers la JSP Connexion
  * Servlet implementation class ServletSeConnecter
- */
+ */  
 @WebServlet("/ServletSeConnecter")
 public class ServletSeConnecter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// On dirige vers la JSP connexion // coucou yyy uuu
+		// On dirige vers la JSP connexion // coucou yyy uuu  coucou
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jspFiles/connexion.jsp");
 		rd.forward(request, response);
 	}
