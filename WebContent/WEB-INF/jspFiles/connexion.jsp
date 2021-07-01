@@ -25,7 +25,7 @@ nécessitant import jstl (fichier lib et aussi ligne ci dessous) -
 
 <body>
 
-<p><c:out value="${form.resultat }" /> </p>
+<p><c:out value="${resultat }" /> </p>
 
 
 
