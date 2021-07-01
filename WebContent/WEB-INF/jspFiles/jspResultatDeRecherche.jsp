@@ -1,8 +1,6 @@
 <%@page import="fr.eni.projet.bo.Enchere"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-    
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,8 +33,21 @@
 		</div>
 			</c:forEach>
 			<%} %>
-		
-		<%if(request.getAttribute("list_rechereche")!=null) {%>
+			
+			<%if(request.getAttribute("list_rechereche_avecNom_et_categorie")!=null) {%>
+			<c:forEach items="${list_rechereche_avecNom_et_categorie}" var="list">
+			<div class="enchère">
+		<div class="photo"><img src="https://pics.freeicons.io/uploads/icons/png/394198151553508653-512.png" width="50px" height="50px" alt="enchère"></div>
+		<div class="description">
+			<a href="">${list.article_vendu}</a><br>
+			Prix : ${list.montant_enchere} points<br>
+			Fin de l'enchère : ${list.date_enchere}<br>
+			Vendeur : ${list.utilisateur}
+		</div>
+		</div>
+			</c:forEach>
+			<%} %>
+			
 		<c:forEach items="${list_rechereche}" var="list">
 		<div class="enchère">
 		<div class="photo"><img src="https://pics.freeicons.io/uploads/icons/png/394198151553508653-512.png" width="50px" height="50px" alt="enchère"></div>
@@ -49,7 +60,6 @@
 		</div>
 		
 		</c:forEach>
-		<%} %>
 		
 		<%if(request.getAttribute("aucune_trouvé")!=null) {%>
 		<%=request.getAttribute("aucune_trouvé") %>
