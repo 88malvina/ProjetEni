@@ -1,5 +1,6 @@
 package fr.eni.projet.dal.jdbc;
 
+import java.io.Closeable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,7 +19,9 @@ public class DAOEnchereJDBCImpl implements DAO<Enchere>{
 			+ "inner join ARTICLES_VENDUS on ARTICLES_VENDUS.no_article=ENCHERES.no_article\r\n"
 			+ "inner join UTILISATEURS on UTILISATEURS.no_utilisateur=ENCHERES.no_utilisateur";
 
-	private String selectEncheresByCategorie="select ARTICLES_VENDUS.nom_article from ENCHERES join ARTICLES_VENDUS on ENCHERES.no_article=ARTICLES_VENDUS.no_article where ARTICLES_VENDUS.no_categorie=?";
+	private String selectEncheresByCategorie="select ARTICLES_VENDUS.nom_article,ENCHERES.montant_enchere,ENCHERES.date_enchere, UTILISATEURS.pseudo  from ENCHERES inner join ARTICLES_VENDUS on ENCHERES.no_article=ARTICLES_VENDUS.no_article\r\n"
+			+ "inner join UTILISATEURS on ENCHERES.no_utilisateur=UTILISATEURS.no_utilisateur\r\n"
+			+ "where ARTICLES_VENDUS.no_categorie=?";
 	
 	public DAOEnchereJDBCImpl() {}
 	
@@ -83,17 +86,18 @@ public class DAOEnchereJDBCImpl implements DAO<Enchere>{
 		
 		Statement smt = cnx.createStatement(); 
 		
-		PreparedStatement psmt = cnx.prepareStatement(selectEncheresByCategorie, PreparedStatement.RETURN_GENERATED_KEYS);
+		PreparedStatement psmt = cnx.prepareStatement(selectEncheresByCategorie);
 		psmt.setInt(1,no_categorie);
-		ResultSet rs=psmt.executeQuery();
+		ResultSet rs=psmt.executeQuery();System.out.println("h");
 		if(rs.next()) {
 			enchere=new Enchere();
-			enchere.setArticle_vendu("nom_article");
+			enchere.setArticle_vendu(rs.getString("nom_article"));
 			enchere.setMontant_enchere(rs.getInt("montant_enchere"));
 			enchere.setDate_enchere(rs.getDate("date_enchere"));
 			enchere.setUtilisateur(rs.getString("pseudo"));
 			list.add(enchere);
 		}
+		psmt.close();
 		cnx.close();
 		return  list;
 		

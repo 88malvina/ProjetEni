@@ -1,11 +1,11 @@
 <%@page import="fr.eni.projet.bll.EnchereManager"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>A Web Page</title>
 </head>
@@ -19,34 +19,34 @@
 		</div>
 	<div class="se_connecter"><a href="/ProjetEni/ServletVersJSPInscription">S'inscrire</a>-<a href="/ProjetEni/ServletSeConnecter">Se connecter</a></div>
 	</div>
-	<div class="titre"><h4>Liste des enchères</h4></div>
+	<div class="titre"><h4>Liste des enchÃ¨res</h4></div>
 	Filtres:<br>
 	<form method="post" action="">
 	<label>
 	<button type="submit"><i class="fa fa-search"></i></button><input name="saisieUtilisateur" type="text" placeholder="Le nom de l'article contient" size=30">
 	<br><br>
-	Catégorie :
+	CatÃ©gorie :
 	
 	<select name="select">
 	<option value="" disabled selected>Toutes</option>
 	<option value="ameublement">Ameublement</option>
-	<option value="vetement">Vêtement</option>
+	<option value="vetement">VÃªtement</option>
 	<option value="sport">Sport & Loisirs</option>
 	</select>
 	
 	<button type="submit" name="rechercher">Rechercher</button>
 	</label>
 	</form>
-	<div class="liste_enchères">
+	<div class="liste_enchÃ¨res">
 	<br>
 		
 		<c:forEach items="${encheres}" var="enchere">
-		<div class="enchère">
-		<div class="photo"><img src="https://pics.freeicons.io/uploads/icons/png/394198151553508653-512.png" width="50px" height="50px" alt="enchère"></div>
+		<div class="enchÃ¨re">
+		<div class="photo"><img src="https://pics.freeicons.io/uploads/icons/png/394198151553508653-512.png" width="50px" height="50px" alt="enchÃ¨re"></div>
 		<div class="description">
 			<a href="">${enchere.article_vendu}</a><br>
 			Prix : ${enchere.montant_enchere} points<br>
-			Fin de l'enchère : ${enchere.date_enchere}<br>
+			Fin de l'enchÃ¨re : ${enchere.date_enchere}<br>
 			Vendeur : ${enchere.utilisateur}
 		</div>
 		</div></c:forEach>
