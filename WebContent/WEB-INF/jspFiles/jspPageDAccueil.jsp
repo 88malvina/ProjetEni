@@ -21,7 +21,7 @@
 	</div>
 	<div class="titre"><h4>Liste des enchères</h4></div>
 	Filtres:<br>
-	<form method="post" action="">
+	<form method="post" action=""> 
 	<label>
 	<button type="submit"><i class="fa fa-search"></i></button><input name="saisieUtilisateur" type="text" placeholder="Le nom de l'article contient" size=30">
 	<br><br>

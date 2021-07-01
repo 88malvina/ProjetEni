@@ -52,11 +52,14 @@ public class ServletPageDAccueil extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		EnchereManager manager=new EnchereManager();
 		int no_categorie=0;
-		List<Enchere> list;
-		List<Enchere> list2=new ArrayList<Enchere>();
+		List<Enchere> listAllEncheres;
+		List<Enchere> list_encheres_trouver_parNom=new ArrayList<Enchere>();
+		List<Enchere> list3=new ArrayList<Enchere>();
+		 List<Enchere> list_categorie=null;
+		 List<Enchere> list_categorie2=null;
 		try {
-			list = EnchereManager.selectAll();
-			request.setAttribute("encheres", list);
+			listAllEncheres = EnchereManager.selectAll();
+			request.setAttribute("encheres", listAllEncheres);
 		
 		if(request.getParameter("rechercher")!=null) {
 			String saisieUtilisateur=request.getParameter("saisieUtilisateur");
@@ -65,20 +68,20 @@ public class ServletPageDAccueil extends HttpServlet {
 			if(saisieUtilisateur!=null && select==null) {
 				
 				request.setAttribute("saisie", saisieUtilisateur);
-				for(Enchere enchere:list) {
+				for(Enchere enchere:listAllEncheres) {
 					if(enchere.getArticle_vendu().toLowerCase().contains(saisieUtilisateur.toLowerCase()))
 					{
 					
-						list2.add(enchere);
+						list_encheres_trouver_parNom.add(enchere);
 					}
 					else {
 						request.setAttribute("aucune_trouvé", "Rien n'a été trouvé");
 					}
 				}
-				request.setAttribute("list_rechereche", list2);
+				request.setAttribute("list_rechereche", list_encheres_trouver_parNom);
 			}
 			
-			else{
+			if(saisieUtilisateur==null && select!=null){
 				System.out.println("mtav");
 			//request.setAttribute("select", select);
 			System.out.println(select);
@@ -94,9 +97,37 @@ public class ServletPageDAccueil extends HttpServlet {
 			}
 			System.out.println(no_categorie);
 			
-			 List<Enchere> list_categorie=EnchereManager.selectEncheresByCategorie(no_categorie);
+			 list_categorie=EnchereManager.selectEncheresByCategorie(no_categorie);
 				request.setAttribute("categorie", list_categorie);
-				System.out.println(list_categorie);
+			}
+			if(saisieUtilisateur!=null && select!=null) {
+				switch (select) {
+				case "vetement": no_categorie=1;
+					break;
+				case "ameublement": no_categorie=2;
+				break;
+				case "sport": no_categorie=3;
+				break;
+				default:
+					break;
+				}
+				
+				 list_categorie2=EnchereManager.selectEncheresByCategorie(no_categorie);
+					request.setAttribute("categorie", list_categorie2);
+					System.out.println(list_categorie2);
+					for(Enchere enchere:listAllEncheres) {
+						if(enchere.getArticle_vendu().toLowerCase().contains(saisieUtilisateur.toLowerCase()))
+						{
+						
+							list3.add(enchere);
+						}
+						else {
+							request.setAttribute("aucune_trouvé", "Rien n'a été trouvé");
+						}
+					}
+					System.out.println(list_categorie2);
+					request.setAttribute("list_rechereche", list_categorie2);
+					
 			}
 			
 				
