@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.eni.projet.bo.Enchere;
 import fr.eni.projet.bo.Utilisateur;
 import fr.eni.projet.dal.DAOUtilisateur;
 
@@ -229,6 +230,12 @@ public class DAOUtilisateurJDBCImpl implements DAOUtilisateur {
 			}
 				
 			return u;
+		}
+
+		@Override
+		public List<Enchere> selectEncheresByCategorie(int i) throws SQLException {
+			// TODO Auto-generated method stub
+			return null;
 		}
 
 }

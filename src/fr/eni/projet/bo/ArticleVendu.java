@@ -1,7 +1,6 @@
-rpackage fr.eni.projet.bo;
+package fr.eni.projet.bo;
 
 import java.time.LocalDate;
-
 public class ArticleVendu { 
 	private int noArticle;
 	private String nomArticle;

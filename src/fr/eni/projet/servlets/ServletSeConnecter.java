@@ -10,14 +10,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import fr.eni.projet.bll.UtilisateurManager;
-import fr.eni.projet.bo.Utilisateur;
-import fr.eni.projet.forms.ConnectionForm;
 
 /**
  * Antoine t
- * Servlet servant à diriger vers la JSP Connexion
+ * Servlet servant Ã  diriger vers la JSP Connexion
  * Servlet implementation class ServletSeConnecter
  */
 @WebServlet("/ServletSeConnecter")
@@ -33,17 +30,18 @@ public class ServletSeConnecter extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//Instanciation du gestionnaire de formulaire et on récupère ses infos
+		//Instanciation du gestionnaire de formulaire et on rÃ©cupÃ¨re ses infos
 		
-		ConnectionForm form = new ConnectionForm();
-		form.verifierIdentifiants(request);
-		request.setAttribute("form", form);
+		UtilisateurManager identifiants = new UtilisateurManager();
+		String resultat = identifiants.verifierIdentifiants(request);
+		request.setAttribute("identifiants", identifiants);
+		request.setAttribute("resultat", resultat);
 		
-		//Puis on retourne tout cela à la JSP
+		//Puis on retourne tout cela Ã  la JSP
 		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/connexion.jsp").forward(request, response);
 		System.out.println("form getresultat arrive :");
-		System.out.println(form.getResultat());
+		System.out.println(resultat);
 		
 	}
 		
