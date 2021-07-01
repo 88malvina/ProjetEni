@@ -61,18 +61,11 @@ public class UtilisateurManager {
 					System.out.println("telephone déjà utilisé");
 					return false;
 				}
-			}	
+			}
 		}
-		
-		
-		
+			
 		return true;
 	}
-	
-	
-	
-	
-	
 	
 }
 	 
