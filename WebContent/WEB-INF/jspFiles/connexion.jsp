@@ -25,10 +25,7 @@ nécessitant import jstl (fichier lib et aussi ligne ci dessous) -
 
 <body>
 
-<p><c:out value="${resultat }" /> </p>
-
-
-
+<p><c:out value="${messageLog }" /> </p>
 
 <h1> Se connecter</h1>
 
@@ -70,7 +67,7 @@ nécessitant import jstl (fichier lib et aussi ligne ci dessous) -
 				<!-- TODO : lien vers la page d'inscription a faire-->
 				
 				<div class=formLabel>
-				<a href =""<%=request.getContextPath()%>/inscription"> Créer un compte</a>
+				<a href =""<%=request.getContextPath()%>/JSPinscription"> Créer un compte</a>
 				</div>
 			
 		</form>
