@@ -20,22 +20,12 @@
 </head>
 
 <body>
-	<!------------NAVIGATION----------->
-		
-		<nav>
-			<div class="row">
-			<div class="col-sm-4">
-		 		<img src="images/logo.png" alt="Logo du site" title="logo du site" />
-		 	</div>
-		 	<div class="col-sm-4">
-		        <h1>ENI-Enchères</h1>
-		   </div>
-		   <div class="col-sm-4">
-		        <a class="nav-link" href="/ProjetEni/encheres/ServletPageDAccueil">Accueil</a>
-		        <a class="nav-link" href="/ProjetEni/ServletSeConnecter">Se connecter</a>
-		   </div>
-	       </div>
-	    </nav>
+	
+	<!-- HEADER -->
+	
+	<jsp:include page="/WEB-INF/jspFiles/jspHeader.jsp">
+		<jsp:param value="pageActuelle" name="inscription"/>
+	</jsp:include>
 
 	<!-- formulaire -->
 	
@@ -122,7 +112,7 @@
 						<div class="row">
 						
 						
-						<!-------------------------------- ADD BUTTONS -------------------------->
+						<!-------------------------------- BUTTONS -------------------------->
 						
 						<div class="row">
 							<div class="col-sm-4">

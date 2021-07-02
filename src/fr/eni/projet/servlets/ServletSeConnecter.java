@@ -51,7 +51,7 @@ public class ServletSeConnecter extends HttpServlet {
 		//Variable message pour afficher dans la JSP
 		String messageLog = null;
 		if (estConnecte) {
-			messageLog = "Bonjour " + pseudo + " Vous �tes bien connecte";
+			messageLog = "Bonjour " + pseudo + " Vous êtes bien connecte";
 		} else {
 			messageLog = "Identifiant ou mot de passe incorrect, r�essayez";
 		}
