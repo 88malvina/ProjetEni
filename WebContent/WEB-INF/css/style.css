@@ -10,7 +10,7 @@
 		width:70%;
 	}
 	.se_connecter{
-	width:30%;}
+	width:50%;}
 	.titre{
 		width:100%;
 		text-align: center;
@@ -34,6 +34,14 @@
 	}
 	.description{
 		width: 60%;
+	}
+	.check{
+		display:flex;
+		flex-direction:row;
+	}
+	.achats{
+		display:flex;
+		flex-direction:column;
 	}
 	footer {
 		width:100%;

@@ -1,7 +1,6 @@
 <%@page import="fr.eni.projet.bll.EnchereManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,15 +22,16 @@
 	Filtres:<br>
 	<form method="post" action=""> 
 	<label>
-	<button type="submit"><i class="fa fa-search"></i></button><input name="saisieUtilisateur" type="text" placeholder="Le nom de l'article contient" size=30">
+	<button type="submit"><i class="fa fa-search"></i></button><input name="saisieUtilisateur" type="text" placeholder="Le nom de l'article contient" size="30">
 	<br><br>
 	Catégorie :
 	
 	<select name="select">
-	<option value="" disabled selected>Toutes</option>
+	<option value="" selected disabled>Toutes</option>
+	<option value="informatique">Informatique</option>
 	<option value="ameublement">Ameublement</option>
 	<option value="vetement">Vêtement</option>
-	<option value="sport">Sport & Loisirs</option>
+	<option value="sport">Sport et Loisirs</option>
 	</select>
 	
 	<button type="submit" name="rechercher">Rechercher</button>
