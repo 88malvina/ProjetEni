@@ -8,11 +8,11 @@ INSERT INTO CATEGORIES (libelle) VALUES ('Ameublement');
 INSERT INTO CATEGORIES (libelle) VALUES ('Vetement');
 INSERT INTO CATEGORIES (libelle) VALUES ('Sport&Loisirs');
 
-INSERT INTO RETRAITS (no_article,rue,code_postal, ville) VALUES (1,'Chemin de Lavou', '33000','Bordeaux');
-INSERT INTO RETRAITS (no_article,rue,code_postal, ville) VALUES (2,'Montgallet', '31000','Toulouse');
-
 INSERT INTO ARTICLES_VENDUS (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente,no_utilisateur,no_categorie) VALUES ('PCGamer pour travailler','pc game','2018-08-05','2018-08-10','210','210',1,1);
 INSERT INTO ARTICLES_VENDUS (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente,no_utilisateur,no_categorie) VALUES ('Fortnite','jeu video','20210506','20210706','25','30',2,2);
 
 INSERT INTO ENCHERES (no_utilisateur,no_article,date_enchere,montant_enchere) VALUES (2,1,2015-05-05,250);
 INSERT INTO ENCHERES (no_utilisateur,no_article,date_enchere,montant_enchere) VALUES (1,1,2018-08-10,210);
+
+INSERT INTO RETRAITS (no_article,rue,code_postal, ville) VALUES (1,'Chemin de Lavou', '33000','Bordeaux');
+INSERT INTO RETRAITS (no_article,rue,code_postal, ville) VALUES (2,'Montgallet', '31000','Toulouse');
