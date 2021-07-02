@@ -1,6 +1,4 @@
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
@@ -14,10 +12,9 @@
 
 <!-- Bootstrap core CSS -->
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- CSS personalisÃ© -->
+<!-- CSS personalisé -->
 <link href="css/JSPInscription.css" rel="stylesheet">
 
 </head>
@@ -31,7 +28,7 @@
 		 		<img src="images/logo.png" alt="Logo du site" title="logo du site" />
 		 	</div>
 		 	<div class="col-sm-4">
-		        <h1>ENI-EnchÃ¨res</h1>
+		        <h1>ENI-Enchères</h1>
 		   </div>
 		   <div class="col-sm-4">
 		        <a class="nav-link" href="/ProjetEni/encheres/ServletPageDAccueil">Accueil</a>
@@ -46,7 +43,7 @@
 			<div class="row">
 				<form name="formulaireInscription" method="post" action="ServletVersJSPInscription">
 					<fieldset>
-						<legend>CrÃ©er mon compte</legend>
+						<legend>Créer mon compte</legend>
 						
 						<div class="row">
 						<div class="col-sm-12 col-md-6">
@@ -79,8 +76,8 @@
 						
 						<div class="row">
 						<div class="col-sm-12 col-md-6">
-						<label for="prenom">PrÃ©nom :</label>
-						<input type="text" name="prenom" id="prenom" placeholder="Votre prÃ©nom"
+						<label for="prenom">Prénom :</label>
+						<input type="text" name="prenom" id="prenom" placeholder="Votre prénom"
 						size="40" maxlength="30" required="required" />
 						</div>
 						
@@ -94,7 +91,7 @@
 						
 						<div class="row">
 						<div class="col-sm-12 col-md-6">
-						<label for="telephone">TÃ©lÃ©phone :</label>
+						<label for="telephone">Téléphone :</label>
 						<input type="text" name="telephone" id="telephone" placeholder="(Optionel)"
 						size="40" maxlength="15" />
 						</div>
@@ -133,7 +130,7 @@
 							</div>
 							
 							<div class="col-sm-4">
-								<input type="reset" value="RÃ©initialiser" class="btn btn-outline-dark btn-sm">
+								<input type="reset" value="Réinitialiser" class="btn btn-outline-dark btn-sm">
 							</div>
 							
 							<div class="col-sm-4">
@@ -148,7 +145,6 @@
 				
 		</div>
 		<!---------------------------------- ADD FOOTER -------------------------->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </body>
 
 </html>
