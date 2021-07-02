@@ -46,7 +46,7 @@ CREATE TABLE UTILISATEURS (
     administrateur   bit NOT NULL
 )
 
-//======== Ajout de contraintes utilisateur_pseudo_un , utilisateur_email_un , utilisateur_telephone_un ========//
+-- Ajout de contraintes utilisateur_pseudo_un , utilisateur_email_un , utilisateur_telephone_un ========//
 
 ALTER TABLE UTILISATEURS ADD constraint utilisateur_pk PRIMARY KEY (no_utilisateur)
 ALTER TABLE UTILISATEURS ADD constraint utilisateur_pseudo_un UNIQUE (pseudo)
