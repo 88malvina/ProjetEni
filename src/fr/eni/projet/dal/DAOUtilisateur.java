@@ -11,17 +11,19 @@ import fr.eni.projet.bo.Utilisateur;
  *
  */
 
+//Elle hérite de dao et précise les utilisateurs
+
 public interface DAOUtilisateur extends DAO<Utilisateur> {
-
-public void insert(Utilisateur t);
 	
-	public void delete(Utilisateur t);
+// a virer car elles sont dans l'interface DAO
 	
-	public void update(Utilisateur t);
-	
-	public List<Utilisateur> selectAll();
-
-	public Utilisateur selectById(int id);
+//	//public void delete(Utilisateur t);
+//	
+//	public void update(Utilisateur t);
+//	
+//	public List<Utilisateur> selectAll();
+//
+//	public Utilisateur selectById(int id);
 	
 	public Utilisateur selectByPseudo(String pseudo);
 

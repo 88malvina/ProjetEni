@@ -60,7 +60,7 @@ public class ServletSeConnecter extends HttpServlet {
 
 		request.setAttribute("messageLog", messageLog);
 
-		//Puis on retourne tout cela Ã  la JSP
+		//Puis on retourne tout cela à la JSP
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/connexion.jsp").forward(request, response);
 		System.out.println(messageLog);
 

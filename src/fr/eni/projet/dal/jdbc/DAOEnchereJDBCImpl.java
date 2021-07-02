@@ -13,7 +13,8 @@ import fr.eni.projet.bo.Enchere;
 import fr.eni.projet.bo.Utilisateur;
 import fr.eni.projet.dal.DAO;
 import fr.eni.projet.dal.DAOEnchere;
- 
+
+//TODO généricité à vérifier
 public class DAOEnchereJDBCImpl implements DAO<Enchere>{
 	private String selectAll="select ARTICLES_VENDUS.nom_article, ENCHERES.montant_enchere, ENCHERES.date_enchere, UTILISATEURS.pseudo from ENCHERES \r\n"
 			+ "inner join ARTICLES_VENDUS on ARTICLES_VENDUS.no_article=ENCHERES.no_article\r\n"

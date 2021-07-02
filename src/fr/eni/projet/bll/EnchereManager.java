@@ -16,7 +16,7 @@ import fr.eni.projet.dal.DAOUtilisateur;
  *	
  */
 public class EnchereManager {
-	private static DAO<Enchere> daoEnchere = (DAO<Enchere>) DAOFactory.getEnchereDAO();
+	private static DAO<Enchere> daoEnchere = DAOFactory.getEnchereDAO();
 	
 	public static List<Enchere> selectAll() throws SQLException {
 		return daoEnchere.selectAll();

@@ -15,19 +15,22 @@ import fr.eni.projet.dal.DAOUtilisateur;
 
 public class UtilisateurManager {
 	
-	private static DAOUtilisateur daoUtilisateur = (DAOUtilisateur) DAOFactory.getUtilisateurDAO();
+	private static DAOUtilisateur daoUtilisateur = DAOFactory.getUtilisateurDAO();
 	
 	public static Utilisateur selectByPseudo(String pseudo) {
 		return daoUtilisateur.selectByPseudo(pseudo);
 		
 	}
-	public static List<Utilisateur> sellectAll(){
+	public static List<Utilisateur> selectAll(){
 		return daoUtilisateur.selectAll();
 	}
 	
 	public static void insert(Utilisateur u) {
 		daoUtilisateur.insert(u);
 	}
+	
+	//gestion des exceptions à revoir
+	//Remettre à plat les généricités / 
 	
 	public static boolean controleInscription(Utilisateur u, String confirmMotDePasse) {
 		

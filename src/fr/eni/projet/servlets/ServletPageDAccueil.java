@@ -32,6 +32,8 @@ public class ServletPageDAccueil extends HttpServlet {
 		
 		/*----rï¿½cupï¿½rer les valeurs de la table Enchï¿½res-----*/
 		
+		//A régler avec vue statique
+		
 		System.out.println("Hello");
 		try {
 			List<Enchere> list=manager.selectAll();
@@ -40,6 +42,7 @@ public class ServletPageDAccueil extends HttpServlet {
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			// Expliquer à l'utilisateur
 			e.printStackTrace();
 		}
 		RequestDispatcher rd=request.getRequestDispatcher("/WEB-INF/jspFiles/jspPageDAccueil.jsp");
@@ -54,10 +57,15 @@ public class ServletPageDAccueil extends HttpServlet {
 		int no_categorie=0;
 		List<Enchere> listAllEncheres;
 		List<Enchere> list_encheres_trouver_parNom=new ArrayList<Enchere>();
+		
 		List<Enchere> list3=new ArrayList<Enchere>();
 		 List<Enchere> list_categorie=null;
 		 List<Enchere> list_categorie2=null;
 		try {
+			//On pourrait avoir un filtre ? Il ne faut pas faire le selectall d'office car cela dépend des filtres actifs ou pas
+			// "tel filtre a été mis" = contrainte 
+			// Conseil éventuel : créer dynamiquement la requête selon les filtres sélectionnés
+			// Select all = donc seulement si on a mis aucun filtre
 			listAllEncheres = EnchereManager.selectAll();
 			request.setAttribute("encheres", listAllEncheres);
 		
@@ -77,7 +85,7 @@ public class ServletPageDAccueil extends HttpServlet {
 						list_encheres_trouver_parNom.add(enchere);
 					}
 					else {
-						request.setAttribute("aucune_trouvÃ©", "Rien n'a Ã©tÃ© trouvÃ©");
+						request.setAttribute("aucune_trouvé", "Rien n'a été trouvé©");
 					}
 				}
 				request.setAttribute("list_rechereche", list_encheres_trouver_parNom);

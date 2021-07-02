@@ -12,6 +12,7 @@ import fr.eni.projet.bo.Utilisateur;
  *
  */
 
+//interface générique
 
 public interface DAO <T> {
 	
@@ -25,7 +26,7 @@ public interface DAO <T> {
 
 	public T selectById(int id);
 	
-	public Utilisateur selectByPseudo(String pseudo);
+	//public Utilisateur selectByPseudo(String pseudo);
 
-	public List<Enchere> selectEncheresByCategorie(int i) throws SQLException;
+	//public List<Enchere> selectEncheresByCategorie(int i) throws SQLException;
 }
