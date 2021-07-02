@@ -1,7 +1,5 @@
 package fr.eni.projet.dal;
-
-import java.util.List;
-
+import java.sql.SQLException;
 
 import fr.eni.projet.bo.Utilisateur;
 
@@ -11,18 +9,9 @@ import fr.eni.projet.bo.Utilisateur;
  *
  */
 
+
 public interface DAOUtilisateur extends DAO<Utilisateur> {
 
-public void insert(Utilisateur t);
-	
-	public void delete(Utilisateur t);
-	
-	public void update(Utilisateur t);
-	
-	public List<Utilisateur> selectAll();
-
-	public Utilisateur selectById(int id);
-	
-	public Utilisateur selectByPseudo(String pseudo);
+	public Utilisateur selectByPseudo(String pseudo) throws SQLException;
 
 }

@@ -2,6 +2,7 @@ package fr.eni.projet.dal.jdbc;
 
 import java.sql.Connection;
 
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,7 +10,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.eni.projet.bo.Enchere;
 import fr.eni.projet.bo.Utilisateur;
 import fr.eni.projet.dal.DAOUtilisateur;
 
@@ -222,6 +222,19 @@ public class DAOUtilisateurJDBCImpl implements DAOUtilisateur {
 					u = new Utilisateur();
 					u.setPseudo(pseudo);
 					u.setMotDePasse(rs.getString("mot_de_passe"));
+					u.setNom(rs.getString("nom"));
+					u.setPrenom(rs.getString("prenom"));
+					u.setEmail(rs.getString("email"));
+					u.setTelephone(rs.getString("telephone"));
+					u.setRue(rs.getString("rue"));
+					u.setCodePostal(rs.getString("code_postal"));
+					u.setVille(rs.getString("ville"));
+					u.setMotDePasse(rs.getString("mot_de_passe"));
+					u.setCredit(rs.getInt("credit"));
+					u.setAdministrateur(rs.getBoolean("administrateur"));
+					
+					
+					
 					cnx.close();
 				}
 			} catch (Exception e) {
@@ -230,12 +243,6 @@ public class DAOUtilisateurJDBCImpl implements DAOUtilisateur {
 			}
 				
 			return u;
-		}
-
-		@Override
-		public List<Enchere> selectEncheresByCategorie(int i) throws SQLException {
-			// TODO Auto-generated method stub
-			return null;
 		}
 
 }

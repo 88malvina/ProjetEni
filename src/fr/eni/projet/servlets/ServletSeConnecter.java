@@ -1,8 +1,6 @@
 package fr.eni.projet.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -34,11 +32,11 @@ public class ServletSeConnecter extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		//Récupération des paramètres de la requête
+		//Rï¿½cupï¿½ration des paramï¿½tres de la requï¿½te
 		String pseudo = request.getParameter("pseudo");
 		String password = request.getParameter("password");
 
-		//Instanciation du gestionnaire de formulaire et on récupère ses infos
+		//Instanciation du gestionnaire de formulaire et on rï¿½cupï¿½re ses infos
 		FormManager identifiants = new FormManager();
 		Boolean estConnecte = identifiants.verifConnexion(pseudo, password);
 
@@ -53,14 +51,14 @@ public class ServletSeConnecter extends HttpServlet {
 		//Variable message pour afficher dans la JSP
 		String messageLog = null;
 		if (estConnecte) {
-			messageLog = "Bonjour " + pseudo + " Vous êtes bien connecte";
+			messageLog = "Bonjour " + pseudo + " Vous ï¿½tes bien connecte";
 		} else {
-			messageLog = "Identifiant ou mot de passe incorrect, réessayez";
+			messageLog = "Identifiant ou mot de passe incorrect, rï¿½essayez";
 		}
 
 		request.setAttribute("messageLog", messageLog);
 
-		//Puis on retourne tout cela Ã  la JSP
+		//Puis on retourne tout cela ï¿½ la JSP
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/connexion.jsp").forward(request, response);
 		System.out.println(messageLog);
 

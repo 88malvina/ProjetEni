@@ -11,7 +11,7 @@ public class Settings {
 		try {
 			properties.load(Settings.class.getResourceAsStream("settings.properties"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// TODO PRISCILA gérer exception
 			e.printStackTrace();
 		}
 	}

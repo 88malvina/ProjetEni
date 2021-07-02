@@ -24,14 +24,12 @@ public class ServletPageDAccueil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		/*----récupérer les valeurs de la table Encheres-----*/
-
+		
 		/*----rï¿½cupï¿½rer les valeurs de la table Enchï¿½res-----*/
 		
 		//A rï¿½gler avec vue statique
-
-
+		
+		System.out.println("Hello");
 		try {
 			List<Enchere> list=EnchereManager.selectAll();
 			request.setAttribute("encheres", list);
@@ -49,7 +47,6 @@ public class ServletPageDAccueil extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		int no_categorie=0;
 		List<Enchere> listAllEncheres;
 		List<Enchere> list_encheres_trouver_parNom=new ArrayList<Enchere>();
@@ -67,8 +64,8 @@ public class ServletPageDAccueil extends HttpServlet {
 		
 			
 		if(request.getParameter("rechercher")!=null) {
-			String select=request.getParameter("select");
 			String saisieUtilisateur=request.getParameter("saisieUtilisateur");
+			String select=request.getParameter("select");
 			
 			/*----cas chercher par nom------*/
 			if(saisieUtilisateur!=null && select==null) {
@@ -81,11 +78,7 @@ public class ServletPageDAccueil extends HttpServlet {
 						list_encheres_trouver_parNom.add(enchere);
 					}
 					else {
-
-						request.setAttribute("aucune_trouvé", "Rien n'a été trouvé");
-
 						request.setAttribute("aucune_trouvï¿½", "Rien n'a ï¿½tï¿½ trouvï¿½");
-
 					}
 				}
 				request.setAttribute("list_rechereche", list_encheres_trouver_parNom);
@@ -95,40 +88,36 @@ public class ServletPageDAccueil extends HttpServlet {
 			
 			/*-----cas chercher par categorie-----*/
 			if(saisieUtilisateur==null && select!=null){
-			System.out.println(select);
+			System.out.println(select+"sel");
 			switch (select) {
-			case "informatique": no_categorie=1;
-			break;
-			case "ameublement": no_categorie=2;
+			case "vetement": no_categorie=1;
 				break;
-			case "vetement": no_categorie=3;
+			case "ameublement": no_categorie=2;
 			break;
-			case "sport": no_categorie=4;
+			case "sport": no_categorie=3;
 			break;
 			default:
 				break;
 			}
-			 System.out.println(no_categorie+"categorie");
+			 System.out.println(no_categorie);
 			 list_categorie=EnchereManager.selectEncheresByCategorie(no_categorie);
 			
 			 if(list_categorie!=null)
 				{request.setAttribute("categorie", list_categorie);}
 			 else {
-				 request.setAttribute("aucune_trouvé", "Rien n'a été trouvé");}
-			}System.out.println(list_categorie+"list_categorie");
+				 request.setAttribute("aucune_trouvÃ©", "Rien n'a Ã©tÃ© trouvÃ©");}
+			}System.out.println(list_categorie);
 			
 			/*-------fin-------*/
 			
 			/*-----cas chercher par nom et categorie-----*/
 			if(saisieUtilisateur!=null && select!=null) {
 				switch (select) {
-				case "informatique": no_categorie=1;
-				break;
-				case "ameublement": no_categorie=2;
+				case "vetement": no_categorie=1;
 					break;
-				case "vetement": no_categorie=3;
+				case "ameublement": no_categorie=2;
 				break;
-				case "sport": no_categorie=4;
+				case "sport": no_categorie=3;
 				break;
 				default:
 					break;
@@ -146,7 +135,7 @@ public class ServletPageDAccueil extends HttpServlet {
 							
 					}
 					else {
-					request.setAttribute("aucune_trouvé", "Rien n'a été trouvé");
+					request.setAttribute("aucune_trouvÃ©", "Rien n'a Ã©tÃ© trouvÃ©");
 					}
 					request.setAttribute("list_rechereche_avecNom_et_categorie", list3);	
 			}

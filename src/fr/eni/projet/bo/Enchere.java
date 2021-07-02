@@ -1,9 +1,9 @@
 package fr.eni.projet.bo;
 
 import java.sql.Date; 
-import java.time.LocalDate;
 
 public class Enchere {
+	
 	private String utilisateur;
 	private String article_vendu;
 	private Date date_enchere;

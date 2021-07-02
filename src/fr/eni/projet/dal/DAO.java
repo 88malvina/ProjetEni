@@ -3,8 +3,6 @@ package fr.eni.projet.dal;
 import java.sql.SQLException;
 import java.util.List;
 
-import fr.eni.projet.bo.Enchere;
-import fr.eni.projet.bo.Utilisateur;
 
 /**
  * Interface générique répresentant un DAO
@@ -25,7 +23,4 @@ public interface DAO <T> {
 
 	public T selectById(int id);
 	
-	public Utilisateur selectByPseudo(String pseudo);
-
-	public List<Enchere> selectEncheresByCategorie(int i) throws SQLException;
 }

@@ -20,7 +20,7 @@ public class ServletSeDeconnecter extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//Retour ├а la page connexion
+		//Retour ра la page connexion
 		
 		HttpSession session = request.getSession();
 		if (session.getAttribute("utilisateur")!=null) {

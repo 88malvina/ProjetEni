@@ -1,11 +1,4 @@
- /**
- * 
- */
 package fr.eni.projet.dal;
-
-import fr.eni.projet.bo.Categorie;
-import fr.eni.projet.bo.Enchere;
-import fr.eni.projet.bo.Utilisateur;
 import fr.eni.projet.dal.jdbc.DAOCategorieJDBCImpl;
 import fr.eni.projet.dal.jdbc.DAOEnchereJDBCImpl;
 import fr.eni.projet.dal.jdbc.DAOUtilisateurJDBCImpl;
@@ -16,20 +9,21 @@ import fr.eni.projet.dal.jdbc.DAOUtilisateurJDBCImpl;
  * @author PConchou
  * 
  */
+
+//Doit retourner DAOUtilisateur et pas le type (comme c'est fait pour utilisateur)
+
 public class DAOFactory {
 
-	public static DAO<Utilisateur> getUtilisateurDAO() {
+	public static DAOUtilisateur getUtilisateurDAO() {
 		return new DAOUtilisateurJDBCImpl();
 	}
 	
-	public static DAO<Enchere> getEnchereDAO() {
+	public static DAOEnchere getEnchereDAO() {
 		return new DAOEnchereJDBCImpl();
 	}
 	
-	public static DAO<Categorie> getCategorieDAO() {
+	public static DAOCategorie getCategorieDAO() {
 		return new DAOCategorieJDBCImpl();
 	}
-	
-	
 
 }

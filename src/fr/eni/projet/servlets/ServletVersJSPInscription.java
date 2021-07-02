@@ -50,12 +50,12 @@ public class ServletVersJSPInscription extends HttpServlet {
 			
 			UtilisateurManager.insert(u);
 			
-			//TODO diriger vers la page d'accueil en mode logedId
+			//TODO PRISCILA diriger vers la page d'accueil en mode logedId
 			RequestDispatcher rd=null;
 			rd = request.getRequestDispatcher("/WEB-INF/jspFiles/jspPageDAccueil.jsp");
 			rd.forward(request, response);
 		}
-		//TODO add else pour msg "mots de passe diferents"
+		//TODO PRISCILA add else pour msg "mots de passe diferents"
 	}
 
 }

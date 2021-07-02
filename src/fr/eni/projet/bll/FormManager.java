@@ -10,13 +10,15 @@ import fr.eni.projet.bo.Utilisateur;
 
 
 public class FormManager {
+	
+	// TODO ANTOINE : intÃ©grer ces mÃ©thodes dans la classe UtilisateurManager 
 
-	//Methode pour vérifier la connexion de l'utilisateur
+	//Methode pour vï¿½rifier la connexion de l'utilisateur
 	public Boolean verifConnexion (String pseudo, String password) {
 
 		boolean connecte = false;
 
-		//Connexion à la base pour attraper l'utilisateur en base via son pseudo
+		//Connexion ï¿½ la base pour attraper l'utilisateur en base via son pseudo
 
 		Utilisateur u;
 
@@ -39,12 +41,12 @@ public class FormManager {
 		return connecte;
 	}
 	
-	//Méthode pour vérifier l'existence d'un utilisateur par son pseudo
+	//Mï¿½thode pour vï¿½rifier l'existence d'un utilisateur par son pseudo
 	public Boolean verifUtilisateurExiste (String pseudo) {
 
 		boolean utilisateurExiste = false;
 
-		//Connexion à la base pour attraper l'utilisateur en base via son pseudo
+		//Connexion ï¿½ la base pour attraper l'utilisateur en base via son pseudo
 
 		Utilisateur u;
 

@@ -7,6 +7,6 @@ import fr.eni.projet.bo.Enchere;
  
 public interface DAOEnchere extends DAO<Enchere>{
 	
-	public List<Enchere> selectEncheresByCategorie(int i) throws SQLException;
+	List<Enchere> selectEncheresByCategorie(int i) throws SQLException;
 	
 }
