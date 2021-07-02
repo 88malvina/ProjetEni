@@ -1,16 +1,8 @@
 <!-- 
 Antoine
-Jsp en rÃ©ception de la servlet Se Connecter
+Jsp en réception de la servlet Se Connecter
 Contenant un formulaire simple ff
-nÃ©cessitant import jstl (fichier lib et aussi ligne ci dessous) -
-
- -->
-
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+nécessitant import jstl -->
     
 <!DOCTYPE html>
 <html>
@@ -64,7 +56,7 @@ nÃ©cessitant import jstl (fichier lib et aussi ligne ci dessous) -
 				<!-- TODO : lien vers la page d'inscription a faire-->
 				
 				<div class=formLabel>
-				<a href ="<%=request.getContextPath()%>/ServletVersJSPInscription"> CrÃ©er un compte</a>
+				<a href ="<%=request.getContextPath()%>/ServletVersJSPInscription"> Créer un compte</a>
 
 				</div>
 			

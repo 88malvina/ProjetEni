@@ -1,17 +1,9 @@
 <!-- 
 Antoine
-Jsp en r√©ception de la servlet Afficher profil
+Jsp en rÈception de la servlet Afficher profil
 Recherche d'utilisateur
 Affiche infos utilisateur
-n√©cessitant import jstl (fichier lib et aussi ligne ci dessous) -
-
- -->
-
-
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
- 
- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+nÈcessitant import jstl -->
     
     
 <!DOCTYPE html>
@@ -24,17 +16,17 @@ n√©cessitant import jstl (fichier lib et aussi ligne ci dessous) -
 
 <h1>Bonjour je suis la jsp afficher profil</h1>
 
-<h2> Saisissez le pseudo de l'utilisateur √† afficher</h2>
+<h2> Saisissez le pseudo de l'utilisateur ‡ afficher</h2>
 
 	<form action="<%=request.getContextPath()%>/ServletAfficherProfil" method="post">
 						
 				<!-- TODO : L'autofocus ne marche pas -->
 				<!-- TODO : mise en page CSS -->
 				
-				<!-- Ci dessous le formulaire qui permet de r√©cup√©rer le pseudo cherch√©  -->
+				<!-- Ci dessous le formulaire qui permet de rÈcupÈrer le pseudo cherchÈ  -->
 				
 				<div class=formLabel>
-				<label for="pseudo">Saisissez le pseudonyme utilisateur √† chercher :</label>
+				<label for="pseudo">Saisissez le pseudonyme utilisateur ‡ chercher :</label>
 				</div>
 				<div class=formInput>
 				<input name="pseudo" placeholder="saisir pseudo" autofocus>
@@ -61,7 +53,7 @@ n√©cessitant import jstl (fichier lib et aussi ligne ci dessous) -
 				
 				</c:if>
 				
-				<!-- Message par d√©faut si le pseudo est empty -->
+				<!-- Message par dÈfaut si le pseudo est empty -->
 				
 				<c:if test="${empty pseudo}"> 
 				<h3> Renseignez un pseudo existant sur le site </h3>
