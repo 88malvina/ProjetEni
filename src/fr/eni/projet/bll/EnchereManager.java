@@ -4,10 +4,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 import fr.eni.projet.bo.Enchere;
-import fr.eni.projet.dal.DAO;
 import fr.eni.projet.dal.DAOEnchere;
 import fr.eni.projet.dal.DAOFactory;
-import fr.eni.projet.dal.DAOUtilisateur;
  
 
 /**  
@@ -16,7 +14,8 @@ import fr.eni.projet.dal.DAOUtilisateur;
  *	
  */
 public class EnchereManager {
-	private static DAO<Enchere> daoEnchere = (DAO<Enchere>) DAOFactory.getEnchereDAO();
+	
+	private static DAOEnchere daoEnchere = DAOFactory.getEnchereDAO();
 	
 	public static List<Enchere> selectAll() throws SQLException {
 		return daoEnchere.selectAll();

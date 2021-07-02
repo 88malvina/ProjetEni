@@ -1,6 +1,7 @@
 package fr.eni.projet.servlets;
 
 import java.io.IOException;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,14 +26,19 @@ public class ServletPageDAccueil extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		/*----récupérer les valeurs de la table Encheres-----*/
+
+		/*----rï¿½cupï¿½rer les valeurs de la table Enchï¿½res-----*/
 		
+		//A rï¿½gler avec vue statique
+
+
 		try {
 			List<Enchere> list=EnchereManager.selectAll();
 			request.setAttribute("encheres", list);
 				
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// TODO MALVINA gÃ©rer exception
 			e.printStackTrace();
 		}
 		RequestDispatcher rd=request.getRequestDispatcher("/WEB-INF/jspFiles/jspPageDAccueil.jsp");
@@ -43,14 +49,19 @@ public class ServletPageDAccueil extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		int no_categorie=0;
 		List<Enchere> listAllEncheres;
 		List<Enchere> list_encheres_trouver_parNom=new ArrayList<Enchere>();
+		
 		List<Enchere> list3=new ArrayList<Enchere>();
 		 List<Enchere> list_categorie=null;
 		 List<Enchere> list_categorie2=null;
 		try {
+			//On pourrait avoir un filtre ? Il ne faut pas faire le selectall d'office car cela dï¿½pend des filtres actifs ou pas
+			// "tel filtre a ï¿½tï¿½ mis" = contrainte 
+			// Conseil ï¿½ventuel : crï¿½er dynamiquement la requï¿½te selon les filtres sï¿½lectionnï¿½s
+			// Select all = donc seulement si on a mis aucun filtre
 			listAllEncheres = EnchereManager.selectAll();
 			request.setAttribute("encheres", listAllEncheres);
 		
@@ -70,7 +81,11 @@ public class ServletPageDAccueil extends HttpServlet {
 						list_encheres_trouver_parNom.add(enchere);
 					}
 					else {
+
 						request.setAttribute("aucune_trouvé", "Rien n'a été trouvé");
+
+						request.setAttribute("aucune_trouvï¿½", "Rien n'a ï¿½tï¿½ trouvï¿½");
+
 					}
 				}
 				request.setAttribute("list_rechereche", list_encheres_trouver_parNom);
@@ -140,7 +155,7 @@ public class ServletPageDAccueil extends HttpServlet {
 		}
 		
 			} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// TODO MALVINA gÃ©rer exception
 			e.printStackTrace();
 			}
 

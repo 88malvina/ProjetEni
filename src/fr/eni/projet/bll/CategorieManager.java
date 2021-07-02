@@ -9,7 +9,7 @@ import fr.eni.projet.dal.DAO;
 import fr.eni.projet.dal.DAOFactory;
  
 public class CategorieManager {
-	private static DAO<Categorie> daoCategorie = (DAO<Categorie>) DAOFactory.getCategorieDAO();
+	private static DAO<Categorie> daoCategorie = DAOFactory.getCategorieDAO();
 	
 	public static List<Categorie> selectAll() throws SQLException {
 		return daoCategorie.selectAll();
