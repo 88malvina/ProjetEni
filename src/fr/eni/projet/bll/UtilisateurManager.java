@@ -72,11 +72,11 @@ public class UtilisateurManager {
 	
 	//Methode pour verifier la connexion de l'utilisateur
 	
-		public String verifierIdentifiants(HttpServletRequest request) {
+		/*public String verifierIdentifiants(request) {
 			
 			//Attributs de classe ici//
 			String resultat;
-			HttpSession session = null;
+			
 			
 			//On commence par récupérer la saisie utilisateur dans le formulaire
 			String pseudo = request.getParameter("pseudo");
@@ -109,7 +109,7 @@ public class UtilisateurManager {
 			}
 				
 			return resultat;
-		}
+		}*/
 
 }
 	 
