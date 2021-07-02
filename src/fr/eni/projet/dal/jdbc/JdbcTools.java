@@ -32,7 +32,7 @@ public class JdbcTools {
 		try {
 			connection = DriverManager.getConnection(urldb,userdb,passworddb);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// TODO PRISCILA gérer exception
 			System.out.println("connection failed");
 			e.printStackTrace();
 		}
@@ -43,7 +43,7 @@ public class JdbcTools {
 		try {
 			connection.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// TODO PRISCILA gérer exception
 			System.out.println("close connection failed");
 			e.printStackTrace();
 		}

@@ -1,5 +1,7 @@
 package fr.eni.projet.bll;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -13,35 +15,62 @@ import fr.eni.projet.dal.DAOUtilisateur;
  *
  */
 
+
+
 public class UtilisateurManager {
-	
+
+	// DAOUtilisateur
 	private static DAOUtilisateur daoUtilisateur = DAOFactory.getUtilisateurDAO();
-	
+
+
+	// M√©thodes
 	public static Utilisateur selectByPseudo(String pseudo) {
-		return daoUtilisateur.selectByPseudo(pseudo);
-		
+
+		Utilisateur resultat = null;
+		try {
+			resultat = daoUtilisateur.selectByPseudo(pseudo);
+		} catch (SQLException e) {
+			// TODO ANTOINE g√©rer exception
+			e.printStackTrace();
+		}
+		return resultat;	
 	}
+
+
+
 	public static List<Utilisateur> selectAll(){
-		return daoUtilisateur.selectAll();
+		List<Utilisateur> utilisateurs= new ArrayList<Utilisateur>();
+		try {
+			utilisateurs=daoUtilisateur.selectAll();
+		} catch (SQLException e) {
+			// TODO PRISCILA g√©rer exception
+			e.printStackTrace();
+		}
+		return utilisateurs;
 	}
-	
+
 	public static void insert(Utilisateur u) {
 		daoUtilisateur.insert(u);
 	}
-	
-	//gestion des exceptions ‡ revoir
-	//Remettre ‡ plat les gÈnÈricitÈs / 
-	
+
 	public static boolean controleInscription(Utilisateur u, String confirmMotDePasse) {
 		
-		List<Utilisateur> utilisateurs = daoUtilisateur.selectAll();
+		// TODO PRISCILA finir m√©thode	
 		
+		List<Utilisateur> utilisateurs = null;
+		try {
+			utilisateurs = daoUtilisateur.selectAll();
+		} catch (SQLException e) {
+			// TODO PRISCILA g√©rer exception
+			e.printStackTrace();
+		}
+
 		// check mot de passe 
 		if(!u.getMotDePasse().equals(confirmMotDePasse)) {
 			System.out.println("erreur confimation mot de passe");
 			return false;
 		}
-		
+
 		//check pseudo
 		for (Utilisateur ut : utilisateurs) {
 			if(ut.getPseudo().equals(u.getPseudo())) {
@@ -49,7 +78,7 @@ public class UtilisateurManager {
 				return false;
 			}
 		}
-		
+
 		//check e-mail
 		for (Utilisateur ut : utilisateurs) {
 			if(ut.getEmail().equals(u.getEmail())) {
@@ -57,7 +86,7 @@ public class UtilisateurManager {
 				return false;
 			}
 		}
-		
+
 		//check telephone
 		if(u.getTelephone()!=null) {
 			for (Utilisateur ut : utilisateurs) {
@@ -67,9 +96,8 @@ public class UtilisateurManager {
 				}
 			}
 		}
-			
+
 		return true;
 	}
 
 }
-	 

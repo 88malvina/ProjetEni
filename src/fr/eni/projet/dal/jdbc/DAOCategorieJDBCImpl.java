@@ -1,6 +1,7 @@
 package fr.eni.projet.dal.jdbc;
 
 import java.sql.Connection;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -9,35 +10,29 @@ import java.util.List;
 
 import fr.eni.projet.bo.Categorie;
 import fr.eni.projet.bo.Enchere;
-import fr.eni.projet.bo.Utilisateur;
-import fr.eni.projet.dal.DAO;
 import fr.eni.projet.dal.DAOCategorie;
 
-public class DAOCategorieJDBCImpl implements DAO<Categorie>{
+public class DAOCategorieJDBCImpl implements DAOCategorie {
 	
 	String selectAll="Select * from CATEGORIES";
 
 	@Override
-	public Utilisateur selectByPseudo(String pseudo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void insert(Categorie t) {
-		// TODO Auto-generated method stub
+		// TODO MALVINA définir méthode
 		
 	}
 
+	
+	
 	@Override
 	public void delete(Categorie t) {
-		// TODO Auto-generated method stub
+		// TODO MALVINA définir méthode
 		
 	}
 
 	@Override
 	public void update(Categorie t) {
-		// TODO Auto-generated method stub
+		// TODO MALVINA définir méthode
 		
 	}
 
@@ -63,13 +58,12 @@ public class DAOCategorieJDBCImpl implements DAO<Categorie>{
 
 	@Override
 	public Categorie selectById(int id) {
-		// TODO Auto-generated method stub
+		// TODO MALVINA définir méthode
 		return null;
 	}
 
-	@Override
 	public List<Enchere> selectEncheresByCategorie(int i) throws SQLException {
-		// TODO Auto-generated method stub
+		// TODO MALVINA définir méthode
 		return null;
 	}
 

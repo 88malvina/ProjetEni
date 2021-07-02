@@ -1,6 +1,5 @@
 package fr.eni.projet.dal.jdbc;
 
-import java.io.Closeable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,12 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.projet.bo.Enchere;
-import fr.eni.projet.bo.Utilisateur;
-import fr.eni.projet.dal.DAO;
 import fr.eni.projet.dal.DAOEnchere;
 
-//TODO gÈnÈricitÈ ‡ vÈrifier
-public class DAOEnchereJDBCImpl implements DAO<Enchere>{
+public class DAOEnchereJDBCImpl implements DAOEnchere{
+	
 	private String selectAll="select ARTICLES_VENDUS.nom_article, ENCHERES.montant_enchere, ENCHERES.date_enchere, UTILISATEURS.pseudo from ENCHERES \r\n"
 			+ "inner join ARTICLES_VENDUS on ARTICLES_VENDUS.no_article=ENCHERES.no_article\r\n"
 			+ "inner join UTILISATEURS on UTILISATEURS.no_utilisateur=ENCHERES.no_utilisateur";
@@ -30,25 +27,25 @@ public class DAOEnchereJDBCImpl implements DAO<Enchere>{
 
 	@Override
 	public void insert(Enchere t) {
-		// TODO Auto-generated method stub
+		// TODO MALVINA d√©finir m√©thode
 		
 	}
 
 	@Override
 	public void delete(Enchere t) {
-		// TODO Auto-generated method stub
+		// TODO MALVINA d√©finir m√©thode
 		
 	}
 
 	@Override
 	public void update(Enchere t) {
-		// TODO Auto-generated method stub
+		// TODO MALVINA d√©finir m√©thode
 		
 	}
 
 	@Override
 	public Enchere selectById(int id) {
-		// TODO Auto-generated method stub
+		// TODO MALVINA d√©finir m√©thode
 		return null;
 	}
 
@@ -60,9 +57,8 @@ public class DAOEnchereJDBCImpl implements DAO<Enchere>{
 		List<Enchere> list=new ArrayList<Enchere>();
 		Enchere enchere=null;
 		
-		//Remplacement par pool de connexion ligne close en bas du code
-		//Connection cnx = JdbcTools.getConnection();
-		
+		// Remplacement par pool de connexion ligne close en bas du code
+		// Connection cnx = JdbcTools.getConnection();
 		Connection cnx = ConnectionProvider.getConnection();
 		
 		Statement smt = cnx.createStatement(); 
@@ -85,8 +81,6 @@ public class DAOEnchereJDBCImpl implements DAO<Enchere>{
 		Enchere enchere=null;
 		Connection cnx = ConnectionProvider.getConnection();
 		
-		Statement smt = cnx.createStatement(); 
-		
 		PreparedStatement psmt = cnx.prepareStatement(selectEncheresByCategorie);
 		psmt.setInt(1,no_categorie);
 		ResultSet rs=psmt.executeQuery();System.out.println("h");
@@ -104,14 +98,4 @@ public class DAOEnchereJDBCImpl implements DAO<Enchere>{
 		
 	}
 	
-	@Override
-	public Utilisateur selectByPseudo(String pseudo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-
-
 }

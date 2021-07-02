@@ -1,9 +1,9 @@
 package fr.eni.projet.servlets;
 
 import java.io.IOException;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,11 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.eni.projet.bll.CategorieManager;
 import fr.eni.projet.bll.EnchereManager;
-import fr.eni.projet.bll.UtilisateurManager;
-import fr.eni.projet.bo.ArticleVendu;
-import fr.eni.projet.bo.Categorie;
 import fr.eni.projet.bo.Enchere;
 
 /**@author mavetyan2021
@@ -28,21 +24,19 @@ public class ServletPageDAccueil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		EnchereManager manager=new EnchereManager();
 		
 		/*----rï¿½cupï¿½rer les valeurs de la table Enchï¿½res-----*/
 		
-		//A régler avec vue statique
+		//A rï¿½gler avec vue statique
 		
 		System.out.println("Hello");
 		try {
-			List<Enchere> list=manager.selectAll();
+			List<Enchere> list=EnchereManager.selectAll();
 			request.setAttribute("encheres", list);
 				
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			// Expliquer à l'utilisateur
+			// TODO MALVINA gÃ©rer exception
 			e.printStackTrace();
 		}
 		RequestDispatcher rd=request.getRequestDispatcher("/WEB-INF/jspFiles/jspPageDAccueil.jsp");
@@ -53,7 +47,6 @@ public class ServletPageDAccueil extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		EnchereManager manager=new EnchereManager();
 		int no_categorie=0;
 		List<Enchere> listAllEncheres;
 		List<Enchere> list_encheres_trouver_parNom=new ArrayList<Enchere>();
@@ -62,9 +55,9 @@ public class ServletPageDAccueil extends HttpServlet {
 		 List<Enchere> list_categorie=null;
 		 List<Enchere> list_categorie2=null;
 		try {
-			//On pourrait avoir un filtre ? Il ne faut pas faire le selectall d'office car cela dépend des filtres actifs ou pas
-			// "tel filtre a été mis" = contrainte 
-			// Conseil éventuel : créer dynamiquement la requête selon les filtres sélectionnés
+			//On pourrait avoir un filtre ? Il ne faut pas faire le selectall d'office car cela dï¿½pend des filtres actifs ou pas
+			// "tel filtre a ï¿½tï¿½ mis" = contrainte 
+			// Conseil ï¿½ventuel : crï¿½er dynamiquement la requï¿½te selon les filtres sï¿½lectionnï¿½s
 			// Select all = donc seulement si on a mis aucun filtre
 			listAllEncheres = EnchereManager.selectAll();
 			request.setAttribute("encheres", listAllEncheres);
@@ -85,7 +78,7 @@ public class ServletPageDAccueil extends HttpServlet {
 						list_encheres_trouver_parNom.add(enchere);
 					}
 					else {
-						request.setAttribute("aucune_trouvé", "Rien n'a été trouvé©");
+						request.setAttribute("aucune_trouvï¿½", "Rien n'a ï¿½tï¿½ trouvï¿½");
 					}
 				}
 				request.setAttribute("list_rechereche", list_encheres_trouver_parNom);
@@ -151,7 +144,7 @@ public class ServletPageDAccueil extends HttpServlet {
 		}
 		
 			} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// TODO MALVINA gÃ©rer exception
 			e.printStackTrace();
 			}
 
