@@ -222,6 +222,19 @@ public class DAOUtilisateurJDBCImpl implements DAOUtilisateur {
 					u = new Utilisateur();
 					u.setPseudo(pseudo);
 					u.setMotDePasse(rs.getString("mot_de_passe"));
+					u.setNom(rs.getString("nom"));
+					u.setPrenom(rs.getString("prenom"));
+					u.setEmail(rs.getString("email"));
+					u.setTelephone(rs.getString("telephone"));
+					u.setRue(rs.getString("rue"));
+					u.setCodePostal(rs.getString("code_postal"));
+					u.setVille(rs.getString("ville"));
+					u.setMotDePasse(rs.getString("mot_de_passe"));
+					u.setCredit(rs.getInt("credit"));
+					u.setAdministrateur(rs.getBoolean("administrateur"));
+					
+					
+					
 					cnx.close();
 				}
 			} catch (Exception e) {

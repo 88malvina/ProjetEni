@@ -24,20 +24,24 @@ public class ServletAfficherProfil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("Nous somme dans le doGet ServletAfficherProfil");
 		//On dirige vers la JSP afficher profil
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jspFiles/jspAfficherProfil.jsp");
 		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("Nous somme dans le doPost ServletAfficherProfil");
+		
 		//On récupère le paramètre de recherche
 		String pseudo = request.getParameter("pseudo");
 		
 		//On vérifie que l'utilisateur existe grâce au FormManager
 		FormManager verif = new FormManager();
 		Boolean utilisateurExiste = verif.verifUtilisateurExiste(pseudo);
+		System.out.println("le boolean utilisateur existe indique : " + utilisateurExiste);
 		
-		//Si l'utilisateur ou non, on prépare un texte à afficher en jsp
+		//Si l'utilisateur existe ou non, on prépare un texte à afficher en jsp
 		String messageJsp = null;
 		if (!utilisateurExiste) {
 			messageJsp = "Cet utilisateur n'existe pas";
@@ -53,9 +57,13 @@ public class ServletAfficherProfil extends HttpServlet {
 		
 
 		if (utilisateurExiste) {
+			System.out.println("l'utilisateur existe et on cherche à récupérer ses infos avant de les renvoyer");
 			Utilisateur u = new Utilisateur();
 			u = UtilisateurManager.selectByPseudo(pseudo);
 			String nomCherche = u.getNom();
+			System.out.println("le nom de l'utilisateur cherché est : " + nomCherche);
+			
+			
 			String prenomCherche = u.getPrenom();
 			String emailCherche = u.getEmail();
 			String telephoneCherche = u.getTelephone();
@@ -63,6 +71,7 @@ public class ServletAfficherProfil extends HttpServlet {
 			String cpCherche = u.getCodePostal();
 			String villeCherche = u.getVille();
 			
+			request.setAttribute("pseudo", pseudo);
 			request.setAttribute("nomCherche", nomCherche);
 			request.setAttribute("prenomCherche", prenomCherche);
 			request.setAttribute("emailCherche", emailCherche);
