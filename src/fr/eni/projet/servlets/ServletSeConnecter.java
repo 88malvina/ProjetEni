@@ -42,8 +42,10 @@ public class ServletSeConnecter extends HttpServlet {
 
 		//en cas de connexion ok, on passe l'utilisateur en attribut de session
 		if (estConnecte) {
+			
+			UtilisateurManager mng = new UtilisateurManager();
 			Utilisateur u = new Utilisateur();
-			u = UtilisateurManager.selectByPseudo(pseudo);
+			u = mng.selectByPseudo(pseudo);
 			HttpSession session = request.getSession();
 			session.setAttribute("utilisateur", u);
 			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspPageDAccueil.jsp").forward(request, response);

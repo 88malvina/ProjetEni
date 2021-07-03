@@ -20,11 +20,11 @@ import fr.eni.projet.dal.DAOUtilisateur;
 public class UtilisateurManager {
 
 	// DAOUtilisateur
-	private static DAOUtilisateur daoUtilisateur = DAOFactory.getUtilisateurDAO();
+	private DAOUtilisateur daoUtilisateur = DAOFactory.getUtilisateurDAO();
 
 
 	// Méthodes
-	public static Utilisateur selectByPseudo(String pseudo) {
+	public Utilisateur selectByPseudo(String pseudo) {
 
 		Utilisateur resultat = null;
 		try {
@@ -38,7 +38,7 @@ public class UtilisateurManager {
 
 
 
-	public static List<Utilisateur> selectAll(){
+	public List<Utilisateur> selectAll(){
 		List<Utilisateur> utilisateurs= new ArrayList<Utilisateur>();
 		try {
 			utilisateurs=daoUtilisateur.selectAll();
@@ -49,11 +49,11 @@ public class UtilisateurManager {
 		return utilisateurs;
 	}
 
-	public static void insert(Utilisateur u) {
+	public void insert(Utilisateur u) {
 		daoUtilisateur.insert(u);
 	}
 
-	public static String controleInscription(Utilisateur u, String confirmation_mot_de_passe) {
+	public String controleInscription(Utilisateur u, String confirmation_mot_de_passe) {
 
 		// TODO PRISCILA check nom, prenom, ville, motDePasse
 

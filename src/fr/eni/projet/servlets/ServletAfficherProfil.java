@@ -33,15 +33,15 @@ public class ServletAfficherProfil extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Nous somme dans le doPost ServletAfficherProfil");
 		
-		//On récupère le paramètre de recherche
+		//On rï¿½cupï¿½re le paramï¿½tre de recherche
 		String pseudo = request.getParameter("pseudo");
 		
-		//On vérifie que l'utilisateur existe grâce au FormManager
+		//On vï¿½rifie que l'utilisateur existe grï¿½ce au FormManager
 		FormManager verif = new FormManager();
 		Boolean utilisateurExiste = verif.verifUtilisateurExiste(pseudo);
 		System.out.println("le boolean utilisateur existe indique : " + utilisateurExiste);
 		
-		//Si l'utilisateur existe ou non, on prépare un texte à afficher en jsp
+		//Si l'utilisateur existe ou non, on prï¿½pare un texte ï¿½ afficher en jsp
 		String messageJsp = null;
 		if (!utilisateurExiste) {
 			messageJsp = "Cet utilisateur n'existe pas";
@@ -51,17 +51,19 @@ public class ServletAfficherProfil extends HttpServlet {
 		
 		request.setAttribute("messageJsp", messageJsp);
 		
-		// Si l'utilisateur existe, on va le récupérer et préparer ses infos à envoyer en JSP
-		// Rappel énoncé : En tant qu’utilisateur, je peux afficher le profil d’un autre utilisateur. Les pseudo, 
-		// nom, prénom, e-mail, numéro de téléphone, rue, code postal, ville sont affichés.
+		// Si l'utilisateur existe, on va le rï¿½cupï¿½rer et prï¿½parer ses infos ï¿½ envoyer en JSP
+		// Rappel ï¿½noncï¿½ : En tant quï¿½utilisateur, je peux afficher le profil dï¿½un autre utilisateur. Les pseudo, 
+		// nom, prï¿½nom, e-mail, numï¿½ro de tï¿½lï¿½phone, rue, code postal, ville sont affichï¿½s.
 		
 
 		if (utilisateurExiste) {
-			System.out.println("l'utilisateur existe et on cherche à récupérer ses infos avant de les renvoyer");
+			
+			UtilisateurManager mng = new UtilisateurManager();
+			System.out.println("l'utilisateur existe et on cherche ï¿½ rï¿½cupï¿½rer ses infos avant de les renvoyer");
 			Utilisateur u = new Utilisateur();
-			u = UtilisateurManager.selectByPseudo(pseudo);
+			u = mng.selectByPseudo(pseudo);
 			String nomCherche = u.getNom();
-			System.out.println("le nom de l'utilisateur cherché est : " + nomCherche);
+			System.out.println("le nom de l'utilisateur cherchï¿½ est : " + nomCherche);
 			
 			
 			String prenomCherche = u.getPrenom();

@@ -43,6 +43,7 @@ public class ServletVersJSPInscription extends HttpServlet {
 		Utilisateur u = new Utilisateur();
 		String confirmation_mot_de_passe = request.getParameter("confirmation_mot_de_passe");
 		HttpSession session = request.getSession();
+		UtilisateurManager mng = new UtilisateurManager();
 		
 		u.setPseudo(request.getParameter("pseudo"));
 		u.setNom(request.getParameter("nom"));
@@ -56,10 +57,11 @@ public class ServletVersJSPInscription extends HttpServlet {
 		u.setCredit(0);
 		u.setAdministrateur(false);
 		
+		String message_erreur = mng.controleInscription(u, confirmation_mot_de_passe);
 		
-		if (UtilisateurManager.controleInscription(u, confirmation_mot_de_passe).equals("Verificaton réussite.")) {
+		if (message_erreur.equals("Verificaton réussite.")) {
 			
-			UtilisateurManager.insert(u);
+			mng.insert(u);
 			session.setAttribute("utilisateur", u);
 			this.getServletContext().getRequestDispatcher("WEB-INF/jspFiles/jspPageDAccueil.jsp").forward(request, response);
 			

@@ -10,6 +10,8 @@ import fr.eni.projet.bo.Utilisateur;
 
 
 public class FormManager {
+
+	UtilisateurManager mng = new UtilisateurManager();
 	
 	// TODO ANTOINE : intégrer ces méthodes dans la classe UtilisateurManager 
 
@@ -24,7 +26,7 @@ public class FormManager {
 
 		try {
 			u = new Utilisateur();
-			u = UtilisateurManager.selectByPseudo(pseudo);
+			u = mng.selectByPseudo(pseudo);
 
 			if (u.getMotDePasse().equals(password)) {
 				connecte = true;
@@ -40,7 +42,7 @@ public class FormManager {
 
 		return connecte;
 	}
-	
+
 	//M�thode pour v�rifier l'existence d'un utilisateur par son pseudo
 	public Boolean verifUtilisateurExiste (String pseudo) {
 
@@ -52,7 +54,7 @@ public class FormManager {
 
 		try {
 			u = new Utilisateur();
-			u = UtilisateurManager.selectByPseudo(pseudo);
+			u = mng.selectByPseudo(pseudo);
 
 			if (u.getPseudo()!=null) {
 				utilisateurExiste = true;
@@ -68,6 +70,6 @@ public class FormManager {
 
 		return utilisateurExiste;
 	}
-	
-	
+
+
 }
