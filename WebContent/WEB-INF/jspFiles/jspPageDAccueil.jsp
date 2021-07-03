@@ -58,9 +58,9 @@
 		</div>
 		</div></c:forEach>
 	</div>
-	<footer>
-		<h3>Eni 2021</h3>
-	</footer>
+	<jsp:include page="/WEB-INF/jspFiles/jspFooter.jsp">
+			<jsp:param value="footer" name="footer"/>
+	</jsp:include>
 	
 </body>
 </html>

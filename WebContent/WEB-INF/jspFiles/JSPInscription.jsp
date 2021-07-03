@@ -14,8 +14,9 @@
 
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- CSS personalisé -->
-<link href="css/JSPInscription.css" rel="stylesheet">
+<style>
+	<%@include file="/css/style.css"%>
+</style>
 
 </head>
 
@@ -135,6 +136,11 @@
 				
 		</div>
 		<!---------------------------------- ADD FOOTER -------------------------->
+		
+		<jsp:include page="/WEB-INF/jspFiles/jspFooter.jsp">
+			<jsp:param value="footer" name="footer"/>
+		</jsp:include>
+		
 </body>
 
 </html>
