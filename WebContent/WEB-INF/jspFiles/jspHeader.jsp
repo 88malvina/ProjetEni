@@ -12,39 +12,32 @@
 			<h1>ENI-Enchères</h1>
 		</div>
 		
+		<!----------------- cas où l'utilisateur est connecté / dans la page d'accueil / 
+		dans la page d'inscription -->
 		
+		<!-- mettre lien vers afficher profil utilisateur -->
 		
-		<!----------------- cas où l'utilisateur n'est pas connecté -->
-		
-<%-- 		<c:if test=" $ { 50=50 } "> --%>
-			
-<!-- 			<!----------------- si il est dans la page d'inscription --> 
-<%-- 			<c:if test=" $ { pageInscription } "> --%>
+		<c:choose>
+			<c:when test="${ !empty utilisateur }">
 				<div class="col-sm-4">
-					
-			        <a class="nav-link" href="/ProjetEni/encheres/ServletPageDAccueil">Accueil</a>
-			        <a class="nav-link" href="/ProjetEni/ServletSeConnecter">Se connecter</a>
+	 		        <a class="nav-link" href="#">Profil de ${ utilisateur.getPseudo() }</a>
+			        <a class="nav-link" href="/ProjetEni/ServletSeDeconnecter">Se déconnecter</a>
+ 				</div>
+			</c:when>
+			<c:when test="${ empty utilisateur && request.pageActuelle == inscription }">
+					<div class="col-sm-4">
+				        <a class="nav-link" href="/ProjetEni/encheres/ServletPageDAccueil"><c:out value="Accueil" /></a>
+				        <a class="nav-link" href="/ProjetEni/ServletSeConnecter"><c:out value="Se connecter" /></a>
+					</div>
+			</c:when>
+			<c:when test="${ empty utilisateur && request.pageActuelle == accueil }">
+				<div class="col-sm-4">
+					<div class="se_connecter">
+						<a href="/ProjetEni/ServletVersJSPInscription">S'inscrire</a>-<a href="/ProjetEni/ServletSeConnecter">Se connecter</a>
+					</div>
 				</div>
-<%-- 			</c:if> --%>
-			
-			<!----------------- si il est dans la page d'Accueil -->
-<%-- 			<c:if test=" $ { pageActuelle = accueil } "> --%>
-<!-- 				<div class="col-sm-4"> -->
-<!-- 					<div class="se_connecter"> -->
-<!-- 						<a href="/ProjetEni/ServletVersJSPInscription">S'inscrire</a>-<a href="/ProjetEni/ServletSeConnecter">Se connecter</a></div> -->
-<!-- 				</div> -->
-<%-- 			</c:if> --%>
-			
-<%-- 		</c:if> --%>
-		
-		<!----------------- cas où l'utilisateur est connecté -->
-		
-<%-- 		<c:if test=" $ { !empty session.getAttribute(utilisateur) } "> --%>
-<!-- 			<div class="col-sm-4"> -->
-<!-- 		        <a class="nav-link" href="/ProjetEni/encheres/ServletPageDAccueil">Profil de $ { utilisateur.pseudo }</a> -->
-<!-- 		        <a class="nav-link" href="/ProjetEni/ServletSeDeconnecter">Se deconnecter</a> -->
-<!-- 			</div> -->
-<%-- 		</c:if> --%>
-		
+			</c:when>
+		</c:choose>
+	
 	</div>
 </nav>
