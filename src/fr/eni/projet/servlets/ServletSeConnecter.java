@@ -46,6 +46,7 @@ public class ServletSeConnecter extends HttpServlet {
 			u = UtilisateurManager.selectByPseudo(pseudo);
 			HttpSession session = request.getSession();
 			session.setAttribute("utilisateur", u);
+			this.getServletContext().getRequestDispatcher("WEB-INF/jspFiles/jspPageDAccueil.jsp").forward(request, response);
 		}
 
 		//Variable message pour afficher dans la JSP
