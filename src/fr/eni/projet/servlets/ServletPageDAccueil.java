@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,9 +30,9 @@ public class ServletPageDAccueil extends HttpServlet {
 		
 		//A r�gler avec vue statique
 		
-		System.out.println("Hello");
+		EnchereManager manager = new EnchereManager();
 		try {
-			List<Enchere> list=EnchereManager.selectAll();
+			List<Enchere> list=manager.selectAll();
 			request.setAttribute("encheres", list);
 				
 			
@@ -47,6 +48,7 @@ public class ServletPageDAccueil extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		EnchereManager manager = new EnchereManager();
 		int no_categorie=0;
 		List<Enchere> listAllEncheres;
 		List<Enchere> list_encheres_trouver_parNom=new ArrayList<Enchere>();
@@ -59,7 +61,7 @@ public class ServletPageDAccueil extends HttpServlet {
 			// "tel filtre a �t� mis" = contrainte 
 			// Conseil �ventuel : cr�er dynamiquement la requ�te selon les filtres s�lectionn�s
 			// Select all = donc seulement si on a mis aucun filtre
-			listAllEncheres = EnchereManager.selectAll();
+			listAllEncheres = manager.selectAll();
 			request.setAttribute("encheres", listAllEncheres);
 		
 			
@@ -70,37 +72,33 @@ public class ServletPageDAccueil extends HttpServlet {
 			/*----cas chercher par nom------*/
 			if(saisieUtilisateur!=null && select==null) {
 				
-				request.setAttribute("saisie", saisieUtilisateur);
-				for(Enchere enchere:listAllEncheres) {
-					if(enchere.getArticle_vendu().toLowerCase().contains(saisieUtilisateur.toLowerCase()))
-					{
-					
-						list_encheres_trouver_parNom.add(enchere);
-					}
-					else {
-						request.setAttribute("aucune_trouv�", "Rien n'a �t� trouv�");
-					}
-				}
-				request.setAttribute("list_rechereche", list_encheres_trouver_parNom);
+				listAllEncheres.stream()
+				.filter(Objects :: nonNull)
+				.filter(x-> x.getArticle_vendu().toLowerCase().contains(saisieUtilisateur.toLowerCase()) )
+				.forEach(x->list_encheres_trouver_parNom.add(x))
+				;	
 			}
 			/*-----fin------*/
 			
 			
-			/*-----cas chercher par categorie-----*/
+			/*-----cas chercher par categorie-----*/ 
+			/*-------refaire avec les filtres-------*/
 			if(saisieUtilisateur==null && select!=null){
-			System.out.println(select+"sel");
-			switch (select) {
-			case "vetement": no_categorie=1;
+			
+				switch (select) {
+				case "informatique": no_categorie=1;
+					break;
+				case "vetement": no_categorie=2;
 				break;
-			case "ameublement": no_categorie=2;
-			break;
-			case "sport": no_categorie=3;
-			break;
-			default:
+				case "ameublement": no_categorie=3;
 				break;
-			}
-			 System.out.println(no_categorie);
-			 list_categorie=EnchereManager.selectEncheresByCategorie(no_categorie);
+				case "sport": no_categorie=4;
+				break;
+				default:
+					break;
+				}
+			
+			 list_categorie=manager.selectEncheresByCategorie(no_categorie);
 			
 			 if(list_categorie!=null)
 				{request.setAttribute("categorie", list_categorie);}
@@ -113,17 +111,19 @@ public class ServletPageDAccueil extends HttpServlet {
 			/*-----cas chercher par nom et categorie-----*/
 			if(saisieUtilisateur!=null && select!=null) {
 				switch (select) {
-				case "vetement": no_categorie=1;
+				case "informatique": no_categorie=1;
 					break;
-				case "ameublement": no_categorie=2;
+				case "vetement": no_categorie=2;
 				break;
-				case "sport": no_categorie=3;
+				case "ameublement": no_categorie=3;
+				break;
+				case "sport": no_categorie=4;
 				break;
 				default:
 					break;
 				}
 				
-				 list_categorie2=EnchereManager.selectEncheresByCategorie(no_categorie);
+				 list_categorie2=manager.selectEncheresByCategorie(no_categorie);
 					request.setAttribute("cat", list_categorie2);
 					
 					if(list_categorie2!=null) {

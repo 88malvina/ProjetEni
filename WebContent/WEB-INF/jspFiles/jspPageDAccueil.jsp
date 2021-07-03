@@ -33,11 +33,12 @@
 	<br><br>
 	Catégorie :
 	
-	<select name="select">
+		<select name="select">
 	<option value="" disabled selected>Toutes</option>
-	<option value="ameublement">Ameublement</option>
+	<option value="informatique">Informatique</option>
 	<option value="vetement">Vêtement</option>
-	<option value="sport">Sport et Loisirs</option>
+	<option value="ameublement">Ameublement</option>
+	<option value="sport">Sport & Loisirs</option>
 	</select>
 	
 	<button type="submit" name="rechercher">Rechercher</button>

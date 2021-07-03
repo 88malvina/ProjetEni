@@ -15,13 +15,13 @@ import fr.eni.projet.dal.DAOFactory;
  */
 public class EnchereManager {
 	
-	private static DAOEnchere daoEnchere = DAOFactory.getEnchereDAO();
+	private DAOEnchere daoEnchere = DAOFactory.getEnchereDAO();
 	
-	public static List<Enchere> selectAll() throws SQLException {
+	public  List<Enchere> selectAll() throws SQLException {
 		return daoEnchere.selectAll();
 	} 
 	
-	public static List<Enchere> selectEncheresByCategorie(int i) throws SQLException {
+	public List<Enchere> selectEncheresByCategorie(int i) throws SQLException {
 		return daoEnchere.selectEncheresByCategorie(i);
 	} 
 }
