@@ -38,7 +38,7 @@
 	<option value="informatique">Informatique</option>
 	<option value="vetement">Vêtement</option>
 	<option value="ameublement">Ameublement</option>
-	<option value="sport">Sport & Loisirs</option>
+	<option value="sport">Sport et Loisirs</option>
 	</select>
 	
 	<button type="submit" name="rechercher">Rechercher</button>
