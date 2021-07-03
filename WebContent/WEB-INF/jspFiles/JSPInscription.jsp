@@ -110,8 +110,9 @@
 						</div>
 						</div>
 						
-						<div class="row">
-						
+						<p>
+								<c:out value="${message_erreur }" />
+						</p>
 						
 						<!-------------------------------- BUTTONS -------------------------->
 						
@@ -127,8 +128,6 @@
 							<div class="col-sm-4">
 								<a href="/ProjetEni/encheres/ServletPageDAccueil"><input type="button" value="Annuler" class="btn btn-outline-dark btn-sm"></a>
 							</div>
-						</div>
-						
 						</div>
 					</fieldset>
 				</form>

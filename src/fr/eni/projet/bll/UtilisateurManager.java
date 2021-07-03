@@ -55,9 +55,6 @@ public class UtilisateurManager {
 
 	public String controleInscription(Utilisateur u, String confirmation_mot_de_passe) {
 
-		// TODO PRISCILA check nom, prenom, ville, motDePasse
-
-		List<Utilisateur> utilisateurs = null;
 		String messageErreur = "";
 		boolean motDePasseOk = false;
 		boolean confirmationMotDePasseOk = false;
@@ -66,16 +63,6 @@ public class UtilisateurManager {
 		boolean prenomOk = false;
 		boolean telephoneOk = false;
 		boolean emailOk = false;
-		boolean villeOk = false;
-
-		// initialise la liste d'utilisateurs
-
-		try {
-			utilisateurs = daoUtilisateur.selectAll();
-		} catch (SQLException e1) {
-			// TODO PRISCILA gérer exception
-			e1.printStackTrace();
-		}
 
 
 		//-------------check pseudo
@@ -93,9 +80,9 @@ public class UtilisateurManager {
 		}
 
 		// vérifie si le pseudo existe déjà
-		Utilisateur recherchePseudo = null; 
+		Utilisateur recherche = null; 
 		try {
-			recherchePseudo = daoUtilisateur.selectByPseudo(u.getPseudo());
+			recherche = daoUtilisateur.selectByPseudo(u.getPseudo());
 		} catch (SQLException e) {
 			// TODO PRISCILA gérer exception
 			e.printStackTrace();
@@ -105,17 +92,54 @@ public class UtilisateurManager {
 		// teste toutes les conditions
 		if(!noSpecialChars) {
 			messageErreur="Le pseudo ne doit pas avoir des caractères spéciaux.";
-		} else if(recherchePseudo != null) {
+		} else if(recherche != null) {
 			messageErreur="Pseudo déjà utilisé.";
 		} else if (u.getPseudo().contains(" ")) {
 			messageErreur="Le pseudo ne doit pas avoir des espaces.";
 		} else if (u.getPseudo().length()<5 || u.getPseudo().isEmpty()) {
-			messageErreur="Le pseudo doit avoir au moins 5 caracteres";
+			messageErreur="Le pseudo doit avoir au moins 5 caracteres.";
 		} else if (u.getPseudo().length()>20) {
-			messageErreur="Le pseudo doit avoir au maximum 20 caracteres";
+			messageErreur="Le pseudo doit avoir au maximum 20 caracteres.";
 		} else {
 			pseudoOk=true;
 		}
+
+		System.out.println(messageErreur);
+
+		// -------------------- check nom
+
+		if(u.getNom().length()<2) {
+			messageErreur="Le nom doit avoir au moins 3 caracteres.";
+		} else if (u.getNom().length()>20) {
+			messageErreur="Le nom doit avoir au maximum 20 caracteres.";
+		} else {
+			nomOk=true;
+		}
+
+
+		// -------------------- check prenom
+
+		if(u.getPrenom().length()<2) {
+			messageErreur="Le prenom doit avoir au moins 3 caracteres.";
+		} else if (u.getPrenom().length()>20) {
+			messageErreur="Le prenom doit avoir au maximum 20 caracteres.";
+		} else {
+			prenomOk=true;
+		}
+
+
+		// -------------------- check mot de passe
+
+		if(u.getMotDePasse().equals(u.getPrenom()+123) || u.getMotDePasse().equals(u.getNom()+123)){
+			messageErreur="La securité du mot de passe est trop faible.";
+		} else if(u.getMotDePasse().equals("motdepasse")) {
+			messageErreur="La securité du mot de passe est trop faible.";
+		} else if(u.getMotDePasse().equals("motdepasse")) {
+			messageErreur="La securité du mot de passe est trop faible.";
+		} else {
+			motDePasseOk=true;
+		}
+
 
 		// -------------------- check confirmation mot de passe
 
@@ -125,35 +149,47 @@ public class UtilisateurManager {
 			confirmationMotDePasseOk=true;
 		}
 
+		System.out.println(messageErreur);
 
 		// -------------------- check e-mail
 
-		//TODO PRISCILA créer méthode selectByEmail
+		//check si l'e-mail est déJá utilisé
 
-		//check e-mail
-
-		for (Utilisateur ut : utilisateurs) {
-			if(ut.getEmail().equals(u.getEmail())) {
-				System.out.println("email déjà utilisé");
-			}
+		recherche = null; 
+		try {
+			recherche = daoUtilisateur.selectByEmail(u.getEmail());
+		} catch (SQLException e) {
+			// TODO PRISCILA gérer exception
+			e.printStackTrace();
 		}
+		if(recherche==null) {
+			emailOk=true;
+		}
+
+		System.out.println(messageErreur);
 
 		// ------------------- check telephone
 
-		//TODO PRISCILA créer méthode selectByTelephone
-
-		if(u.getTelephone()!=null) {
-			for (Utilisateur ut : utilisateurs) {
-				if(ut.getTelephone().equals(u.getTelephone())) {
-					System.out.println("telephone déjà utilisé");
-				}
-			}	
+		recherche = null; 
+		try {
+			recherche = daoUtilisateur.selectByTelephone(u.getTelephone());
+		} catch (SQLException e) {
+			// TODO PRISCILA gérer exception
+			e.printStackTrace();
+		}
+		if(recherche==null) {
+			telephoneOk=true;
 		}
 
-		// verifier si toutes les conditions sont remplies
-		if(motDePasseOk && confirmationMotDePasseOk  && pseudoOk && nomOk && prenomOk && telephoneOk && emailOk && villeOk) {
+		System.out.println(messageErreur);
+
+		// ---------------------- verifier si toutes les conditions sont remplies
+
+		if(motDePasseOk && confirmationMotDePasseOk  && pseudoOk && nomOk && prenomOk && telephoneOk && emailOk) {
 			messageErreur="Verificaton réussite.";
 		}
+
+		System.out.println(messageErreur);
 
 		return messageErreur;
 

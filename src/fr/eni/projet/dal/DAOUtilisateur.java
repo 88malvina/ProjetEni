@@ -14,4 +14,8 @@ public interface DAOUtilisateur extends DAO<Utilisateur> {
 
 	public Utilisateur selectByPseudo(String pseudo) throws SQLException;
 
+	public Utilisateur selectByEmail(String email) throws SQLException;
+	
+	public Utilisateur selectByTelephone(String tel) throws SQLException;
+	
 }
