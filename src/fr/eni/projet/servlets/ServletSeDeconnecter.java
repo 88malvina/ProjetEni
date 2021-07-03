@@ -20,12 +20,12 @@ public class ServletSeDeconnecter extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//Retour à  la page connexion
+		//Retour ï¿½ la page connexion
 		
 		HttpSession session = request.getSession();
 		if (session.getAttribute("utilisateur")!=null) {
 			session.invalidate();
-			this.getServletContext().getRequestDispatcher("/ServletSeConnecter").forward(request, response);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspPageDAccueil.jsp").forward(request, response);
 		}
 	}
 
