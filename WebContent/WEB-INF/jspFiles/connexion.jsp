@@ -12,7 +12,7 @@ nécessitant import jstl -->
 </head>
 
 <style>
-	<%@include file="/WEB-INF/css/style.css"%>
+	<%@include file="/css/style.css"%>
 </style>
 
 <body>

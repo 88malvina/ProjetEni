@@ -40,6 +40,8 @@ public class ServletPageDAccueil extends HttpServlet {
 			// TODO MALVINA gérer exception
 			e.printStackTrace();
 		}
+		
+		request.setAttribute("pageActuelle", "accueil");
 		RequestDispatcher rd=request.getRequestDispatcher("/WEB-INF/jspFiles/jspPageDAccueil.jsp");
 		rd.forward(request, response);
 	}
