@@ -29,7 +29,7 @@ nécessitant import jstl -->
 				<label for="pseudo">Saisissez le pseudonyme utilisateur à chercher :</label>
 				</div>
 				<div class=formInput>
-				<input name="pseudo" placeholder="saisir pseudo" autofocus>
+				<input name="pseudo" placeholder="saisir pseudo" autofocus="autofocus">
 				</div>
 				
 				<input type="submit" value="Valider"/>

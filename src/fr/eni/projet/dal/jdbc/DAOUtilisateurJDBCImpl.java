@@ -96,9 +96,9 @@ public class DAOUtilisateurJDBCImpl implements DAOUtilisateur {
 		try (
 				//Remplacement par pool de connexion via ConnectionProvider
 				//Connection cnx = JdbcTools.getConnection();
-				Connection cnx = ConnectionProvider.getConnection();
+			Connection cnx = ConnectionProvider.getConnection();
 
-				PreparedStatement psmt = cnx.prepareStatement(update, PreparedStatement.RETURN_GENERATED_KEYS);) {
+			PreparedStatement psmt = cnx.prepareStatement(update, PreparedStatement.RETURN_GENERATED_KEYS);) {
 
 			psmt.setString(1, u.getPseudo());
 			psmt.setString(2, u.getNom());

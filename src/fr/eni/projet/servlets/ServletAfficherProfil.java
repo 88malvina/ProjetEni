@@ -65,7 +65,6 @@ public class ServletAfficherProfil extends HttpServlet {
 			String nomCherche = u.getNom();
 			System.out.println("le nom de l'utilisateur cherch� est : " + nomCherche);
 			
-			
 			String prenomCherche = u.getPrenom();
 			String emailCherche = u.getEmail();
 			String telephoneCherche = u.getTelephone();

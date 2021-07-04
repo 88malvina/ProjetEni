@@ -43,12 +43,12 @@ public class FormManager {
 		return connecte;
 	}
 
-	//M�thode pour v�rifier l'existence d'un utilisateur par son pseudo
+	//Méthode pour vérifier l'existence d'un utilisateur par son pseudo
 	public Boolean verifUtilisateurExiste (String pseudo) {
 
 		boolean utilisateurExiste = false;
 
-		//Connexion � la base pour attraper l'utilisateur en base via son pseudo
+		//Connexion à la base pour attraper l'utilisateur en base via son pseudo
 
 		Utilisateur u;
 

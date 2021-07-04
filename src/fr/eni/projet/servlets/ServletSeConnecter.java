@@ -32,11 +32,11 @@ public class ServletSeConnecter extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		//R�cup�ration des param�tres de la requ�te
+		//Récuperation des parametres de la requete
 		String pseudo = request.getParameter("pseudo");
 		String password = request.getParameter("password");
 
-		//Instanciation du gestionnaire de formulaire et on r�cup�re ses infos
+		//Instanciation du gestionnaire de formulaire et on recupere ses infos
 		FormManager identifiants = new FormManager();
 		Boolean estConnecte = identifiants.verifConnexion(pseudo, password);
 
@@ -56,12 +56,12 @@ public class ServletSeConnecter extends HttpServlet {
 		if (estConnecte) {
 			messageLog = "Bonjour " + pseudo + " Vous êtes bien connecte";
 		} else {
-			messageLog = "Identifiant ou mot de passe incorrect, r�essayez";
+			messageLog = "Identifiant ou mot de passe incorrect, réessayez";
 		}
 
 		request.setAttribute("messageLog", messageLog);
 
-		//Puis on retourne tout cela � la JSP
+		//Puis on retourne tout cela a la JSP
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/connexion.jsp").forward(request, response);
 		System.out.println(messageLog);
 
