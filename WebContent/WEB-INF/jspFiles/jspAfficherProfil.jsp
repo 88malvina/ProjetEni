@@ -11,6 +11,8 @@ nécessitant import jstl -->
 <head>
 <meta charset="UTF-8">
 <title>Je suis la jspAfficherProfil</title>
+
+
 </head>
 <body>
 

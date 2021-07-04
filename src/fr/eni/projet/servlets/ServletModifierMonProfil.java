@@ -99,6 +99,7 @@ public class ServletModifierMonProfil extends HttpServlet {
 		//On n'oublie pas de garder les infos qui n'ont pas été redemandées dans le formulaire
 		u.setCredit(old.getCredit());
 		u.setAdministrateur(old.isAdministrateur());
+		u.setNoUtilisateur(old.getNoUtilisateur());
 		
 		//On récupére aussi la confirmation de mot de passe
 		
@@ -115,6 +116,12 @@ public class ServletModifierMonProfil extends HttpServlet {
 			mng.update(u);
 			System.out.println("la méthode update vient d'être appliquée pour l'utilisateur pseudo :");
 			System.out.println(u.getPseudo());
+			
+			System.out.println("logiquement en bdd on devrait avoir l'utilisateur suivant :");
+			System.out.println(u.getPseudo());
+			System.out.println(u.getNom());
+			System.out.println("num utilisateur : " + u.getNoUtilisateur());
+			
 			//On dégage l'ancien attribut de session et on met le nouveau
 			session.removeAttribute("utilisateur");
 			session.setAttribute("utilisateur", u);

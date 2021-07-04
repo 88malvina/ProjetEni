@@ -224,6 +224,7 @@ public class DAOUtilisateurJDBCImpl implements DAOUtilisateur {
 
 			if(rs.next()) {
 				u = new Utilisateur();
+				u.setNoUtilisateur(rs.getInt("no_utilisateur"));
 				u.setPseudo(pseudo);
 				u.setMotDePasse(rs.getString("mot_de_passe"));
 				u.setNom(rs.getString("nom"));
