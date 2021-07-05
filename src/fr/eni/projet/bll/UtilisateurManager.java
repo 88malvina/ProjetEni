@@ -156,17 +156,6 @@ public class UtilisateurManager {
 
 		//-------------check pseudo
 
-		// verifie s'il y a des caracteres speciaux dans pseudo
-		boolean noSpecialChars = false;
-		char[] charsPseudo = u.getPseudo().toCharArray();
-		for(char c : charsPseudo) {
-			if(c>=48 && c<=57 || c>=65 && c<=90 || c>=97 && c<=122 ) {
-				noSpecialChars=true;
-			} else {
-				noSpecialChars=false;
-				break;
-			}
-		}
 
 		// vérifie si le pseudo existe déjà
 		Utilisateur recherche = null; 
@@ -178,14 +167,14 @@ public class UtilisateurManager {
 		}
 
 		// teste toutes les conditions
-		if(!noSpecialChars) {
+		if(!noSpecialChars(u.getPseudo())) {
 			messageErreur="Le pseudo ne doit pas avoir des caractères spéciaux.";
 		} else if(recherche != null) {
 			messageErreur="Pseudo déjà utilisé.";
 		} else if (u.getPseudo().contains(" ")) {
 			messageErreur="Le pseudo ne doit pas avoir des espaces.";
-		} else if (u.getPseudo().length()<5 || u.getPseudo().isEmpty()) {
-			messageErreur="Le pseudo doit avoir au moins 5 caracteres.";
+		} else if (u.getPseudo().length()<4 || u.getPseudo().isEmpty()) {
+			messageErreur="Le pseudo doit avoir au moins 4 caracteres.";
 		} else if (u.getPseudo().length()>20) {
 			messageErreur="Le pseudo doit avoir au maximum 20 caracteres.";
 		} else {
@@ -196,20 +185,24 @@ public class UtilisateurManager {
 
 		// -------------------- check nom
 
-		if(u.getNom().length()<2) {
+		if(u.getNom().length()<3) {
 			messageErreur="Le nom doit avoir au moins 3 caracteres.";
 		} else if (u.getNom().length()>20) {
 			messageErreur="Le nom doit avoir au maximum 20 caracteres.";
+		} else if (!noSpecialChars(u.getNom())) {
+			messageErreur="Le nom ne doit pas avoir des caractères spéciaux.";
 		} else {
 			nomOk=true;
 		}
 
 		// -------------------- check prenom
 
-		if(u.getPrenom().length()<2) {
+		if(u.getPrenom().length()<3) {
 			messageErreur="Le prenom doit avoir au moins 3 caracteres.";
 		} else if (u.getPrenom().length()>20) {
 			messageErreur="Le prenom doit avoir au maximum 20 caracteres.";
+		} else if (!noSpecialChars(u.getPrenom())) {
+			messageErreur="Le prenom ne doit pas avoir des caractères spéciaux.";
 		} else {
 			prenomOk=true;
 		}
@@ -223,6 +216,12 @@ public class UtilisateurManager {
 			messageErreur="La securité du mot de passe est trop faible.";
 		} else if(u.getMotDePasse().equals("motdepasse")) {
 			messageErreur="La securité du mot de passe est trop faible.";
+		} else if (u.getMotDePasse().length()<8 || u.getPseudo().isEmpty()) {
+			messageErreur="Le mot de passe doit avoir au moins 8 caracteres.";
+		} else if (u.getMotDePasse().length()>20) {
+			messageErreur="Le mot de passe doit avoir au maximum 20 caracteres.";
+		} else if (noSpecialChars(u.getMotDePasse())) {
+			messageErreur="Le mot de passe doit avoir au moins 1 caractere special.";
 		} else {
 			motDePasseOk=true;
 		}
@@ -456,4 +455,29 @@ public class UtilisateurManager {
 
 	}
 
+	
+	/**
+	 * 
+	 * Méthode en charge de vérifier si un mot n'a pas de caracteres spéciaux 
+	 * 
+	 * @param motAVerifier le mot à verifier
+	 * @return true si le mot n'a pas de caracteres spéciaux
+	 * @author pconchou2021
+	 */
+	
+	public boolean noSpecialChars(String motAVerifier) {
+		boolean noSpecialChars = false;
+		char[] charsDuMot = motAVerifier.toCharArray();
+		for(char c : charsDuMot) {
+			if(c>=48 && c<=57 || c>=65 && c<=90 || c>=97 && c<=122 ) {
+				noSpecialChars=true;
+			} else {
+				noSpecialChars=false;
+				break;
+			}
+		}
+		
+		return noSpecialChars;
+	}
+	
 }
