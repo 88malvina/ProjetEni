@@ -8,7 +8,7 @@
 <title>Resultat de recherche</title>
 </head>
 <style>
-	<%@include file="/WEB-INF/css/style.css"%>
+	<%@include file="/css/style.css"%>
 </style>
 <body>
 		<div class="container">
