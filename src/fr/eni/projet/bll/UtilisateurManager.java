@@ -1,9 +1,9 @@
 package fr.eni.projet.bll;
 
 import java.sql.SQLException;
+
 import java.util.ArrayList;
 import java.util.List;
-
 
 import fr.eni.projet.bo.Utilisateur;
 import fr.eni.projet.dal.DAOFactory;
@@ -21,12 +21,40 @@ public class UtilisateurManager {
 	private DAOUtilisateur daoUtilisateur = DAOFactory.getUtilisateurDAO();
 
 	// Méthodes ==========================================================================
-	
+
 	public Utilisateur selectByPseudo(String pseudo) {
 
 		Utilisateur resultat = null;
 		try {
 			resultat = daoUtilisateur.selectByPseudo(pseudo);
+		} catch (SQLException e) {
+			// TODO ANTOINE gérer exception
+			e.printStackTrace();
+		}
+		return resultat;	
+	}
+
+	// ==========================================================================
+
+	public Utilisateur selectByEmail(String email) {
+
+		Utilisateur resultat = null;
+		try {
+			resultat = daoUtilisateur.selectByEmail(email);
+		} catch (SQLException e) {
+			// TODO ANTOINE gérer exception
+			e.printStackTrace();
+		}
+		return resultat;	
+	}
+
+	// ==========================================================================
+
+	public Utilisateur selectByTelephone(String telephone) {
+
+		Utilisateur resultat = null;
+		try {
+			resultat = daoUtilisateur.selectByTelephone(telephone);
 		} catch (SQLException e) {
 			// TODO ANTOINE gérer exception
 			e.printStackTrace();
@@ -48,25 +76,33 @@ public class UtilisateurManager {
 	}
 
 	//  ==========================================================================
-	
+
 	public void insert(Utilisateur u) {
 		daoUtilisateur.insert(u);
 	}
-	
+
 	//  ==========================================================================
-	
+
 	public void update(Utilisateur u) {
 		daoUtilisateur.update(u);
 	}
-	
+
 	//  ==========================================================================
-	
+
 	public void delete(Utilisateur u) {
 		daoUtilisateur.delete(u);
 	}
-	
+
 	//  ==========================================================================
-	
+
+	public Utilisateur selectById(int id) {
+		Utilisateur resultat = null;
+		resultat = daoUtilisateur.selectById(id);
+		return resultat;	
+	}
+
+	//  ==========================================================================
+
 	public Boolean verifConnexion (String pseudo, String password) {
 
 		boolean connecte = false;
@@ -93,56 +129,57 @@ public class UtilisateurManager {
 
 		return connecte;
 	}
-	
-	
+
+
 	//  ==========================================================================
-	
+
 	//Méthode pour vérifier l'existence d'un utilisateur par son pseudo
-		public Boolean verifUtilisateurExiste (String pseudo) {
+	public Boolean verifUtilisateurExiste (String pseudo) {
 
-			boolean utilisateurExiste = false;
+		boolean utilisateurExiste = false;
 
-			//Connexion à la base pour attraper l'utilisateur en base via son pseudo
+		//Connexion à la base pour attraper l'utilisateur en base via son pseudo
 
-			Utilisateur u;
+		Utilisateur u;
 
-			try {
-				u = new Utilisateur();
-				u = this.selectByPseudo(pseudo);
+		try {
+			u = new Utilisateur();
+			u = this.selectByPseudo(pseudo);
 
-				if (u.getPseudo()!=null) {
-					utilisateurExiste = true;
+			if (u.getPseudo()!=null) {
+				utilisateurExiste = true;
 
-				} else {
-					utilisateurExiste = false;
-				}
-
-			} catch (NullPointerException e) {
+			} else {
 				utilisateurExiste = false;
-
 			}
 
-			return utilisateurExiste;
+		} catch (NullPointerException e) {
+			utilisateurExiste = false;
+
 		}
-	
+
+		return utilisateurExiste;
+	}
+
 	//  ==========================================================================
-		
-		//Methode pour vérifier que la validation mot de passe de suppression de compte est ok
-		
-		public Boolean controleMotDePasse (String motDePasseInitial, String motDePasse, String confirmationMotDePasse) {
-			
-			Boolean retourBooleanApresControle = false;
-			
-			if ((motDePasseInitial.equals(motDePasse)) && (motDePasse.equals(confirmationMotDePasse))) {
-				retourBooleanApresControle = true;
-			}
-			
-			return retourBooleanApresControle;
+
+	//Methode pour vérifier que la validation mot de passe de suppression de compte est ok
+
+	public Boolean controleMotDePasse (String motDePasseInitial, String motDePasse, String confirmationMotDePasse) {
+
+		Boolean retourBooleanApresControle = false;
+
+		if ((motDePasseInitial.equals(motDePasse)) && (motDePasse.equals(confirmationMotDePasse))) {
+			retourBooleanApresControle = true;
 		}
-		
+
+		return retourBooleanApresControle;
+	}
+
 	//  ==========================================================================
 
 	public String controleInscription(Utilisateur u, String confirmation_mot_de_passe) {
+
 
 		String messageErreur = "";
 		boolean motDePasseOk = false;
@@ -281,15 +318,15 @@ public class UtilisateurManager {
 		return messageErreur;
 
 	}
-	
+
 	//  ==========================================================================
-	
+
 	// C'est la même méthode que pour l'inscription à la différence que l'on prend aussi en paramètre
 	// l'utilisateur en attribut de session avant les mises à jours
 	// Pour pouvoir gérer le fait que lors d'une mise à jour de profil, on a le droit de garder son pseudo ou email déjà existant
 	// (même si celui-ci sera déjà en BDD)
-	
-	
+
+
 	/**
 	 * 
 	 * @param u l'utilisateur avec les infos que l'on veut mettre à jour (après la saisie de formulaire)
@@ -324,7 +361,7 @@ public class UtilisateurManager {
 
 		// vérifie si le pseudo existe déjà ou si c'est le pseudo de l'utilisateur old
 		Utilisateur recherche = null; 
-		
+
 		try {
 			recherche = daoUtilisateur.selectByPseudo(u.getPseudo());
 			System.out.println(old.getPseudo());
@@ -332,7 +369,7 @@ public class UtilisateurManager {
 			if (old.getPseudo().equals(u.getPseudo())) {
 				recherche = null;
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO ANTOINE gérer exception
 			e.printStackTrace();
@@ -447,7 +484,7 @@ public class UtilisateurManager {
 				&& telephoneOk 
 				&& emailOk
 				) 
-				{
+		{
 			messageErreur="Verificaton réussite.";
 		}
 
@@ -457,7 +494,7 @@ public class UtilisateurManager {
 
 	}
 
-	
+
 	/**
 	 * 
 	 * Méthode en charge de vérifier si un mot n'a pas de caracteres spéciaux 
@@ -466,7 +503,7 @@ public class UtilisateurManager {
 	 * @return true si le mot n'a pas de caracteres spéciaux
 	 * @author pconchou2021
 	 */
-	
+
 	public boolean noSpecialChars(String motAVerifier) {
 		boolean noSpecialChars = false;
 		char[] charsDuMot = motAVerifier.toCharArray();
@@ -478,8 +515,8 @@ public class UtilisateurManager {
 				break;
 			}
 		}
-		
+
 		return noSpecialChars;
 	}
-	
+
 }
