@@ -218,7 +218,8 @@ public class UtilisateurManager {
 
 		if(u.getMotDePasse().equals(u.getPrenom()+123) || u.getMotDePasse().equals(u.getNom()+123)){
 			messageErreur="La securité du mot de passe est trop faible.";
-		} else if(u.getMotDePasse().equals("motdepasse")) {
+			// TODO ANTOINE : corriger la méthode copié
+		} else if(u.getMotDePasse().equals(u.getPseudo()+123)) {
 			messageErreur="La securité du mot de passe est trop faible.";
 		} else if(u.getMotDePasse().equals("motdepasse")) {
 			messageErreur="La securité du mot de passe est trop faible.";
