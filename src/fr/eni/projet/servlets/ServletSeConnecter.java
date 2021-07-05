@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import fr.eni.projet.bll.FormManager;
 import fr.eni.projet.bll.UtilisateurManager;
 import fr.eni.projet.bo.Utilisateur;
 
@@ -37,7 +35,7 @@ public class ServletSeConnecter extends HttpServlet {
 		String password = request.getParameter("password");
 
 		//Instanciation du gestionnaire de formulaire et on recupere ses infos
-		FormManager identifiants = new FormManager();
+		UtilisateurManager identifiants = new UtilisateurManager();
 		Boolean estConnecte = identifiants.verifConnexion(pseudo, password);
 
 		//en cas de connexion ok, on passe l'utilisateur en attribut de session

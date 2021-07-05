@@ -8,8 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import fr.eni.projet.bll.FormManager;
 import fr.eni.projet.bll.UtilisateurManager;
 import fr.eni.projet.bo.Utilisateur;
 
@@ -37,7 +35,7 @@ public class ServletAfficherProfil extends HttpServlet {
 		String pseudo = request.getParameter("pseudo");
 		
 		//On v�rifie que l'utilisateur existe gr�ce au FormManager
-		FormManager verif = new FormManager();
+		UtilisateurManager verif = new UtilisateurManager();
 		Boolean utilisateurExiste = verif.verifUtilisateurExiste(pseudo);
 		System.out.println("le boolean utilisateur existe indique : " + utilisateurExiste);
 		
@@ -51,11 +49,9 @@ public class ServletAfficherProfil extends HttpServlet {
 		
 		request.setAttribute("messageJsp", messageJsp);
 		
-		// Si l'utilisateur existe, on va le r�cup�rer et pr�parer ses infos � envoyer en JSP
-		// Rappel �nonc� : En tant qu�utilisateur, je peux afficher le profil d�un autre utilisateur. Les pseudo, 
-		// nom, pr�nom, e-mail, num�ro de t�l�phone, rue, code postal, ville sont affich�s.
+		// Si l'utilisateur existe, on va le récupérer et afficher ses infos
+		// Infos a afficher = Les pseudo, nom, pr�nom, e-mail, tel, rue, code postal, ville
 		
-
 		if (utilisateurExiste) {
 			
 			UtilisateurManager mng = new UtilisateurManager();

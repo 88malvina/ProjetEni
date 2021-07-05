@@ -60,6 +60,66 @@ public class UtilisateurManager {
 	}
 	
 	//  ==========================================================================
+	
+	public Boolean verifConnexion (String pseudo, String password) {
+
+		boolean connecte = false;
+
+		//Connexion à la base pour attraper l'utilisateur en base via son pseudo
+
+		Utilisateur u;
+
+		try {
+			u = new Utilisateur();
+			u = this.selectByPseudo(pseudo);
+
+			if (u.getMotDePasse().equals(password)) {
+				connecte = true;
+
+			} else {
+				connecte = false;
+			}
+
+		} catch (NullPointerException e) {
+			connecte = false;
+
+		}
+
+		return connecte;
+	}
+	
+	
+	//  ==========================================================================
+	
+	//Méthode pour vérifier l'existence d'un utilisateur par son pseudo
+		public Boolean verifUtilisateurExiste (String pseudo) {
+
+			boolean utilisateurExiste = false;
+
+			//Connexion à la base pour attraper l'utilisateur en base via son pseudo
+
+			Utilisateur u;
+
+			try {
+				u = new Utilisateur();
+				u = this.selectByPseudo(pseudo);
+
+				if (u.getPseudo()!=null) {
+					utilisateurExiste = true;
+
+				} else {
+					utilisateurExiste = false;
+				}
+
+			} catch (NullPointerException e) {
+				utilisateurExiste = false;
+
+			}
+
+			return utilisateurExiste;
+		}
+	
+	//  ==========================================================================
 
 	public String controleInscription(Utilisateur u, String confirmation_mot_de_passe) {
 
