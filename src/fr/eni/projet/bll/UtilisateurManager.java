@@ -238,7 +238,7 @@ public class UtilisateurManager {
 
 		// -------------------- check e-mail
 
-		//check si l'e-mail est déJá utilisé
+		// check si l'e-mail est déjà utilisé
 
 		recherche = null; 
 		try {
@@ -249,6 +249,8 @@ public class UtilisateurManager {
 		}
 		if(recherche==null) {
 			emailOk=true;
+		} else {
+			messageErreur="Email déjà utilisé.";
 		}
 
 		System.out.println(messageErreur);
