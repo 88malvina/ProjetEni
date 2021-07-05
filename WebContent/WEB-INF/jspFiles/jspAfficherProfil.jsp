@@ -61,5 +61,7 @@ nécessitant import jstl -->
 				<h3> Renseignez un pseudo existant sur le site </h3>
 				</c:if>
 				
+ <a class="nav-link" href="/ProjetEni/encheres/ServletPageDAccueil"> | Retour accueil |</a>
+
 </body>
 </html>

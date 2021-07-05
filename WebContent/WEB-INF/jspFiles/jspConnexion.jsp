@@ -17,7 +17,13 @@ nécessitant import jstl -->
 
 <body>
 
-<p><c:out value="${messageLog }" /> </p>
+	<!-- Message si erreur lors tentative de log -->
+	
+	<c:if test="${!empty erreurLog}">
+    <p><c:out value="${erreurLog }" /> </p>
+	</c:if>
+	
+	<!-- ------------------------ -->
 
 <h1> Se connecter</h1>
 

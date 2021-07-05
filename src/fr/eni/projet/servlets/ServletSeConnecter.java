@@ -46,22 +46,21 @@ public class ServletSeConnecter extends HttpServlet {
 			u = mng.selectByPseudo(pseudo);
 			HttpSession session = request.getSession();
 			session.setAttribute("utilisateur", u);
+			
+			//On enverra aussi un petit message a afficher en jsp accueil
+			String messageLog = "Bonjour " + pseudo + " Vous êtes bien connecte";
+			request.setAttribute("messageLog", messageLog);
+			
 			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspPageDAccueil.jsp").forward(request, response);
 		}
+		
+		//En cas de connexion not ok, on renvoie vers la jsp se connecter avec un message d'erreur
 
-		//Variable message pour afficher dans la JSP
-		String messageLog = null;
-		if (estConnecte) {
-			messageLog = "Bonjour " + pseudo + " Vous êtes bien connecte";
-		} else {
-			messageLog = "Identifiant ou mot de passe incorrect, réessayez";
+		if (!estConnecte) {
+			String erreurLog = "Erreur, vous n'avez pas été connecté";
+			request.setAttribute("erreurLog",erreurLog);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspConnexion.jsp").forward(request, response);
 		}
-
-		request.setAttribute("messageLog", messageLog);
-
-		//Puis on retourne tout cela a la JSP
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspConnexion.jsp").forward(request, response);
-		System.out.println(messageLog);
 
 	}
 
