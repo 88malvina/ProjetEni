@@ -26,13 +26,8 @@ public class ServletVersJSPInscription extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd=null;
-
-		// TODO PRISCILA HEADER finir
-
 		request.setAttribute("pageActuelle", "inscription");
-		rd = request.getRequestDispatcher("/WEB-INF/jspFiles/JSPInscription.jsp");
-		rd.forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/JSPInscription.jsp").forward(request, response);
 	}
 
 	/**
