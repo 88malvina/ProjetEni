@@ -1,4 +1,5 @@
 package fr.eni.projet.dal;
+import fr.eni.projet.dal.jdbc.DAOArticleVenduJDBCImpl;
 import fr.eni.projet.dal.jdbc.DAOCategorieJDBCImpl;
 import fr.eni.projet.dal.jdbc.DAOEnchereJDBCImpl;
 import fr.eni.projet.dal.jdbc.DAOUtilisateurJDBCImpl;
@@ -26,4 +27,7 @@ public class DAOFactory {
 		return new DAOCategorieJDBCImpl();
 	}
 
+	public static DAOArticleVendu getArticleVenduDAO() {
+		return new DAOArticleVenduJDBCImpl();
+	}
 }
