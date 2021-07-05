@@ -61,6 +61,12 @@ public class UtilisateurManager {
 	
 	//  ==========================================================================
 	
+	public void delete(Utilisateur u) {
+		daoUtilisateur.delete(u);
+	}
+	
+	//  ==========================================================================
+	
 	public Boolean verifConnexion (String pseudo, String password) {
 
 		boolean connecte = false;
@@ -119,6 +125,21 @@ public class UtilisateurManager {
 			return utilisateurExiste;
 		}
 	
+	//  ==========================================================================
+		
+		//Methode pour vérifier que la validation mot de passe de suppression de compte est ok
+		
+		public Boolean controleMotDePasse (String motDePasseInitial, String motDePasse, String confirmationMotDePasse) {
+			
+			Boolean retourBooleanApresControle = false;
+			
+			if ((motDePasseInitial.equals(motDePasse)) && (motDePasse.equals(confirmationMotDePasse))) {
+				retourBooleanApresControle = true;
+			}
+			
+			return retourBooleanApresControle;
+		}
+		
 	//  ==========================================================================
 
 	public String controleInscription(Utilisateur u, String confirmation_mot_de_passe) {

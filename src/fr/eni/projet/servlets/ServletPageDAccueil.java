@@ -26,9 +26,9 @@ public class ServletPageDAccueil extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		/*----r�cup�rer les valeurs de la table Ench�res-----*/
+		//Récupérer valeurs table encheres
 		
-		//A r�gler avec vue statique
+		//A régler avec vue statique
 		
 		EnchereManager manager = new EnchereManager();
 		try {

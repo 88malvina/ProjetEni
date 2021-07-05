@@ -23,7 +23,7 @@ public class ServletSeConnecter extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// On dirige vers la JSP connexion
-		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jspFiles/connexion.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jspFiles/jspConnexion.jsp");
 		rd.forward(request, response);
 	}
 
@@ -60,7 +60,7 @@ public class ServletSeConnecter extends HttpServlet {
 		request.setAttribute("messageLog", messageLog);
 
 		//Puis on retourne tout cela a la JSP
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/connexion.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspConnexion.jsp").forward(request, response);
 		System.out.println(messageLog);
 
 	}

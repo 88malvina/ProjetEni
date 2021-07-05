@@ -10,6 +10,16 @@
 	<%@include file="/css/style.css"%>
 </style>
 <body>
+	<!-- Message de confirmation si suppression de compte vient d'être effectué -->
+	
+	<c:if test="${!empty compteSupprime}">
+    <p><c:out value="${compteSupprime }" /> </p>
+	</c:if>
+	
+	
+	<!-- ------------------------ -->
+	
+	
 	<div class="container">
 	
 	<!-- HEADER -->

@@ -20,9 +20,10 @@
 		<c:choose>
 			<c:when test="${ !empty utilisateur }">
 				<div class="col-sm-4">
-	 		        <a class="nav-link" href="/ProjetEni/ServletModifierMonProfil">  ${ utilisateur.getPseudo() } : Modifier mon profil</a>
-			        <a class="nav-link" href="/ProjetEni/ServletAfficherProfil">${ utilisateur.getPseudo() } Afficher un profil sur le site</a>
-			        <a class="nav-link" href="/ProjetEni/ServletSeDeconnecter">Se déconnecter</a>
+	 		        <a class="nav-link" href="/ProjetEni/ServletModifierMonProfil"> | ${ utilisateur.getPseudo() } : Modifier mon profil |</a>
+			        <a class="nav-link" href="/ProjetEni/ServletAfficherProfil"> | Afficher un profil |</a>
+			        <a class="nav-link" href="/ProjetEni/ServletSupprimerMonCompte"> | Supprimer mon compte | </a>
+			        <a class="nav-link" href="/ProjetEni/ServletSeDeconnecter"> | Se déconnecter | </a>
 			        
  				</div>
 			</c:when>
