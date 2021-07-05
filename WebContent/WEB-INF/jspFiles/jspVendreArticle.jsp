@@ -32,31 +32,44 @@
 						<legend>Vendre un article</legend>
 						
 						<div class="row">
-						<div class="col-sm-12 col-md-6">
-						<label for="pseudo">Titre :</label>
-						<input type="text" name="pseudo" id="pseudo" placeholder="Un petit nom sympa"
-						size="40" maxlength="30" autofocus="autofocus" required="required" />
-						</div>
+							<div class="col-sm-12 col-md-6">
+								<label for="nomArticle">Nom :</label>
+								<input type="text" name="nomArticle" id="nomArticle" placeholder="Un petit nom sympa"
+								size="40" maxlength="30" autofocus="autofocus" required="required" />
+							</div>
 						
-						<div class="col-sm-12 col-md-6">
-						<label for="rue">Rue :</label>
-						<input type="text" name="rue" id="rue" placeholder="Votre rue"
-						size="40" maxlength="30" required="required"/>
-						</div>
+							<div class="col-sm-12 col-md-6">
+								<label for="no_categorie">Categorie :</label>
+								<select name="no_categorie" size="1" required="required">
+									<option value="1">Informatique</option>
+									<option value="2">Ameublement</option>
+									<option value="3">Vetement</option>
+									<option value="4">Sport et Loisirs</option>
+								</select>
+							</div>
 						</div>
 						
 						<div class="row">
-						<div class="col-sm-12 col-md-6">
-						<label for="nom">Nom :</label>
-						<input type="text" name="nom" id="nom" placeholder="Votre nom"
-						size="40" maxlength="30" required="required" />
+							<div class="col-sm-12">
+								<label for="description">Description :</label>
+								<textarea name="description" id="description" rows="6" cols="60" maxlength="30" required="required">Parlez un peu sur votre article...</textarea>
+							</div>
 						</div>
 						
-						<div class="col-sm-12 col-md-6">
-						<label for="ville">Ville :</label>
-						<input type="text" name="ville" id="ville" placeholder="Votre ville"
-						size="40" maxlength="30" required="required"/>
-						</div>
+						<div class="row">
+							<div class="col-sm-12 col-md-6">
+								<label for="date_debut_encheres">Date de début de l'enchère :</label>
+								<input type="datetime-local" id="date_debut_encheres"
+								       name="date_debut_encheres" value="${ LocalDate.now() }"
+								       min="${ LocalDate.now() }" required="required">
+							</div>
+						
+							<div class="col-sm-12 col-md-6">
+								<label for="date_fin_encheres">Date de fin de l'enchère :</label>
+								<input type="datetime-local" id="date_fin_encheres"
+								       name="date_fin_encheres" value="${ LocalDate.now() }"
+								       min="${ date_debut_encheres }" required="required">
+							</div>
 						</div>
 						
 						
