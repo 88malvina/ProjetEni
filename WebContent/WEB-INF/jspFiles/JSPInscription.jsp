@@ -110,12 +110,14 @@
 						</div>
 						</div>
 						
-						
-						<div class="col-sm-12 col-md-6">
-							<p>
-								<c:out value="${ message_erreur }" />
-							</p>
+						<div class="row">
+							<div class="col-sm-12 col-md-6">
+								<p>
+									<c:out value="${ message_erreur }" />
+								</p>
+							</div>
 						</div>
+						
 						
 						
 						<!-------------------------------- BUTTONS -------------------------->
