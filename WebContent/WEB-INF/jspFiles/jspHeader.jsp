@@ -30,14 +30,14 @@
 			
 			<c:when test="${ empty utilisateur }">
 				<c:choose>
-					<c:when test="${ request.pageActuelle == inscription }">
+					<c:when test="${ pageActuelle == 'inscription' }">
 						<div class="col-sm-4">
 					        <a class="nav-link" href="/ProjetEni/encheres/ServletPageDAccueil"><c:out value="Accueil" /></a>
 					        <a class="nav-link" href="/ProjetEni/ServletSeConnecter"><c:out value="Se connecter" /></a>
 						</div>
 					</c:when>
 					
-					<c:when test="${ request.pageActuelle == accueil }">
+					<c:when test="${ pageActuelle == 'accueil' }">
 						<div class="col-sm-4">
 							<div class="se_connecter">
 								<a href="/ProjetEni/ServletVersJSPInscription">S'inscrire</a>-<a href="/ProjetEni/ServletSeConnecter">Se connecter</a>
@@ -45,6 +45,7 @@
 						</div>
 					</c:when>
 					
+				
 				</c:choose>
 			</c:when>
 		</c:choose>
