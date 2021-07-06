@@ -9,8 +9,7 @@ package fr.eni.projet.bll;
 public class OutilsVerification {
 
 	/**
-	 * 
-	 * Méthode en charge de vérifier si un mot n'a pas de caracteres spéciaux 
+	 * Méthode en charge de vérifier si un mot n'a pas de caracteres spéciaux (spaces inclus)
 	 * 
 	 * @param motAVerifier le mot à verifier
 	 * @return true si le mot n'a pas de caracteres spéciaux
@@ -27,7 +26,28 @@ public class OutilsVerification {
 				break;
 			}
 		}
-
 		return noSpecialChars;
+	}
+	
+	/**
+	 * 
+	 * Méthode en charge de vérifier si un String a que des nombres
+	 * 
+	 * @param aVerifier le String à verifier
+	 * @return true si le String a que des nombres
+	 * @author pconchou2021
+	 */
+	public static boolean onlyNumbers(String aVerifier) {
+		boolean onlyNumbers=false;
+		char[] charsString = aVerifier.toCharArray();
+		for(char c : charsString) {
+			if(c>=48 && c<=57) {
+				onlyNumbers=true;
+			}else {
+				onlyNumbers=false;
+				break;
+			}
+		}
+		return onlyNumbers;
 	}
 }
