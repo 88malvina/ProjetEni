@@ -6,11 +6,30 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Resultat de recherche</title>
+
+<!-- Bootstrap core CSS -->
+
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+	<%@include file="/css/style.css"%>
+</style>
+
 </head>
 <style>
 	<%@include file="/css/style.css"%>
 </style>
+
 <body>
+	<!-- HEADER -->
+	
+	<jsp:include page="/WEB-INF/jspFiles/jspHeader.jsp">
+		<jsp:param value="pageActuelle" name="Recherche profil"/>
+	</jsp:include>
+
+
+
+
 		<div class="container">
 		<div class="logo">
 			<h3>ENI-Encheres</h3>
@@ -67,8 +86,12 @@
 		
 		
 	</div>
-	<footer>
-		<h3>Eni 2021</h3>
-	</footer>
+	
+	<!--  footer -->
+	
+	<jsp:include page="/WEB-INF/jspFiles/jspFooter.jsp">
+			<jsp:param value="footer" name="footer"/>
+	</jsp:include>
+	
 </body>
 </html>

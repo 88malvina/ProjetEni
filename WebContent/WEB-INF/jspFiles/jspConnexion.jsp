@@ -9,13 +9,25 @@ nécessitant import jstl -->
 <head>
 <meta charset="UTF-8">
 <title>Se connecter</title>
-</head>
+
+<!-- Bootstrap core CSS -->
+
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
 	<%@include file="/css/style.css"%>
 </style>
 
+</head>
+
+
 <body>
+
+	<!-- HEADER -->
+	
+	<jsp:include page="/WEB-INF/jspFiles/jspHeader.jsp">
+		<jsp:param value="pageActuelle" name="Connexion"/>
+	</jsp:include>
 
 	<!-- Message si erreur lors tentative de log -->
 	
@@ -68,7 +80,11 @@ nécessitant import jstl -->
 			
 		</form>
 
-
+	<!--  footer -->
+	
+	<jsp:include page="/WEB-INF/jspFiles/jspFooter.jsp">
+			<jsp:param value="footer" name="footer"/>
+	</jsp:include>
 
 </body>
 </html>

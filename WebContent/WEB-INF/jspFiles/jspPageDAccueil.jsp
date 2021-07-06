@@ -48,6 +48,9 @@
 		</div></c:forEach>
 	</div>
 	</div>
+	
+	<!--  footer -->
+	
 	<jsp:include page="/WEB-INF/jspFiles/jspFooter.jsp">
 			<jsp:param value="footer" name="footer"/>
 	</jsp:include>

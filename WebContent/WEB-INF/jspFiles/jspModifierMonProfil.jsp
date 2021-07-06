@@ -13,16 +13,25 @@ nécessitant import jstl -->
 <head>
 <meta charset="UTF-8">
 <title>Je suis la jspModifierMonProfil</title>
+
+<!-- Bootstrap core CSS -->
+
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+	<%@include file="/css/style.css"%>
+</style>
+
 </head>
 
-
 <body>
-	
+
 	<!-- HEADER -->
 	
 	<jsp:include page="/WEB-INF/jspFiles/jspHeader.jsp">
 		<jsp:param value="pageActuelle" name="Modifier mon Profil"/>
 	</jsp:include>
+
 	
 	<!-- Si une modif profil a été tentée et a échoué, on affiche un message d'erreur -->
 	

@@ -24,9 +24,24 @@ nécessitant import jstl
 <head>
 <meta charset="UTF-8">
 <title>Je suis la jspSupprimerMonCompte</title>
+
+<!-- Bootstrap core CSS -->
+
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+	<%@include file="/css/style.css"%>
+</style>
+
 </head>
 
 <body>
+
+	<!-- HEADER -->
+	
+	<jsp:include page="/WEB-INF/jspFiles/jspHeader.jsp">
+		<jsp:param value="pageActuelle" name="Supprimer profil"/>
+	</jsp:include>
 
 	<!-- petit message d'erreur en cas d'échec vérif mot de passe -->
 	<p>
@@ -63,6 +78,12 @@ nécessitant import jstl
 		<input type="submit" value="Valider" />
 
 	</form>
+
+	<!--  footer -->
+	
+	<jsp:include page="/WEB-INF/jspFiles/jspFooter.jsp">
+			<jsp:param value="footer" name="footer"/>
+	</jsp:include>
 
 </body>
 </html>

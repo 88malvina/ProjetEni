@@ -33,7 +33,7 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="/ProjetEni/ServletSupprimerMonCompte">Modifier mon compte</a>
+        <a class="nav-link" href="/ProjetEni/ServletSupprimerMonCompte">Supprimer mon compte</a>
       </li>
       
       <li class="nav-item">

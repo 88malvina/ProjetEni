@@ -12,9 +12,23 @@ nécessitant import jstl -->
 <meta charset="UTF-8">
 <title>Je suis la jspAfficherProfil</title>
 
+<!-- Bootstrap core CSS -->
+
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+	<%@include file="/css/style.css"%>
+</style>
 
 </head>
 <body>
+	<!-- HEADER -->
+	
+	<jsp:include page="/WEB-INF/jspFiles/jspHeader.jsp">
+		<jsp:param value="pageActuelle" name="Afficher Profil"/>
+	</jsp:include>
+
+
 
 <h1>Bonjour je suis la jsp afficher profil</h1>
 
@@ -62,6 +76,12 @@ nécessitant import jstl -->
 				</c:if>
 				
  <a class="nav-link" href="/ProjetEni/encheres/ServletPageDAccueil"> | Retour accueil |</a>
+ 
+ 	<!--  footer -->
+	
+	<jsp:include page="/WEB-INF/jspFiles/jspFooter.jsp">
+			<jsp:param value="footer" name="footer"/>
+	</jsp:include>
 
 </body>
 </html>
