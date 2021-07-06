@@ -81,6 +81,11 @@ public class ArticleVenduManager {
 			return artVendus;
 		}
 		
+		public List<ArticleVendu> selectByCategorie(int no_categorie) throws SQLException{
+			
+			return daoArtVendu.selectByCategorie(no_categorie);
+		}
+		
 		public String verifArticle (ArticleVendu a) {
 			
 			String messageErreur="";
