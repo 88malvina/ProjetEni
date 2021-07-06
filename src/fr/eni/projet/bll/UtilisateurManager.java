@@ -78,7 +78,12 @@ public class UtilisateurManager {
 	//  ==========================================================================
 
 	public void insert(Utilisateur u) {
-		daoUtilisateur.insert(u);
+		try {
+			daoUtilisateur.insert(u);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	//  ==========================================================================
