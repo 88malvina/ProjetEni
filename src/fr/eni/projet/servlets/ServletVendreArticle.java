@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.eni.projet.bll.ArticleVenduManager;
+import fr.eni.projet.bll.RetraitManager;
 import fr.eni.projet.bo.ArticleVendu;
+import fr.eni.projet.bo.Retrait;
 
 /**
  * Servlet dirigeant vers la jspVendreArticle 
@@ -36,7 +38,7 @@ public class ServletVendreArticle extends HttpServlet {
 		
 		ArticleVendu u = new ArticleVendu();
 		HttpSession session = request.getSession();
-		ArticleVenduManager mng = new ArticleVenduManager();
+		ArticleVenduManager mngArt = new ArticleVenduManager();
 
 		u.setNomArticle(request.getParameter("nom_article"));
 		u.setDescription(request.getParameter("description"));
@@ -47,12 +49,24 @@ public class ServletVendreArticle extends HttpServlet {
 		u.setNo_categorie(Integer.valueOf(request.getParameter("no_categorie")));
 		
 		// TODO ADD RETRAIT
+		
+		Retrait r = new Retrait();
+		RetraitManager mngRet = new RetraitManager();
+		
+		r.setRue(request.getParameter("rue"));
+		r.setCode_postal(request.getParameter("code_postal"));
+		r.setVille(request.getParameter("ville"));
+		
 
 		String message_erreur = ""; // mng.controleInscription(u, confirmation_mot_de_passe);
 
 		if (message_erreur.equals("Verificaton réussite.")) {
 
-			mng.insert(u);
+			mngArt.insert(u);
+			
+			r.setNo_article(u.getNoArticle());
+			mngRet.insert(r);
+			
 			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspPageDAccueil.jsp").forward(request, response);
 
 		} else {
