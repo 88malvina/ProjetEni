@@ -79,4 +79,27 @@ public class ArticleVenduManager {
 			}
 			return artVendus;
 		}
+		
+		public String verifArticle (ArticleVendu a) {
+			
+			String msg_erreur="";
+			
+			boolean nomArtOk=false;
+			boolean descriptionOk=false;
+			boolean dateDebutOk=false;
+			boolean dateFinOk=false;
+			boolean prixInitialOk=false;
+			
+			
+			
+			// ---------------------- verifier si toutes les conditions sont remplies
+
+			if(nomArtOk && descriptionOk  && dateDebutOk && dateFinOk && prixInitialOk) {
+				msg_erreur="Verificaton réussite.";
+			}
+
+			System.out.println(msg_erreur);
+
+			return msg_erreur;
+		}
 }
