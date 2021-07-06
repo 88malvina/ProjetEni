@@ -13,7 +13,7 @@ import java.util.List;
 
 public interface DAO <T> {
 	
-	public void insert(T t);
+	public void insert(T t) throws SQLException;
 	
 	public void delete(T t);
 	
