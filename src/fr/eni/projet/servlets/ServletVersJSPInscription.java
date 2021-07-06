@@ -50,7 +50,7 @@ public class ServletVersJSPInscription extends HttpServlet {
 		u.setMotDePasse(request.getParameter("mot_de_passe"));
 		u.setCredit(0);
 		u.setAdministrateur(false);
-
+		
 		String message_erreur = mng.controleInscription(u, confirmation_mot_de_passe);
 
 		if (message_erreur.equals("Verificaton réussite.")) {
@@ -60,6 +60,27 @@ public class ServletVersJSPInscription extends HttpServlet {
 			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspPageDAccueil.jsp").forward(request, response);
 
 		} else {
+			// Si on n'a pas réussi à se connecter, on revient sur le formulaire mais déjà rempli avec nos infos
+			// Pour garder en mémoire la saisie utilisateur, on renvoie tout cela à la jsp
+			
+			String pseudo = (request.getParameter("pseudo"));
+			String nom = (request.getParameter("nom"));
+			String prenom = (request.getParameter("prenom"));
+			String email = (request.getParameter("email"));
+			String telephone = (request.getParameter("telephone"));
+			String rue = (request.getParameter("rue"));
+			String code_postal = (request.getParameter("code_postal"));
+			String ville =(request.getParameter("ville"));
+			
+			request.setAttribute("pseudo", pseudo);
+			request.setAttribute("nom", nom);
+			request.setAttribute("prenom", prenom);
+			request.setAttribute("email", email);
+			request.setAttribute("telephone", telephone);
+			request.setAttribute("rue", rue);
+			request.setAttribute("code_postal", code_postal);
+			request.setAttribute("ville", ville);
+			
 			session.setAttribute("message_erreur", message_erreur);
 			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/JSPInscription.jsp").forward(request, response);
 		}

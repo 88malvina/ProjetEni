@@ -35,18 +35,32 @@
 				<form name="formulaireInscription" method="post" action="ServletVersJSPInscription">
 					<fieldset>
 						<legend>Créer mon compte</legend>
+					
+			<!----------------------------------------------------------------------  
+			memo des attributs envoyés par la servlet 	
+			
+			request.setAttribute("pseudo", pseudo);
+			request.setAttribute("nom", nom);
+			request.setAttribute("prenom", prenom);
+			request.setAttribute("email", email);
+			request.setAttribute("telephone", telephone);
+			request.setAttribute("rue", rue);
+			request.setAttribute("code_postal", code_postal);
+			request.setAttribute("ville", ville);
+		  ----------------------------------------------------------------------->
+						
 						
 						<div class="row">
 						<div class="col-sm-12 col-md-6">
 						<label for="pseudo">Pseudo :</label>
 						<input type="text" name="pseudo" id="pseudo" placeholder="Un petit nom sympa"
-						size="40" maxlength="30" autofocus="autofocus" required="required" />
+						size="40" maxlength="30" autofocus="autofocus" value = "${pseudo }" required="required" />
 						</div>
 						
 						<div class="col-sm-12 col-md-6">
 						<label for="rue">Rue :</label>
 						<input type="text" name="rue" id="rue" placeholder="Votre rue"
-						size="40" maxlength="30" required="required"/>
+						size="40" maxlength="30" value = "${rue }"required="required"/>
 						</div>
 						</div>
 						
@@ -54,13 +68,13 @@
 						<div class="col-sm-12 col-md-6">
 						<label for="nom">Nom :</label>
 						<input type="text" name="nom" id="nom" placeholder="Votre nom"
-						size="40" maxlength="30" required="required" />
+						size="40" maxlength="30" value = "${nom }" required="required" />
 						</div>
 						
 						<div class="col-sm-12 col-md-6">
 						<label for="ville">Ville :</label>
 						<input type="text" name="ville" id="ville" placeholder="Votre ville"
-						size="40" maxlength="30" required="required"/>
+						size="40" maxlength="30" value = "${ville }"required="required"/>
 						</div>
 						</div>
 						
@@ -69,13 +83,13 @@
 						<div class="col-sm-12 col-md-6">
 						<label for="prenom">Prénom :</label>
 						<input type="text" name="prenom" id="prenom" placeholder="Votre prénom"
-						size="40" maxlength="30" required="required" />
+						size="40" maxlength="30" value = "${prenom }" required="required" />
 						</div>
 						
 						<div class="col-sm-12 col-md-6">
 						<label for="code_postal">Code postal :</label>
 						<input type="text" name="code_postal" id="code_postal" placeholder="Votre Code postal"
-						size="40" maxlength="10" required="required" />
+						size="40" maxlength="10" value = "${code_postal }" required="required" />
 						</div>
 						</div>
 						
@@ -84,7 +98,14 @@
 						<div class="col-sm-12 col-md-6">
 						<label for="telephone">Téléphone :</label>
 						<input type="text" name="telephone" id="telephone" placeholder="(Optionel)"
-						size="40" maxlength="15" />
+						size="40" maxlength="15" value = "${telephone }"/>
+						</div>
+						
+						<div class="row">
+						<div class="col-sm-12 col-md-6">
+						<label for="email">Email :</label>
+						<input type="email" name="email" id="email" placeholder="Votre email"
+						size="40" maxlength="20" value = "${email }"required="required" />
 						</div>
 						
 						<div class="col-sm-12 col-md-6">
@@ -93,15 +114,6 @@
 						size="40" maxlength="30" required="required" />
 						</div>
 						</div>
-						
-						
-						<div class="row">
-						<div class="col-sm-12 col-md-6">
-						<label for="email">Email :</label>
-						<input type="email" name="email" id="email" placeholder="Votre email"
-						size="40" maxlength="20" required="required" />
-						</div>
-						
 						
 						<div class="col-sm-12 col-md-6">
 						<label for="confirmation_mot_de_passe">Confirmation :</label>
