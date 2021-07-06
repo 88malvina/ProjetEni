@@ -30,7 +30,7 @@
 	
 	<div class="titre"><h4>Liste des enchères</h4></div>
 	Filtres:<br>
-	<form method="post" action=""> 
+	<form method="post" action="/ProjetEni/encheres/ServletPageDAccueil"> 
 	<label>
 	<button type="submit"><i class="fa fa-search"></i></button><input name="saisieUtilisateur" type="text" placeholder="Le nom de l'article contient" size=30>
 	<br><br>
@@ -43,8 +43,7 @@
 	<option value="ameublement">Ameublement</option>
 	<option value="sport">Sport et Loisirs</option>
 	</select>
-	</label>
-	</form>
+	
 	<br>
 	<section>
 	<div class="achats">
@@ -66,7 +65,8 @@
 	</section>
 	<br>
 	<button type="submit" name="rechercher">Rechercher</button>
-	
+	</label>
+	</form>
 	<div class="liste_enchères">
 	<br>
 		<c:forEach items="${encheres}" var="enchere">
