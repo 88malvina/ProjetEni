@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.projet.bll.ArticleVenduManager;
 import fr.eni.projet.bll.EnchereManager;
+import fr.eni.projet.bo.ArticleVendu;
 import fr.eni.projet.bo.Enchere;
 
 /**@author mavetyan2021
@@ -28,17 +30,11 @@ public class ServletPageDAccueil extends HttpServlet {
 		//Récupérer valeurs table encheres
 		
 		//A régler avec vue statique
+		ArticleVenduManager manager = new ArticleVenduManager();
 		
-		EnchereManager manager = new EnchereManager();
-		try {
-			List<Enchere> list=manager.selectAll();
-			request.setAttribute("encheres", list);
-				
-			
-		} catch (SQLException e) {
-			// TODO MALVINA gérer exception
-			e.printStackTrace();
-		}
+		List<ArticleVendu> list=manager.selectAll();
+		
+		request.setAttribute("encheres", list);
 		
 		request.setAttribute("pageActuelle", "accueil");
 		RequestDispatcher rd=request.getRequestDispatcher("/WEB-INF/jspFiles/jspPageDAccueil.jsp");
@@ -49,13 +45,13 @@ public class ServletPageDAccueil extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		EnchereManager manager = new EnchereManager();
+		ArticleVenduManager manager = new ArticleVenduManager();
 		
-		List<Enchere> listAllEncheres;
-		List<Enchere> list_encheres=new ArrayList<Enchere>();
+		List<ArticleVendu> listAllEncheres;
+		List<ArticleVendu> list_encheres=new ArrayList<ArticleVendu>();
 	
-		 List<Enchere> list_categorie=null;
-		 List<Enchere> list_categorie2=null;
+		 List<ArticleVendu> list_categorie=null;
+		 List<ArticleVendu> list_categorie2=null;
 		try {
 			//On pourrait avoir un filtre ? Il ne faut pas faire le selectall d'office car cela d�pend des filtres actifs ou pas
 			// "tel filtre a �t� mis" = contrainte 
@@ -75,7 +71,7 @@ public class ServletPageDAccueil extends HttpServlet {
 				if(select==null) {
 				
 				listAllEncheres.stream()
-				.filter(x-> x.getArticle_vendu().toLowerCase().contains(saisieUtilisateur.toLowerCase()) )
+				.filter(x-> x.getNomArticle().toLowerCase().contains(saisieUtilisateur.toLowerCase()) )
 				.forEach(x->list_encheres.add(x))
 				;	
 				request.setAttribute("list_encheres",list_encheres);
@@ -95,13 +91,13 @@ public class ServletPageDAccueil extends HttpServlet {
 					default:
 						break;
 					}
-					list_categorie2=manager.selectEncheresByCategorie(no_categorie);
+					list_categorie2=manager.selectByCategorie(no_categorie);
 					request.setAttribute("cat", list_categorie2);
 					
 					if(list_categorie2!=null) {
-					for(Enchere enchere:list_categorie2) {
+					for(ArticleVendu enchere:list_categorie2) {
 						 
-						if(enchere.getArticle_vendu().toLowerCase().contains(saisieUtilisateur.toLowerCase()))
+						if(enchere.getNomArticle().toLowerCase().contains(saisieUtilisateur.toLowerCase()))
 							list_encheres.add(enchere);
 						}
 							
@@ -115,7 +111,7 @@ public class ServletPageDAccueil extends HttpServlet {
 			else {
 				if(select!=null) {
 
-					 list_categorie=manager.selectEncheresByCategorie(no_categorie);
+					 list_categorie=manager.selectByCategorie(no_categorie);
 					
 					 if(list_categorie!=null)
 						{request.setAttribute("list_encheres", list_categorie);}
