@@ -46,9 +46,11 @@ public class ServletVendreArticle extends HttpServlet {
 		u.setDescription(request.getParameter("description"));
 		u.setDateDebutEncheres(LocalDate.parse(request.getParameter("date_debut_encheres")));
 		u.setDateFinEncheres(LocalDate.parse(request.getParameter("date_fin_encheres")));
-		u.setMiseAPrix(Integer.valueOf(request.getParameter("prix_initial")));
 		u.setNo_utilisateur(vendeur.getNoUtilisateur());
 		u.setNo_categorie(Integer.valueOf(request.getParameter("no_categorie")));
+		if(!request.getParameter("prix_initial").equals("")) {
+			u.setMiseAPrix(Integer.valueOf(request.getParameter("prix_initial")));
+		}
 		
 		Retrait r = new Retrait();
 		RetraitManager mngRet = new RetraitManager();
