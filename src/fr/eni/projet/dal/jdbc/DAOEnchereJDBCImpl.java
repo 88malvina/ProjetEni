@@ -33,8 +33,8 @@ public class DAOEnchereJDBCImpl implements DAOEnchere{
 
 		PreparedStatement psmt = cnx.prepareStatement(insertEncere, PreparedStatement.RETURN_GENERATED_KEYS); {
 			
-			psmt.setInt(1,t.getUtilisateur().getNoUtilisateur());
-			psmt.setInt(2,t.getArticle_vendu().getNoArticle());
+			psmt.setString(1,t.getUtilisateur());
+			psmt.setString(2,t.getArticle_vendu());
 			psmt.setDate(3,t.getDate_enchere());
 			psmt.setInt(4, t.getMontant_enchere());
 			psmt.executeUpdate();
@@ -79,10 +79,10 @@ public class DAOEnchereJDBCImpl implements DAOEnchere{
 			ResultSet rs = smt.executeQuery(selectAll);
 		while(rs.next()) {
 			enchere= new Enchere();
-			enchere.getArticle_vendu().setNomArticle(rs.getString("nom_article"));
+			enchere.setArticle_vendu(rs.getString("nom_article"));
 			enchere.setMontant_enchere(rs.getInt("montant_enchere"));
 			enchere.setDate_enchere(rs.getDate("date_enchere"));
-			enchere.getUtilisateur().setPseudo(rs.getString("pseudo"));
+			enchere.setUtilisateur(rs.getString("pseudo"));
 			list.add(enchere);
 		}
 		cnx.close();
@@ -96,13 +96,13 @@ public class DAOEnchereJDBCImpl implements DAOEnchere{
 		
 		PreparedStatement psmt = cnx.prepareStatement(selectEncheresByCategorie);
 		psmt.setInt(1,no_categorie);
-		ResultSet rs=psmt.executeQuery();System.out.println("h");
+		ResultSet rs=psmt.executeQuery();
 		if(rs.next()) {
 			enchere=new Enchere();
-			enchere.getArticle_vendu().setNomArticle(rs.getString("nom_article"));
+			enchere.setArticle_vendu(rs.getString("nom_article"));
 			enchere.setMontant_enchere(rs.getInt("montant_enchere"));
 			enchere.setDate_enchere(rs.getDate("date_enchere"));
-			enchere.getUtilisateur().setPseudo(rs.getString("pseudo"));
+			enchere.setUtilisateur(rs.getString("pseudo"));
 			list.add(enchere);
 		}
 		psmt.close();
