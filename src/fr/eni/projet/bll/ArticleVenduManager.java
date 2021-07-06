@@ -85,26 +85,28 @@ public class ArticleVenduManager {
 			String messageErreur="";
 			
 			boolean nomArtOk=false;
-			boolean descriptionOk=false;
-			boolean dateDebutOk=false;
-			boolean dateFinOk=false;
-			boolean prixInitialOk=false;
+//			boolean descriptionOk=false;
+//			boolean dateDebutOk=false;
+//			boolean dateFinOk=false;
+//			boolean prixInitialOk=false;
 			
 			// ---------------------- verifier nom article
 			
 			if(a.getNomArticle().length()<3) {
-				messageErreur="Le nom doit avoir au moins 3 caracteres.";
+				messageErreur="Le nom de l'article doit avoir au moins 3 caracteres.";
 			} else if (a.getNomArticle().length()>20) {
-				messageErreur="Le nom doit avoir au maximum 20 caracteres.";
+				messageErreur="Le nom de l'article doit avoir au maximum 20 caracteres.";
 			} else if (!OutilsVerification.noSpecialChars(a.getNomArticle())) {
-				messageErreur="Le nom ne doit pas avoir des caractères spéciaux.";
+				messageErreur="Le nom de l'article ne doit pas avoir des caractères spéciaux.";
 			} else {
 				nomArtOk=true;
 			}
 			
 			// ---------------------- verifier si toutes les conditions sont remplies
-
-			if(nomArtOk && descriptionOk  && dateDebutOk && dateFinOk && prixInitialOk) {
+			
+			// && descriptionOk  && dateDebutOk && dateFinOk && prixInitialOk
+			
+			if(nomArtOk ) {
 				messageErreur="Verificaton réussite.";
 			}
 
