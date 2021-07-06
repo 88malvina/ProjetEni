@@ -11,10 +11,13 @@
 </style>
 <nav>
 	
-	
 		<!----------------- logo et nom du site -->
+		
 		<nav class="menu navbar navbar-expand-sm justify-content-center">
 		<a class="nav-link navbar-brand" href="#"><img src="images/logo.png" alt="Logo du site" title="logo du site" /></a>
+   	
+   	<!--  ======================== Nav Quand utilisateur connecte ============================================ -->
+   	
    	<c:choose>
 			<c:when test="${ !empty utilisateur }">
 			
@@ -26,12 +29,23 @@
         <a class="nav-link" href="/ProjetEni/ServletVendreArticle">Vendre un article</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/ProjetEni/ServletAfficherProfil">Mon profil</a>
+        <a class="nav-link" href="/ProjetEni/ServletModifierMonProfil">Modifier mon profil</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/ProjetEni/ServletSupprimerMonCompte">Modifier mon compte</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/ProjetEni/ServletAfficherProfil">Afficher un profil</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/ProjetEni/ServletSeDeconnecter">Dèconnexion</a>
+        <a class="nav-link" href="/ProjetEni/ServletSeDeconnecter">Déconnexion</a>
       </li>
     </ul>
+    
+    <!--  ======================== Nav Quand utilisateur pas connecte ============================================ -->
+    
     </c:when>
     				<c:when test="${ empty utilisateur }">
 				<c:choose>

@@ -1,3 +1,3 @@
 <footer>
-		<h5>Copyright &copy; ENI 2021 - Antoine, Malvina et Priscila</h5>
+		<h5>Copyright &copy; ENI 2021 - Malvina Priscila et Antoine</h5>
 </footer>
