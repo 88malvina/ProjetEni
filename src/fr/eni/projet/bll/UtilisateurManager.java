@@ -317,6 +317,8 @@ public class UtilisateurManager {
 		
 		if(!OutilsVerification.onlyNumbers(u.getCodePostal()) || u.getCodePostal().length()<5) {
 			messageErreur="Le code postal doit avoir 5 chiffres.";
+		} else {
+			codePostalOk=true;
 		}
 
 		// ---------------------- verifier si toutes les conditions sont remplies
