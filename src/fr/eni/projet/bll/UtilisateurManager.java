@@ -209,7 +209,7 @@ public class UtilisateurManager {
 		}
 
 		// teste toutes les conditions
-		if(!noSpecialChars(u.getPseudo())) {
+		if(!OutilsVerification.noSpecialChars(u.getPseudo())) {
 			messageErreur="Le pseudo ne doit pas avoir des caractères spéciaux.";
 		} else if(recherche != null) {
 			messageErreur="Pseudo déjà utilisé.";
@@ -231,7 +231,7 @@ public class UtilisateurManager {
 			messageErreur="Le nom doit avoir au moins 3 caracteres.";
 		} else if (u.getNom().length()>20) {
 			messageErreur="Le nom doit avoir au maximum 20 caracteres.";
-		} else if (!noSpecialChars(u.getNom())) {
+		} else if (!OutilsVerification.noSpecialChars(u.getNom())) {
 			messageErreur="Le nom ne doit pas avoir des caractères spéciaux.";
 		} else {
 			nomOk=true;
@@ -243,7 +243,7 @@ public class UtilisateurManager {
 			messageErreur="Le prenom doit avoir au moins 3 caracteres.";
 		} else if (u.getPrenom().length()>20) {
 			messageErreur="Le prenom doit avoir au maximum 20 caracteres.";
-		} else if (!noSpecialChars(u.getPrenom())) {
+		} else if (!OutilsVerification.noSpecialChars(u.getPrenom())) {
 			messageErreur="Le prenom ne doit pas avoir des caractères spéciaux.";
 		} else {
 			prenomOk=true;
@@ -262,7 +262,7 @@ public class UtilisateurManager {
 			messageErreur="Le mot de passe doit avoir au moins 8 caracteres.";
 		} else if (u.getMotDePasse().length()>20) {
 			messageErreur="Le mot de passe doit avoir au maximum 20 caracteres.";
-		} else if (noSpecialChars(u.getMotDePasse())) {
+		} else if (OutilsVerification.noSpecialChars(u.getMotDePasse())) {
 			messageErreur="Le mot de passe doit avoir au moins 1 caractere special.";
 		} else {
 			motDePasseOk=true;
@@ -500,28 +500,5 @@ public class UtilisateurManager {
 	}
 
 
-	/**
-	 * 
-	 * Méthode en charge de vérifier si un mot n'a pas de caracteres spéciaux 
-	 * 
-	 * @param motAVerifier le mot à verifier
-	 * @return true si le mot n'a pas de caracteres spéciaux
-	 * @author pconchou2021
-	 */
-
-	public boolean noSpecialChars(String motAVerifier) {
-		boolean noSpecialChars = false;
-		char[] charsDuMot = motAVerifier.toCharArray();
-		for(char c : charsDuMot) {
-			if(c>=48 && c<=57 || c>=65 && c<=90 || c>=97 && c<=122 ) {
-				noSpecialChars=true;
-			} else {
-				noSpecialChars=false;
-				break;
-			}
-		}
-
-		return noSpecialChars;
-	}
 
 }

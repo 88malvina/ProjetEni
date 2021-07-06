@@ -18,6 +18,11 @@ public class Retrait {
 	
 	
 	
+	public Retrait() {
+	}
+
+
+
 	public int getNo_article() {
 		return no_article;
 	}

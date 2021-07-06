@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -76,7 +75,7 @@ public class ServletPageDAccueil extends HttpServlet {
 				if(select==null) {
 				
 				listAllEncheres.stream()
-				.filter(x-> x.getArticle_vendu().getNomArticle().toLowerCase().contains(saisieUtilisateur.toLowerCase()) )
+				.filter(x-> x.getArticle_vendu().toLowerCase().contains(saisieUtilisateur.toLowerCase()) )
 				.forEach(x->list_encheres.add(x))
 				;	
 				request.setAttribute("list_encheres",list_encheres);
@@ -101,12 +100,12 @@ public class ServletPageDAccueil extends HttpServlet {
 					
 					if(list_categorie2!=null) {
 					for(Enchere enchere:list_categorie2) {
-						
-						if(enchere.getArticle_vendu().getNomArticle().toLowerCase().contains(saisieUtilisateur.toLowerCase()))
+						 
+						if(enchere.getArticle_vendu().toLowerCase().contains(saisieUtilisateur.toLowerCase()))
 							list_encheres.add(enchere);
 						}
 							
-					}
+			 		}
 					else {
 					request.setAttribute("aucune_trouvé", "Rien n'a été trouvé");
 					}

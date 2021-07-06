@@ -40,7 +40,12 @@ public class ArticleVenduManager {
 		}
 		
 		public void insert(ArticleVendu u) {
-			daoArtVendu.insert(u);
+			try {
+				daoArtVendu.insert(u);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		
@@ -73,5 +78,40 @@ public class ArticleVenduManager {
 				e.printStackTrace();
 			}
 			return artVendus;
+		}
+		
+		public String verifArticle (ArticleVendu a) {
+			
+			String messageErreur="";
+			
+			boolean nomArtOk=false;
+//			boolean descriptionOk=false;
+//			boolean dateDebutOk=false;
+//			boolean dateFinOk=false;
+//			boolean prixInitialOk=false;
+			
+			// ---------------------- verifier nom article
+			
+			if(a.getNomArticle().length()<3) {
+				messageErreur="Le nom de l'article doit avoir au moins 3 caracteres.";
+			} else if (a.getNomArticle().length()>20) {
+				messageErreur="Le nom de l'article doit avoir au maximum 20 caracteres.";
+			} else if (!OutilsVerification.noSpecialChars(a.getNomArticle())) {
+				messageErreur="Le nom de l'article ne doit pas avoir des caractères spéciaux.";
+			} else {
+				nomArtOk=true;
+			}
+			
+			// ---------------------- verifier si toutes les conditions sont remplies
+			
+			// && descriptionOk  && dateDebutOk && dateFinOk && prixInitialOk
+			
+			if(nomArtOk ) {
+				messageErreur="Verificaton réussite.";
+			}
+
+			System.out.println(messageErreur);
+
+			return messageErreur;
 		}
 }
