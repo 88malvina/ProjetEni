@@ -134,7 +134,8 @@ public class ServletPageDAccueil extends HttpServlet {
 			// TODO MALVINA gérer exception
 			e.printStackTrace();
 			}
-
+		request.setAttribute("pageActuelle", "resultat_de_recherche");
+		
 		RequestDispatcher rd=request.getRequestDispatcher("/WEB-INF/jspFiles/jspResultatDeRecherche.jsp");
 		rd.forward(request, response);
 	}
