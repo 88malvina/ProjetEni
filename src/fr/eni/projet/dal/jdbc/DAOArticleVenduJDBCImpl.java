@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.projet.bo.ArticleVendu;
+import fr.eni.projet.bo.Enchere;
 import fr.eni.projet.dal.DAOArticleVendu;
 
 /**
@@ -34,6 +35,8 @@ public class DAOArticleVenduJDBCImpl implements DAOArticleVendu {
 	private String selectByNom_article = "select * from ARTICLES_VENDUS WHERE nom_article=? ";
 
 	private String selectByUtilisateur = "select * from ARTICLES_VENDUS WHERE no_utilisateur=? ";
+	
+	private String selectByCategorie = "select * from ARTICLES_VENDUS WHERE no_categorie=?";
 
 
 	@Override
@@ -276,6 +279,34 @@ public class DAOArticleVenduJDBCImpl implements DAOArticleVendu {
 			e.printStackTrace();
 		}
 		return articlesVendus;
+	}
+	
+	public List<ArticleVendu> selectByCategorie(int no_categorie) throws SQLException {
+		List<ArticleVendu> articlesVendus = new ArrayList<ArticleVendu>();
+		
+		ArticleVendu article=null;
+		Connection cnx = ConnectionProvider.getConnection();
+		  
+		PreparedStatement psmt = cnx.prepareStatement(selectByCategorie);
+		psmt.setInt(1,no_categorie);
+		ResultSet rs=psmt.executeQuery();
+		if(rs.next()) {
+			article=new ArticleVendu();
+			article.setNoArticle(rs.getInt("no_article"));
+			article.setNomArticle(rs.getString("nom_article"));
+			article.setDescription(rs.getString("description"));
+			article.setDateDebutEncheres(rs.getDate("date_debut_encheres").toLocalDate());
+			article.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
+			article.setMiseAPrix(rs.getInt("prix_initial"));
+			article.setPrixVente(rs.getInt("prix_vente"));
+			article.setNo_utilisateur(rs.getInt("no_utilisateur"));
+			article.setNo_categorie(rs.getInt("no_categorie"));
+			
+			articlesVendus.add(article);	
+		}
+		psmt.close();
+		cnx.close();
+		return  articlesVendus;
 	}
 
 }
