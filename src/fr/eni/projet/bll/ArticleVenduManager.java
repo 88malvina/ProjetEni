@@ -4,6 +4,7 @@
 package fr.eni.projet.bll;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,10 +86,10 @@ public class ArticleVenduManager {
 			String messageErreur="";
 			
 			boolean nomArtOk=false;
-//			boolean descriptionOk=false;
-//			boolean dateDebutOk=false;
-//			boolean dateFinOk=false;
-//			boolean prixInitialOk=false;
+			boolean descriptionOk=false;
+			boolean dateDebutOk=false;
+			boolean dateFinOk=false;
+			boolean prixInitialOk=false;
 			
 			// ---------------------- verifier nom article
 			
@@ -102,11 +103,42 @@ public class ArticleVenduManager {
 				nomArtOk=true;
 			}
 			
+			// ---------------------- verifier description
+			
+			if(a.getDescription().length()>300) {
+				messageErreur="La description de l'article doit avoir au maximum 300 caracteres.";
+			} else {
+				descriptionOk=true;
+			}
+			
+			// ---------------------- verifier date de début de l'enchère 
+			
+			if(a.getDateDebutEncheres().compareTo(LocalDate.now())<0) {
+				messageErreur="Date de début invalide.";
+			}else {
+				dateDebutOk=true;
+			}
+			
+			// ---------------------- verifier date de fin de l'enchère 
+			
+			if(a.getDateDebutEncheres().compareTo(a.getDateFinEncheres())<0 ||
+					a.getDateDebutEncheres().compareTo(a.getDateFinEncheres())==0) {
+				messageErreur="La date de fin doit être postérieure à la date de début.";
+			} else {
+				dateFinOk=true;
+			}
+			
+			// ---------------------- verifier prix initial
+			
+			if(a.getMiseAPrix()<=0) {
+				messageErreur="Le prix initial doit être positif.";
+			} else {
+				prixInitialOk=true;
+			}
+			
 			// ---------------------- verifier si toutes les conditions sont remplies
 			
-			// && descriptionOk  && dateDebutOk && dateFinOk && prixInitialOk
-			
-			if(nomArtOk ) {
+			if(nomArtOk && descriptionOk && dateDebutOk && dateFinOk && prixInitialOk) {
 				messageErreur="Verificaton réussite.";
 			}
 

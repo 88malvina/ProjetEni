@@ -34,8 +34,8 @@
 						
 						<div class="row">
 							<div class="col-sm-12 col-md-6">
-								<label for="nomArticle">Nom :</label>
-								<input type="text" name="nomArticle" id="nomArticle" placeholder="Un petit nom sympa"
+								<label for="nom_article">Nom :</label>
+								<input type="text" name="nom_article" id="nom_article" placeholder="Un petit nom sympa"
 								size="40" maxlength="30" autofocus="autofocus" required="required" />
 							</div>
 						
@@ -53,21 +53,21 @@
 						<div class="row">
 							<div class="col-sm-12">
 								<label for="description">Description :</label>
-								<textarea name="description" id="description" rows="6" cols="60" maxlength="30" required="required">Parlez un peu sur votre article...</textarea>
+								<textarea name="description" id="description" rows="6" cols="60" maxlength="300" required="required">Parlez un peu sur votre article...</textarea>
 							</div>
 						</div>
 						
 						<div class="row">
 							<div class="col-sm-12 col-md-6">
 								<label for="date_debut_encheres">Date début de l'enchère :</label>
-								<input type="datetime-local" id="date_debut_encheres"
+								<input type="date" id="date_debut_encheres"
 								       name="date_debut_encheres" value="${ LocalDate.now() }"
 								       min="${ LocalDate.now() }" required="required">
 							</div>
 						
 							<div class="col-sm-12 col-md-6">
 								<label for="date_fin_encheres">Date fin de l'enchère :</label>
-								<input type="datetime-local" id="date_fin_encheres"
+								<input type="date" id="date_fin_encheres"
 								       name="date_fin_encheres" value="${ LocalDate.now() }"
 								       min="${ date_debut_encheres }" required="required">
 							</div>
@@ -103,7 +103,7 @@
 						<div class="row">
 							<div class="col-sm-12 col-md-6">
 								<p>
-									<c:out value="${ message_erreur }" />
+									<c:out value="${ message_erreur_article }" />
 								</p>
 							</div>
 						</div>

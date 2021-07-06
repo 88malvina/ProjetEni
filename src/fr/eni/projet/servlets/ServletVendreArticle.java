@@ -1,7 +1,7 @@
 package fr.eni.projet.servlets;
 
 import java.io.IOException;
-import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,8 +44,8 @@ public class ServletVendreArticle extends HttpServlet {
 
 		u.setNomArticle(request.getParameter("nom_article"));
 		u.setDescription(request.getParameter("description"));
-		u.setDateDebutEncheres(Date.valueOf(request.getParameter("date_debut_encheres")).toLocalDate());
-		u.setDateFinEncheres(Date.valueOf(request.getParameter("date_fin_encheres")).toLocalDate());
+		u.setDateDebutEncheres(LocalDate.parse(request.getParameter("date_debut_encheres")));
+		u.setDateFinEncheres(LocalDate.parse(request.getParameter("date_fin_encheres")));
 		u.setMiseAPrix(Integer.valueOf(request.getParameter("prix_initial")));
 		u.setNo_utilisateur(vendeur.getNoUtilisateur());
 		u.setNo_categorie(Integer.valueOf(request.getParameter("no_categorie")));
@@ -60,7 +60,7 @@ public class ServletVendreArticle extends HttpServlet {
 		r.setVille(request.getParameter("ville"));
 		
 
-		String message_erreur = ""; // mng.controleInscription(u, confirmation_mot_de_passe);
+		String message_erreur = mngArt.verifArticle(u);
 
 		if (message_erreur.equals("Verificaton réussite.")) {
 
@@ -72,7 +72,7 @@ public class ServletVendreArticle extends HttpServlet {
 			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspPageDAccueil.jsp").forward(request, response);
 
 		} else {
-			session.setAttribute("message_erreur", message_erreur);
+			session.setAttribute("message_erreur_article", message_erreur);
 			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspVendreArticle.jsp").forward(request, response);
 		}
 	}
