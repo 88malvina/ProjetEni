@@ -194,6 +194,7 @@ public class UtilisateurManager {
 		boolean prenomOk = false;
 		boolean telephoneOk = false;
 		boolean emailOk = false;
+		boolean codePostalOk = false;
 
 
 		//-------------check pseudo
@@ -311,10 +312,16 @@ public class UtilisateurManager {
 		}
 
 		System.out.println(messageErreur);
+		
+		// ------------------- check code postal
+		
+		if(!OutilsVerification.onlyNumbers(u.getCodePostal()) || u.getCodePostal().length()<5) {
+			messageErreur="Le code postal doit avoir 5 chiffres.";
+		}
 
 		// ---------------------- verifier si toutes les conditions sont remplies
 
-		if(motDePasseOk && confirmationMotDePasseOk  && pseudoOk && nomOk && prenomOk && telephoneOk && emailOk) {
+		if(motDePasseOk && confirmationMotDePasseOk  && pseudoOk && nomOk && prenomOk && telephoneOk && emailOk && codePostalOk) {
 			messageErreur="Verificaton réussite.";
 		}
 
