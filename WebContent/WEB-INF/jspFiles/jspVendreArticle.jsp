@@ -53,7 +53,8 @@
 						<div class="row">
 							<div class="col-sm-12">
 								<label for="description">Description :</label>
-								<textarea name="description" id="description" rows="6" cols="60" maxlength="300" required="required">Parlez un peu sur votre article...</textarea>
+								<textarea name="description" id="description" rows="6" cols="60" maxlength="300" 
+								placeholder="Parlez un peu sur votre article..." required="required"></textarea>
 							</div>
 						</div>
 						
@@ -82,19 +83,19 @@
 							<div class="col-sm-12">
 								<label for="rue">Rue :</label>
 								<input type="text" name="rue" id="rue" placeholder="Votre rue"
-								size="40" maxlength="30" required="required"/>
+								size="40" maxlength="30" value="${ utilisateur.getRue() }" required="required"/>
 							</div>
 							
 							<div class="col-sm-12">
 								<label for="code_postal">Code postal :</label>
 								<input type="text" name="code_postal" id="code_postal" placeholder="Votre Code postal"
-								size="40" maxlength="10" required="required" />
+								size="40" maxlength="10" value="${ utilisateur.getCodePostal() }" required="required" />
 							</div>
 							
 							<div class="col-sm-12 col-md-6">
 								<label for="ville">Ville :</label>
 								<input type="text" name="ville" id="ville" placeholder="Votre ville"
-								size="40" maxlength="30" required="required"/>
+								size="40" maxlength="30" value="${ utilisateur.getVille() }" required="required"/>
 							</div>
 						</div>
 						
