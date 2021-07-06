@@ -1,11 +1,12 @@
 @charset "ISO-8859-1";
-	body{
 	
+	section {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
-	.container {
-	display: flex;
-	flex-direction: row;
-	}
+
+
 	.logo{
 		width:70%;
 	}
@@ -27,7 +28,7 @@
 	.liste_enchères{
 		margin-bottom: 10px;
 		display: flex;
-		flex-direction: row;
+		flex-direction: row !important;
 	}
 	.photo{
 		width: 40%;

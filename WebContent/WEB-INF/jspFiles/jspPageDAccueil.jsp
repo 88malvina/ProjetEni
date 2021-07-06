@@ -10,34 +10,10 @@
 	<%@include file="/css/style.css"%>
 </style>
 <body>
-	
-	<!-- Message de confirmation si suppression de compte vient d'être effectué -->
-	<c:if test="${!empty compteSupprime}">
-    <p><c:out value="${compteSupprime }" /> </p>
-	</c:if>
-	<!-- ------------------------ -->
-	
-	<!-- Message de confirmation si l'on vient juste de se connecter -->
-	<c:if test="${!empty messageLog}">
-    <p><c:out value="${messageLog }" /> </p>
-	</c:if>
-	<!-- ------------------------ -->
-	
-	<div class="container">
-	
-	<!-- HEADER -->
-	
 	<jsp:include page="/WEB-INF/jspFiles/jspHeader.jsp">
 		<jsp:param value="pageActuelle" name="accueil"/>
 	</jsp:include>
-		
-	<!-- 		<div class="logo"> -->
-	<!-- 			<h3>ENI-Encheres</h3> -->
-	<!-- 		</div> -->
-	<!-- 	<div class="se_connecter"><a href="/ProjetEni/ServletVersJSPInscription">S'inscrire</a>-<a href="/ProjetEni/ServletSeConnecter">Se connecter</a></div> -->
-	</div>
-	
-	
+	<div class="container">
 	<div class="titre"><h4>Liste des enchères</h4></div>
 	Filtres:<br>
 	<form method="post" action=""> 
@@ -70,6 +46,7 @@
 			Vendeur : ${enchere.utilisateur}
 		</div>
 		</div></c:forEach>
+	</div>
 	</div>
 	<jsp:include page="/WEB-INF/jspFiles/jspFooter.jsp">
 			<jsp:param value="footer" name="footer"/>

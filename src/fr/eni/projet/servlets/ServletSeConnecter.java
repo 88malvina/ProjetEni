@@ -1,6 +1,8 @@
 package fr.eni.projet.servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import fr.eni.projet.bll.EnchereManager;
 import fr.eni.projet.bll.UtilisateurManager;
+import fr.eni.projet.bo.Enchere;
 import fr.eni.projet.bo.Utilisateur;
 
 /**
@@ -51,7 +56,18 @@ public class ServletSeConnecter extends HttpServlet {
 			String messageLog = "Bonjour " + pseudo + " Vous êtes bien connecte";
 			request.setAttribute("messageLog", messageLog);
 			
-			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspPageDAccueil.jsp").forward(request, response);
+			EnchereManager manager = new EnchereManager();
+			try {
+				List<Enchere> list=manager.selectAll();
+				request.setAttribute("encheres", list);
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			request.setAttribute("pageActuelle", "accueil");
+			
+			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspPageDAccueilModeConnecté.jsp").forward(request, response);
 		}
 		
 		//En cas de connexion not ok, on renvoie vers la jsp se connecter avec un message d'erreur

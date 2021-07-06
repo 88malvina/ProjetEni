@@ -51,11 +51,10 @@ public class ServletPageDAccueil extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		EnchereManager manager = new EnchereManager();
-		int no_categorie=0;
-		List<Enchere> listAllEncheres;
-		List<Enchere> list_encheres_trouver_parNom=new ArrayList<Enchere>();
 		
-		List<Enchere> list3=new ArrayList<Enchere>();
+		List<Enchere> listAllEncheres;
+		List<Enchere> list_encheres=new ArrayList<Enchere>();
+	
 		 List<Enchere> list_categorie=null;
 		 List<Enchere> list_categorie2=null;
 		try {
@@ -70,79 +69,66 @@ public class ServletPageDAccueil extends HttpServlet {
 		if(request.getParameter("rechercher")!=null) {
 			String saisieUtilisateur=request.getParameter("saisieUtilisateur");
 			String select=request.getParameter("select");
+			int no_categorie=0;
 			
 			/*----cas chercher par nom------*/
-			if(saisieUtilisateur!=null && select==null) {
+			if(saisieUtilisateur!=null) {
+				if(select==null) {
 				
 				listAllEncheres.stream()
-				.filter(Objects :: nonNull)
 				.filter(x-> x.getArticle_vendu().toLowerCase().contains(saisieUtilisateur.toLowerCase()) )
-				.forEach(x->list_encheres_trouver_parNom.add(x))
+				.forEach(x->list_encheres.add(x))
 				;	
-			}
-			/*-----fin------*/
-			
-			
-			/*-----cas chercher par categorie-----*/ 
-			/*-------refaire avec les filtres-------*/
-			if(saisieUtilisateur==null && select!=null){
-			
-				switch (select) {
-				case "informatique": no_categorie=1;
-					break;
-				case "vetement": no_categorie=2;
-				break;
-				case "ameublement": no_categorie=3;
-				break;
-				case "sport": no_categorie=4;
-				break;
-				default:
-					break;
-				}
-			
-			 list_categorie=manager.selectEncheresByCategorie(no_categorie);
-			
-			 if(list_categorie!=null)
-				{request.setAttribute("categorie", list_categorie);}
-			 else {
-				 request.setAttribute("aucune_trouvé", "Rien n'a été trouvé");}
-			}System.out.println(list_categorie);
-			
-			/*-------fin-------*/
-			
-			/*-----cas chercher par nom et categorie-----*/
-			if(saisieUtilisateur!=null && select!=null) {
-				switch (select) {
-				case "informatique": no_categorie=1;
-					break;
-				case "vetement": no_categorie=2;
-				break;
-				case "ameublement": no_categorie=3;
-				break;
-				case "sport": no_categorie=4;
-				break;
-				default:
-					break;
-				}
+				request.setAttribute("list_encheres",list_encheres);
 				
-				 list_categorie2=manager.selectEncheresByCategorie(no_categorie);
+				}
+				else
+				{
+					switch (select) {
+					case "informatique": no_categorie=1;
+						break;
+					case "vetement": no_categorie=2;
+					break;
+					case "ameublement": no_categorie=3;
+					break;
+					case "sport": no_categorie=4;
+					break;
+					default:
+						break;
+					}
+					list_categorie2=manager.selectEncheresByCategorie(no_categorie);
 					request.setAttribute("cat", list_categorie2);
 					
 					if(list_categorie2!=null) {
 					for(Enchere enchere:list_categorie2) {
 						
 						if(enchere.getArticle_vendu().toLowerCase().contains(saisieUtilisateur.toLowerCase()))
-							list3.add(enchere);
+							list_encheres.add(enchere);
 						}
 							
 					}
 					else {
 					request.setAttribute("aucune_trouvé", "Rien n'a été trouvé");
 					}
-					request.setAttribute("list_rechereche_avecNom_et_categorie", list3);	
+					request.setAttribute("list_encheres", list_encheres);	
+				}
 			}
-			/*-----fin-----*/
-				
+			else {
+				if(select!=null) {
+
+					 list_categorie=manager.selectEncheresByCategorie(no_categorie);
+					
+					 if(list_categorie!=null)
+						{request.setAttribute("list_encheres", list_categorie);}
+					 else {
+						 request.setAttribute("aucune_trouvé", "Rien n'a été trouvé");}
+					
+				}
+				else {
+					request.setAttribute("aucune_trouvé", "Rien n'a été trouvé");
+				}
+			}
+			
 		}
 		
 			} catch (SQLException e) {
