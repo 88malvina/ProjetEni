@@ -61,15 +61,13 @@
 							<div class="col-sm-12 col-md-6">
 								<label for="date_debut_encheres">Date début de l'enchère :</label>
 								<input type="date" id="date_debut_encheres"
-								       name="date_debut_encheres" value="${ LocalDate.now() }"
-								       min="${ LocalDate.now() }" required="required">
+								       name="date_debut_encheres" required="required">
 							</div>
 						
 							<div class="col-sm-12 col-md-6">
 								<label for="date_fin_encheres">Date fin de l'enchère :</label>
 								<input type="date" id="date_fin_encheres"
-								       name="date_fin_encheres" value="${ LocalDate.now() }"
-								       min="${ date_debut_encheres }" required="required">
+								       name="date_fin_encheres" required="required">
 							</div>
 						</div>
 						

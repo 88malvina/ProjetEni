@@ -69,11 +69,13 @@ public class ServletVendreArticle extends HttpServlet {
 			r.setNo_article(u.getNoArticle());
 			mngRet.insert(r);
 			
+			// TODO PRISCILA changer lien 
 			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspPageDAccueil.jsp").forward(request, response);
 
 		} else {
 			session.setAttribute("message_erreur_article", message_erreur);
-			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspVendreArticle.jsp").forward(request, response);
+			doGet(request, response);
+			//this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspVendreArticle.jsp").forward(request, response);
 		}
 	}
 

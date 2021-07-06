@@ -119,18 +119,23 @@ public class ArticleVenduManager {
 				dateDebutOk=true;
 			}
 			
-			// ---------------------- verifier date de fin de l'enchère 
+			System.out.println(messageErreur);
 			
-			if(a.getDateDebutEncheres().compareTo(a.getDateFinEncheres())<0 ||
-					a.getDateDebutEncheres().compareTo(a.getDateFinEncheres())==0) {
+			// ---------------------- verifier date de fin de l'enchère 
+					
+			
+			if(a.getDateDebutEncheres().compareTo(a.getDateFinEncheres())>0 
+					|| a.getDateDebutEncheres().compareTo(a.getDateFinEncheres())==0) {
 				messageErreur="La date de fin doit être postérieure à la date de début.";
 			} else {
 				dateFinOk=true;
 			}
 			
+			System.out.println(messageErreur);
+			
 			// ---------------------- verifier prix initial
 			
-			if(a.getMiseAPrix()<=0) {
+			if(a.getMiseAPrix()<0) {
 				messageErreur="Le prix initial doit être positif.";
 			} else {
 				prixInitialOk=true;
