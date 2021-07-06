@@ -16,7 +16,7 @@ public class Enchere {
 		this.date_enchere=date_enchere;
 		this.montant_enchere=montant_enchere;
 	}
-
+ 
 	public Enchere( String article_vendu,int montant_enchere, Date date_enchere, String utilisateur) {
 		this.article_vendu = article_vendu;
 		this.montant_enchere=montant_enchere;

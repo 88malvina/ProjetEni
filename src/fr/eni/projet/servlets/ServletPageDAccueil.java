@@ -100,7 +100,7 @@ public class ServletPageDAccueil extends HttpServlet {
 					
 					if(list_categorie2!=null) {
 					for(Enchere enchere:list_categorie2) {
-						
+						 
 						if(enchere.getArticle_vendu().toLowerCase().contains(saisieUtilisateur.toLowerCase()))
 							list_encheres.add(enchere);
 						}
