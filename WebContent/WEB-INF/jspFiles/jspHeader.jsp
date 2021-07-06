@@ -33,10 +33,6 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="/ProjetEni/ServletSupprimerMonCompte">Supprimer mon compte</a>
-      </li>
-      
-      <li class="nav-item">
         <a class="nav-link" href="/ProjetEni/ServletAfficherProfil">Afficher un profil</a>
       </li>
       <li class="nav-item">
