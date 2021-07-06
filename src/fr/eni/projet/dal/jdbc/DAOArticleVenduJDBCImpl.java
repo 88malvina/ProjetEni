@@ -145,7 +145,9 @@ public class DAOArticleVenduJDBCImpl implements DAOArticleVendu {
 			while(rs.next())
 			{
 				u = new ArticleVendu();
-				u.setNoArticle(rs.getInt("no_article"));
+				//en utilisant cette méthode j'ai eu une erreur comme quoi no_article n'est pas valide
+				//pour l'instant je mets ceci dans le commentaire
+				//u.setNoArticle(rs.getInt("no_article"));
 				u.setNomArticle(rs.getString("nom_article"));
 				u.setDescription(rs.getString("description"));
 				u.setDateDebutEncheres(rs.getDate("date_debut_encheres").toLocalDate());
