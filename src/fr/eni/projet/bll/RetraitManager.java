@@ -9,7 +9,7 @@ import fr.eni.projet.dal.DAOFactory;
 import fr.eni.projet.dal.DAORetrait;
 
 public class RetraitManager {
-	
+
 	// DAOUtilisateur
 	private DAORetrait daoRetrait = DAOFactory.getRetraitDAO();
 
@@ -50,5 +50,50 @@ public class RetraitManager {
 
 	public void delete(Retrait u) {
 		daoRetrait.delete(u);
+	}
+
+	public String verifRetrait(Retrait u) {
+		String messageErreur = "";
+		boolean codePostalOk = false;
+		boolean rueOk = false;
+		boolean villeOk = false;
+
+		// ------------------- check code postal
+
+		if(!OutilsVerification.onlyNumbers(u.getCode_postal()) || u.getCode_postal().length()<5) {
+			messageErreur="Le code postal doit avoir 5 chiffres.";
+		} else {
+			codePostalOk=true;
+		}
+		
+		// ------------------- check rue
+		
+		if(!OutilsVerification.onlyLetters(u.getVille())) {
+			messageErreur="Le nom de la rue ne doit pas avoir des caractères spéciaux.";
+		} else if (u.getRue().length()>30){
+			messageErreur="Le nom de la rue doit avoir au maximun 30 caractères.";
+		} else {
+			rueOk=true;
+		}
+		
+		// ------------------- check ville
+		
+		if (u.getVille().length()>30){
+			messageErreur="Le nom de la ville doit avoir au maximun 30 caractères.";
+		} else if (!OutilsVerification.onlyLetters(u.getVille())) {
+			messageErreur="Le nom de la ville ne doit pas avoir des caractères spéciaux.";
+		} else {
+			villeOk=true;
+		}
+		
+		// ---------------------- verifier si toutes les conditions sont remplies
+		
+		if(rueOk && villeOk && codePostalOk) {
+			messageErreur="Verificaton réussite.";
+		}
+
+		System.out.println(messageErreur);
+
+		return messageErreur;
 	}
 }
