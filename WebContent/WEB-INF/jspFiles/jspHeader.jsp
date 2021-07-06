@@ -15,7 +15,7 @@
 		
 		<nav class="menu navbar navbar-expand-sm justify-content-center">
 		<a class="nav-link navbar-brand" href="/ProjetEni/encheres/ServletPageDAccueil"><img src="/ProjetEni/images/logo.png" alt="Logo du site" title="logo du site" /></a>
-   	
+   	 
    	<!--  ======================== Nav Quand utilisateur connecte ============================================ -->
    	
    	<c:choose>
