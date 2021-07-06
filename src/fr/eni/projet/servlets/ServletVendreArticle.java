@@ -50,17 +50,15 @@ public class ServletVendreArticle extends HttpServlet {
 		u.setNo_utilisateur(vendeur.getNoUtilisateur());
 		u.setNo_categorie(Integer.valueOf(request.getParameter("no_categorie")));
 		
-		// TODO ADD RETRAIT
-		
 		Retrait r = new Retrait();
 		RetraitManager mngRet = new RetraitManager();
 		
 		r.setRue(request.getParameter("rue"));
 		r.setCode_postal(request.getParameter("code_postal"));
 		r.setVille(request.getParameter("ville"));
-		
 
 		String message_erreur = mngArt.verifArticle(u);
+		message_erreur = mngRet.verifRetrait(r);
 
 		if (message_erreur.equals("Verificaton réussite.")) {
 

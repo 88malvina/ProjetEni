@@ -97,7 +97,7 @@ public class ArticleVenduManager {
 				messageErreur="Le nom de l'article doit avoir au moins 3 caracteres.";
 			} else if (a.getNomArticle().length()>20) {
 				messageErreur="Le nom de l'article doit avoir au maximum 20 caracteres.";
-			} else if (!OutilsVerification.noSpecialChars(a.getNomArticle())) {
+			} else if (!OutilsVerification.onlyLetters(a.getNomArticle())) {
 				messageErreur="Le nom de l'article ne doit pas avoir des caractères spéciaux.";
 			} else {
 				nomArtOk=true;

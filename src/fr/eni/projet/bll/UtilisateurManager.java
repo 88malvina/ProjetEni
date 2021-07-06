@@ -232,7 +232,7 @@ public class UtilisateurManager {
 			messageErreur="Le nom doit avoir au moins 3 caracteres.";
 		} else if (u.getNom().length()>20) {
 			messageErreur="Le nom doit avoir au maximum 20 caracteres.";
-		} else if (!OutilsVerification.noSpecialChars(u.getNom())) {
+		} else if (!OutilsVerification.onlyLetters(u.getNom())) {
 			messageErreur="Le nom ne doit pas avoir des caractères spéciaux.";
 		} else {
 			nomOk=true;
@@ -244,7 +244,7 @@ public class UtilisateurManager {
 			messageErreur="Le prenom doit avoir au moins 3 caracteres.";
 		} else if (u.getPrenom().length()>20) {
 			messageErreur="Le prenom doit avoir au maximum 20 caracteres.";
-		} else if (!OutilsVerification.noSpecialChars(u.getPrenom())) {
+		} else if (!OutilsVerification.onlyLetters(u.getPrenom())) {
 			messageErreur="Le prenom ne doit pas avoir des caractères spéciaux.";
 		} else {
 			prenomOk=true;
