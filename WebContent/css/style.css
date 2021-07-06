@@ -1,18 +1,14 @@
-@charset "ISO-8859-1";
-	
+@charset 'ISO-8859-1';
 	section {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
-
-
-	.logo{
-		width:70%;
-	}
 	.se_connecter{
 	width:30%;}
 	.titre{
+		margin-top:10px;
+		padding-bottom:50px;
 		width:100%;
 		text-align: center;
 	}
@@ -26,7 +22,8 @@
 		flex-direction: row;
 	}
 	.liste_enchères{
-		margin-bottom: 10px;
+		
+		margin-bottom: 20px;
 		display: flex;
 		flex-direction: row !important;
 	}
