@@ -108,9 +108,13 @@
 			</c:when>
 		</c:choose>
 	 	</div>-->
-		<div class="col-sm-12">
+		
+		<!--  si l'on veut ajouter un gros titre c'est ci dessous -->
+		
+		<!--   <div class="col-sm-12">
 			<h1>ENI-Enchères</h1>
 		</div>
+		-->
 		
 		<!----------------- cas où l'utilisateur est connecté / dans la page d'accueil / 
 		dans la page d'inscription -->

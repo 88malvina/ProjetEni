@@ -29,9 +29,6 @@ nécessitant import jstl -->
 	</jsp:include>
 
 
-
-<h1>Bonjour je suis la jsp afficher profil</h1>
-
 <h2> Saisissez le pseudo de l'utilisateur à afficher</h2>
 
 	<form action="<%=request.getContextPath()%>/ServletAfficherProfil" method="post">
@@ -57,16 +54,16 @@ nécessitant import jstl -->
 				<c:if test="${!empty pseudo}"> 
 				
 				<h2> Voici les informations de l'utilisateur </h2>
-				<h3> <c:out value="${pseudo }" /> </h3>
-				<h3> <c:out value="${nomCherche }" /> </h3>
-				<h3> <c:out value="${prenomCherche }" /> </h3>
-				<h3> <c:out value="${emailCherche }" /> </h3>
-				<h3> <c:out value="${telephoneCherche }" /> </h3>
-				<h3> <c:out value="${rueCherche }" /> </h3>
-				<h3> <c:out value="${cpCherche }" /> </h3>
-				<h3> <c:out value="${villeCherche }" /> </h3>
-				<h3> <c:out value="${nomCherche }" /> </h3>
 				
+				<h4> Pseudo : <c:out value="${pseudo }" /> </h4>
+				<h4> Nom : <c:out value="${nomCherche }" />  </h4>
+				<h4> Prenom : <c:out value="${prenomCherche }" />  </h4>
+				<h4> email : <c:out value="${emailCherche }" /> </h4>
+				<h4> tel. : <c:out value="${telephoneCherche }" />  </h4>
+				<h4> Rue : <c:out value="${rueCherche }" /> </h4>
+				<h4> Code postal : <c:out value="${cpCherche }" /> </h4>
+				<h4> Ville :  <c:out value="${villeCherche }" /> </h4>
+
 				</c:if>
 				
 				<!-- Message par défaut si le pseudo est empty -->

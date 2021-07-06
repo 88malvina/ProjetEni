@@ -59,7 +59,7 @@ public class ServletAfficherProfil extends HttpServlet {
 			Utilisateur u = new Utilisateur();
 			u = mng.selectByPseudo(pseudo);
 			String nomCherche = u.getNom();
-			System.out.println("le nom de l'utilisateur cherch� est : " + nomCherche);
+			System.out.println("le nom de l'utilisateur cherché est : " + nomCherche);
 			
 			String prenomCherche = u.getPrenom();
 			String emailCherche = u.getEmail();
