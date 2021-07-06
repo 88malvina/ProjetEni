@@ -40,7 +40,12 @@ public class ArticleVenduManager {
 		}
 		
 		public void insert(ArticleVendu u) {
-			daoArtVendu.insert(u);
+			try {
+				daoArtVendu.insert(u);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		
