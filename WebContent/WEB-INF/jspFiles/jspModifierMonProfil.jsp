@@ -154,6 +154,13 @@ nécessitant import jstl -->
 			</div>
 				
 		</div>
+	
+		<!--  ajout du lien vers la suppression de compte TODO virer le text-align center    -->
+		
+		<div style = "text-align: center" >
+		<h4> <a href="/ProjetEni/ServletSupprimerMonCompte" > Je souhaite supprimer mon compte </a> </h4>
+		</div>
+		
 		<!---------------------------------- ADD FOOTER -------------------------->
 		
 		<jsp:include page="/WEB-INF/jspFiles/jspFooter.jsp">
