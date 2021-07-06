@@ -21,14 +21,27 @@ public class DAOEnchereJDBCImpl implements DAOEnchere{
 			+ "inner join UTILISATEURS on ENCHERES.no_utilisateur=UTILISATEURS.no_utilisateur\r\n"
 			+ "where ARTICLES_VENDUS.no_categorie=?";
 	
+	private String insertEncere="insert into ENCHERES (no_utilisateur,no_article,date_enchere, montant_enchere) Values (?,?,?,?);";
+	
 	public DAOEnchereJDBCImpl() {}
 	
 	
 
 	@Override
-	public void insert(Enchere t) {
-		// TODO MALVINA définir méthode
-		
+	public void insert(Enchere t) throws SQLException {
+		Connection cnx = ConnectionProvider.getConnection();
+
+		PreparedStatement psmt = cnx.prepareStatement(insertEncere, PreparedStatement.RETURN_GENERATED_KEYS); {
+			
+			psmt.setInt(1,t.getUtilisateur().getNoUtilisateur());
+			psmt.setInt(2,t.getArticle_vendu().getNoArticle());
+			psmt.setDate(3,t.getDate_enchere());
+			psmt.setInt(4, t.getMontant_enchere());
+			psmt.executeUpdate();
+
+		}
+		psmt.close();
+		cnx.close();
 	}
 
 	@Override
@@ -66,10 +79,10 @@ public class DAOEnchereJDBCImpl implements DAOEnchere{
 			ResultSet rs = smt.executeQuery(selectAll);
 		while(rs.next()) {
 			enchere= new Enchere();
-			enchere.setArticle_vendu(rs.getString("nom_article"));
+			enchere.getArticle_vendu().setNomArticle(rs.getString("nom_article"));
 			enchere.setMontant_enchere(rs.getInt("montant_enchere"));
 			enchere.setDate_enchere(rs.getDate("date_enchere"));
-			enchere.setUtilisateur(rs.getString("pseudo"));
+			enchere.getUtilisateur().setPseudo(rs.getString("pseudo"));
 			list.add(enchere);
 		}
 		cnx.close();
@@ -86,10 +99,10 @@ public class DAOEnchereJDBCImpl implements DAOEnchere{
 		ResultSet rs=psmt.executeQuery();System.out.println("h");
 		if(rs.next()) {
 			enchere=new Enchere();
-			enchere.setArticle_vendu(rs.getString("nom_article"));
+			enchere.getArticle_vendu().setNomArticle(rs.getString("nom_article"));
 			enchere.setMontant_enchere(rs.getInt("montant_enchere"));
 			enchere.setDate_enchere(rs.getDate("date_enchere"));
-			enchere.setUtilisateur(rs.getString("pseudo"));
+			enchere.getUtilisateur().setPseudo(rs.getString("pseudo"));
 			list.add(enchere);
 		}
 		psmt.close();
