@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Vendre un article</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="Application ENI-Encheres - Vendre un article">
-<meta name="author" content="Priscila Conchou">
-
-<!-- Bootstrap core CSS -->
-
-<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-<style>
-	<%@include file="/css/style.css"%>
-</style>
-
+	<title>Vendre un article</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Application ENI-Encheres - Vendre un article">
+	<meta name="author" content="Priscila Conchou">
+	
+	<!-- Bootstrap core CSS -->
+	
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	
+	<style>
+		<%@include file="/css/style.css"%>
+	</style>
 </head>
 
 <body>
@@ -60,64 +59,45 @@
 						
 						<div class="row">
 							<div class="col-sm-12 col-md-6">
-								<label for="date_debut_encheres">Date de début de l'enchère :</label>
+								<label for="date_debut_encheres">Date début de l'enchère :</label>
 								<input type="datetime-local" id="date_debut_encheres"
 								       name="date_debut_encheres" value="${ LocalDate.now() }"
 								       min="${ LocalDate.now() }" required="required">
 							</div>
 						
 							<div class="col-sm-12 col-md-6">
-								<label for="date_fin_encheres">Date de fin de l'enchère :</label>
+								<label for="date_fin_encheres">Date fin de l'enchère :</label>
 								<input type="datetime-local" id="date_fin_encheres"
 								       name="date_fin_encheres" value="${ LocalDate.now() }"
 								       min="${ date_debut_encheres }" required="required">
 							</div>
 						</div>
 						
+						<div class="row">
+							<div class="col-sm-12">
+								<label for="prix_initial">Prix de départ :</label>
+								<input type="number" name="prix_initial" id="prix_initial"/>
+							</div>
+						</div>
 						
 						<div class="row">
-						<div class="col-sm-12 col-md-6">
-						<label for="prenom">Prénom :</label>
-						<input type="text" name="prenom" id="prenom" placeholder="Votre prénom"
-						size="40" maxlength="30" required="required" />
-						</div>
-						
-						<div class="col-sm-12 col-md-6">
-						<label for="code_postal">Code postal :</label>
-						<input type="text" name="code_postal" id="code_postal" placeholder="Votre Code postal"
-						size="40" maxlength="10" required="required" />
-						</div>
-						</div>
-						
-						
-						<div class="row">
-						<div class="col-sm-12 col-md-6">
-						<label for="telephone">Téléphone :</label>
-						<input type="text" name="telephone" id="telephone" placeholder="(Optionel)"
-						size="40" maxlength="15" />
-						</div>
-						
-						<div class="col-sm-12 col-md-6">
-						<label for="mot_de_passe">Mot de passe :</label>
-						<input type="password" name="mot_de_passe" id="mot_de_passe" placeholder="Votre mot de passe"
-						size="40" maxlength="30" required="required" />
-						</div>
-						</div>
-						
-						
-						<div class="row">
-						<div class="col-sm-12 col-md-6">
-						<label for="email">Email :</label>
-						<input type="email" name="email" id="email" placeholder="Votre email"
-						size="40" maxlength="20" required="required" />
-						</div>
-						
-						
-						<div class="col-sm-12 col-md-6">
-						<label for="confirmation_mot_de_passe">Confirmation :</label>
-						<input type="password" name="confirmation_mot_de_passe" id="confirmation_mot_de_passe" placeholder="Repetez votre mot de passe"
-						size="40" maxlength="30" required="required" />
-						</div>
+							<div class="col-sm-12">
+								<label for="rue">Rue :</label>
+								<input type="text" name="rue" id="rue" placeholder="Votre rue"
+								size="40" maxlength="30" required="required"/>
+							</div>
+							
+							<div class="col-sm-12">
+								<label for="code_postal">Code postal :</label>
+								<input type="text" name="code_postal" id="code_postal" placeholder="Votre Code postal"
+								size="40" maxlength="10" required="required" />
+							</div>
+							
+							<div class="col-sm-12 col-md-6">
+								<label for="ville">Ville :</label>
+								<input type="text" name="ville" id="ville" placeholder="Votre ville"
+								size="40" maxlength="30" required="required"/>
+							</div>
 						</div>
 						
 						<div class="row">
