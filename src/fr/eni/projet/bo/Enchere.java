@@ -57,7 +57,7 @@ public class Enchere {
 		this.date_enchere = date;
 	}
 
-
+ 
 	public int getMontant_enchere() {
 		return montant_enchere;
 	}

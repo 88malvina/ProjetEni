@@ -93,7 +93,7 @@ public class DAOEnchereJDBCImpl implements DAOEnchere{
 		List<Enchere> list=new ArrayList<Enchere>();
 		Enchere enchere=null;
 		Connection cnx = ConnectionProvider.getConnection();
-		 
+		  
 		PreparedStatement psmt = cnx.prepareStatement(selectEncheresByCategorie);
 		psmt.setInt(1,no_categorie);
 		ResultSet rs=psmt.executeQuery();

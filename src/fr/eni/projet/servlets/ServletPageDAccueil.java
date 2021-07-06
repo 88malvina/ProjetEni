@@ -105,7 +105,7 @@ public class ServletPageDAccueil extends HttpServlet {
 							list_encheres.add(enchere);
 						}
 							
-					}
+			 		}
 					else {
 					request.setAttribute("aucune_trouvé", "Rien n'a été trouvé");
 					}
