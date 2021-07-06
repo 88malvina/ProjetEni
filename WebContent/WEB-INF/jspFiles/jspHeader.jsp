@@ -23,7 +23,7 @@
 			
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Enchères <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/ProjetEni/encheres/ServletPageDAccueil">Enchères <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/ProjetEni/ServletVendreArticle">Vendre un article</a>
