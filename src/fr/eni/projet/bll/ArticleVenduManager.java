@@ -82,7 +82,7 @@ public class ArticleVenduManager {
 		
 		public String verifArticle (ArticleVendu a) {
 			
-			String msg_erreur="";
+			String messageErreur="";
 			
 			boolean nomArtOk=false;
 			boolean descriptionOk=false;
@@ -90,16 +90,26 @@ public class ArticleVenduManager {
 			boolean dateFinOk=false;
 			boolean prixInitialOk=false;
 			
+			// ---------------------- verifier nom article
 			
+			if(a.getNomArticle().length()<3) {
+				messageErreur="Le nom doit avoir au moins 3 caracteres.";
+			} else if (a.getNomArticle().length()>20) {
+				messageErreur="Le nom doit avoir au maximum 20 caracteres.";
+			} else if (!OutilsVerification.noSpecialChars(a.getNomArticle())) {
+				messageErreur="Le nom ne doit pas avoir des caractères spéciaux.";
+			} else {
+				nomArtOk=true;
+			}
 			
 			// ---------------------- verifier si toutes les conditions sont remplies
 
 			if(nomArtOk && descriptionOk  && dateDebutOk && dateFinOk && prixInitialOk) {
-				msg_erreur="Verificaton réussite.";
+				messageErreur="Verificaton réussite.";
 			}
 
-			System.out.println(msg_erreur);
+			System.out.println(messageErreur);
 
-			return msg_erreur;
+			return messageErreur;
 		}
 }
