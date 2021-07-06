@@ -1,10 +1,11 @@
 package fr.eni.projet.dal.jdbc;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.projet.bo.Retrait;
@@ -20,7 +21,7 @@ public class DAORetraitJDBCImpl implements DAORetrait {
 
 	private String delete = "DELETE FROM RETRAITS WHERE no_article=?";
 
-	private String update = "UPDATE RETRAITS SET no_article=?, rue=?, code_postal=?, ville=? WHERE no_article=?;";
+	private String update = "UPDATE RETRAITS SET rue=?, code_postal=?, ville=? WHERE no_article=?;";
 
 	private String selectAll = "SELECT no_article, rue, code_postal, ville FROM RETRAITS;";
 
@@ -74,21 +75,95 @@ public class DAORetraitJDBCImpl implements DAORetrait {
 	}
 
 	@Override
-	public void update(Retrait t) {
-		// TODO Auto-generated method stub
+	public void update(Retrait u) {
+		try (
 
+				//Remplacement par pool de connexion via ConnectionProvider
+				//Connection cnx = JdbcTools.getConnection();
+				Connection cnx = ConnectionProvider.getConnection();
+
+				PreparedStatement psmt = cnx.prepareStatement(update, PreparedStatement.RETURN_GENERATED_KEYS);) {
+
+			psmt.setString(1, u.getRue());
+			psmt.setString(2, u.getCode_postal());
+			psmt.setString(3, u.getVille());
+			psmt.setInt(4, u.getNo_article());
+			
+			psmt.executeUpdate();
+
+			cnx.close();
+
+		} catch (SQLException e) {
+			// TODO PRISCILA gérer exception
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public List<Retrait> selectAll() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Retrait> retraits = new ArrayList<Retrait>();
+
+		try (
+				//Remplacement par pool de connexion via ConnectionProvider
+				//Connection cnx = JdbcTools.getConnection();
+				Connection cnx = ConnectionProvider.getConnection();
+
+
+				Statement smt = cnx.createStatement()) 
+		{
+			ResultSet rs = smt.executeQuery(selectAll);
+			Retrait u = null;
+			while(rs.next())
+			{
+				u = new Retrait();
+				u.setNo_article(rs.getInt("no_article"));
+				u.setRue(rs.getString("nom_article"));
+				u.setCode_postal(rs.getString("description"));
+				u.setVille(rs.getString("date_debut_encheres"));
+
+				retraits.add(u);	
+			}
+
+			cnx.close();
+
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return retraits;
 	}
 
 	@Override
 	public Retrait selectById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Retrait u=null;
+
+		try (
+
+				//Remplacement par pool de connexion via ConnectionProvider
+				//Connection cnx = JdbcTools.getConnection();
+				Connection cnx = ConnectionProvider.getConnection();
+
+				PreparedStatement psmt = cnx.prepareStatement(selectById, PreparedStatement.RETURN_GENERATED_KEYS);) {
+
+			psmt.setInt(1, id);
+			ResultSet rs = psmt.executeQuery();
+
+			if(rs.next())
+			{
+				u = new Retrait();
+				u.setNo_article(rs.getInt("no_article"));
+				u.setRue(rs.getString("nom_article"));
+				u.setCode_postal(rs.getString("description"));
+				u.setVille(rs.getString("date_debut_encheres"));
+
+				cnx.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return u;
 	}
 
 }
