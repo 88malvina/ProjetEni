@@ -68,7 +68,7 @@ public class RetraitManager {
 		
 		// ------------------- check rue
 		
-		if(!OutilsVerification.onlyLetters(u.getVille())) {
+		if(!OutilsVerification.onlyLetters(u.getRue())) {
 			messageErreur="Le nom de la rue ne doit pas avoir des caractères spéciaux.";
 		} else if (u.getRue().length()>30){
 			messageErreur="Le nom de la rue doit avoir au maximun 30 caractères.";

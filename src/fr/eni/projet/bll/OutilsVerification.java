@@ -59,16 +59,16 @@ public class OutilsVerification {
 	 * @author pconchou2021
 	 */
 	public static boolean onlyLetters(String aVerifier) {
-		boolean onlyNumbersAndLetters = false;
+		boolean onlyLetters = false;
 		char[] chars = aVerifier.toCharArray();
 		for(char c : chars) {
 			if(c>=65 && c<=90 || c>=97 && c<=122 || c==32 || c==45) {
-				onlyNumbersAndLetters=true;
+				onlyLetters=true;
 			} else {
-				onlyNumbersAndLetters=false;
+				onlyLetters=false;
 				break;
 			}
 		}
-		return onlyNumbersAndLetters;
+		return onlyLetters;
 	}
 }
