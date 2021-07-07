@@ -125,8 +125,14 @@ public class ServletModifierMonProfil extends HttpServlet {
 			//On dégage l'ancien attribut de session et on met le nouveau
 			session.removeAttribute("utilisateur");
 			session.setAttribute("utilisateur", u);
-			//On dirige ensuite vers la page d'accueil
-			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspPageDAccueil.jsp").forward(request, response);
+			
+			//On créé un petit message que l'on voudra afficher en page d'accueil mode connecte
+			
+			String modifOk = "votre profil a bien été modifié";
+			request.setAttribute("modifOk", modifOk);
+			
+			//On laisse sur la même page mais avec le message
+			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspModifierMonProfil.jsp").forward(request, response);
 
 		} else {
 			//Si ce n'est pas ok on produit le message d'erreur en attribut de requête
