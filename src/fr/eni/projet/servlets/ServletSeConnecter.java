@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.eni.projet.bll.ArticleVenduManager;
 import fr.eni.projet.bll.EnchereManager;
 import fr.eni.projet.bll.UtilisateurManager;
+import fr.eni.projet.bo.ArticleVendu;
 import fr.eni.projet.bo.Enchere;
 import fr.eni.projet.bo.Utilisateur;
 
@@ -56,14 +58,10 @@ public class ServletSeConnecter extends HttpServlet {
 			String messageLog = "Bonjour " + pseudo + " Vous êtes bien connecte";
 			request.setAttribute("messageLog", messageLog);
 			
-			EnchereManager manager = new EnchereManager();
-			try {
-				List<Enchere> list=manager.selectAll();
-				request.setAttribute("encheres", list);
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			ArticleVenduManager manager = new ArticleVenduManager();
+			List<ArticleVendu> list=manager.selectAll();
+
+			request.setAttribute("encheres", list);
 			
 			request.setAttribute("pageActuelle", "accueil");
 			

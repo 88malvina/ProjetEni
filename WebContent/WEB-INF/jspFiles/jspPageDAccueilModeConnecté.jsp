@@ -13,7 +13,7 @@
 </style>
 <body>
 <jsp:include page="/WEB-INF/jspFiles/jspHeader.jsp">
-		<jsp:param value="pageActuelle" name="inscription"/>
+		<jsp:param value="pageActuelle" name="accueil"/>
 	</jsp:include>
 	<div class="container">
 	<!-- Message de confirmation si suppression de compte vient d'être effectué -->

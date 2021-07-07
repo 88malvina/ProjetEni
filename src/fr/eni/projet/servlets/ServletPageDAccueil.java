@@ -14,9 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.projet.bll.ArticleVenduManager;
-import fr.eni.projet.bll.EnchereManager;
 import fr.eni.projet.bo.ArticleVendu;
-import fr.eni.projet.bo.Enchere;
 
 /**@author mavetyan2021
  * Servlet implementation class ServletPageDAccueil
