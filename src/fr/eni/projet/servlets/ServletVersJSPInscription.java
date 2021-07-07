@@ -70,13 +70,22 @@ public class ServletVersJSPInscription extends HttpServlet {
 			}
 			
 			String pseudo = (request.getParameter("pseudo"));
+			System.out.println("pseudo est " + pseudo);
 			String nom = (request.getParameter("nom"));
+			System.out.println(nom);
 			String prenom = (request.getParameter("prenom"));
+			System.out.println(prenom);
 			String email = (request.getParameter("email"));
+			System.out.println(email);
 			String telephone = (request.getParameter("telephone"));
+			System.out.println(telephone);
 			String rue = (request.getParameter("rue"));
+			System.out.println(rue);
 			String code_postal = (request.getParameter("code_postal"));
+			System.out.println(code_postal);
 			String ville =(request.getParameter("ville"));
+			System.out.println(ville);
+			System.out.println("fin des retours saisie inscirption pour debug");
 			
 			request.setAttribute("pseudo", pseudo);
 			request.setAttribute("nom", nom);

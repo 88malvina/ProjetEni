@@ -223,8 +223,9 @@ public class UtilisateurManager {
 		} else {
 			pseudoOk=true;
 		}
-
-		System.out.println(messageErreur);
+		
+		System.out.println("verif pseudo est passé ");
+		System.out.println(pseudoOk);
 
 		// -------------------- check nom
 
@@ -237,6 +238,9 @@ public class UtilisateurManager {
 		} else {
 			nomOk=true;
 		}
+		
+		System.out.println("verif nom est passé");
+		System.out.println(nomOk);
 
 		// -------------------- check prenom
 
@@ -249,6 +253,9 @@ public class UtilisateurManager {
 		} else {
 			prenomOk=true;
 		}
+		
+		System.out.println("verif prenom est passé");
+		System.out.println(prenomOk);
 
 		// -------------------- check mot de passe
 
@@ -268,6 +275,9 @@ public class UtilisateurManager {
 		} else {
 			motDePasseOk=true;
 		}
+		
+		System.out.println("verif mdp est passé");
+		System.out.println(motDePasseOk);
 
 		// -------------------- check confirmation mot de passe
 
@@ -277,7 +287,8 @@ public class UtilisateurManager {
 			confirmationMotDePasseOk=true;
 		}
 
-		System.out.println(messageErreur);
+		System.out.println("verif mdp confirm est passé");
+		System.out.println(confirmationMotDePasseOk);
 
 		// -------------------- check e-mail
 
@@ -297,6 +308,8 @@ public class UtilisateurManager {
 		}
 
 		System.out.println(messageErreur);
+		System.out.println("verif email est passé");
+		System.out.println(emailOk);
 
 		// ------------------- check telephone
 
@@ -305,13 +318,25 @@ public class UtilisateurManager {
 			recherche = daoUtilisateur.selectByTelephone(u.getTelephone());
 		} catch (SQLException e) {
 			// TODO PRISCILA gérer exception
+			
 			e.printStackTrace();
 		}
 		if(recherche==null) {
 			telephoneOk=true;
+		} 
+		
+		if(u.getTelephone().equals("")) {
+			telephoneOk=true;
+		}
+		
+		else {
+			messageErreur="Ce téléphone est déjà utilisé";
 		}
 
 		System.out.println(messageErreur);
+		
+		System.out.println("verif tel est passé");
+		System.out.println(telephoneOk);
 		
 		// ------------------- check code postal
 		
@@ -320,6 +345,9 @@ public class UtilisateurManager {
 		} else {
 			codePostalOk=true;
 		}
+		
+		System.out.println("verif c est passé");
+		System.out.println(codePostalOk);
 
 		// ---------------------- verifier si toutes les conditions sont remplies
 
