@@ -21,7 +21,11 @@
 		<jsp:param value="pageActuelle" name="Mon Profil"/>
 	</jsp:include>
 	
+	<!-- On NE FAIT QU AFFICHER ici -->
+	
 	<div class="container">
+	
+				<h3> Mon profil </h3>
 				<h4> Pseudo : ${pseudo }</h4>
 				<h4> Nom :${nom }</h4>
 				<h4> Prenom : ${prenom }</h4>
@@ -31,9 +35,8 @@
 				<h4> Code postal : ${cp }</h4>
 				<h4> Ville : ${ville }</h4>
 				
-				<form action="/ProjetEni/ServletModifierMonProfil" method="post">
-				<button type="submit" name="modifier">Modifier</button>
-				</form>
+				<h3> <a href="/ProjetEni/ServletModifierMonProfil"> Modifier </a> </h3>
+				
 	</div>
 	
 	

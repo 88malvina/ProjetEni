@@ -69,7 +69,7 @@ nécessitant import jstl -->
 				<!-- Message par défaut si le pseudo est empty -->
 				
 				<c:if test="${empty pseudo}"> 
-				<h3> Renseignez un pseudo existant sur le site </h3>
+				<h4> Renseignez un pseudo existant sur le site </h4>
 				</c:if>
 				
  <a class="nav-link" href="/ProjetEni/encheres/ServletPageDAccueil"> | Retour accueil |</a>

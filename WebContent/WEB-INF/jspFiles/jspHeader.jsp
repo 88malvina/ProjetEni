@@ -29,7 +29,7 @@
         <a class="nav-link" href="/ProjetEni/ServletVendreArticle">Vendre un article</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/ProjetEni/ServletModifierMonProfil">Modifier mon profil</a>
+        <a class="nav-link" href="/ProjetEni/ServletAfficherMonProfil">Mon profil</a>
       </li>
       
       <li class="nav-item">
