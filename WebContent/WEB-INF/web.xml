@@ -30,4 +30,9 @@
        </jsp-property-group>
    </jsp-config>
     
+    <!-- paramétrage de session de 5 minutes -->  
+     <session-config>
+    		<session-timeout>5</session-timeout>
+  	</session-config>
+    
 </web-app>
