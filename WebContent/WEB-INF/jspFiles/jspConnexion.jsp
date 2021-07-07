@@ -46,23 +46,20 @@ nécessitant import jstl -->
 				
 				<div class=formLabel>
 				<label for="pseudo">pseudo :</label>
-				</div>
-				<div class=formInput>
-				<input name="pseudo" placeholder="Mon pseudo" required autofocus>
+				
+				<input name="pseudo" placeholder="Mon pseudo" value="${pseudo}"required autofocus>
 				</div>
 				
 				<div class=formLabel>
 				<label for="password">Mot de passe :</label>
-				</div>
-				<div class=formInput>
+				
 				<input name="password" placeholder="Mon mot de passe" required type="password">
 				</div>
 				
 				<div class=formLabel>
 				<label for="souvenirDeMoi">Se souvenir de moi :</label>
-				</div>
-				<div class=formInput>
-				<input name="seSouvenirDeMoi" type="checkbox">
+				
+				<input name="seSouvenirDeMoi" type="checkbox" checked>
 				</div>
 				
 				<div class=formLabel>
