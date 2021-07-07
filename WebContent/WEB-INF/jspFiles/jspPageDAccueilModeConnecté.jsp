@@ -13,7 +13,7 @@
 </style>
 <body>
 <jsp:include page="/WEB-INF/jspFiles/jspHeader.jsp">
-		<jsp:param value="pageActuelle" name="accueil"/>
+		<jsp:param value="pageActuelle" name="inscription"/>
 	</jsp:include>
 	<div class="container">
 	<!-- Message de confirmation si suppression de compte vient d'être effectué -->
@@ -44,7 +44,7 @@
 	<option value="sport">Sport et Loisirs</option>
 	</select>
 	</label>
-	</form>
+	
 	<br>
 	<section>
 	<label for="radio-achats">
@@ -66,7 +66,7 @@
 	</section>
 	<br>
 	<button type="submit" name="rechercher">Rechercher</button>
-
+	</form>
 	<div class="liste_enchères">
 	<br>
 		<c:forEach items="${encheres}" var="enchere">
