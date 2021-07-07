@@ -133,10 +133,6 @@ nécessitant import jstl -->
 							</div>
 							
 							<div class="col-sm-4">
-								<input type="reset" value="clear" class="btn btn-outline-dark btn-sm">
-							</div>
-							
-							<div class="col-sm-4">
 								<a href="/ProjetEni/encheres/ServletPageDAccueil"><input type="button" value="Annuler" class="btn btn-outline-dark btn-sm"></a>
 							</div>
 							
