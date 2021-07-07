@@ -136,7 +136,8 @@ public class ServletModifierMonProfil extends HttpServlet {
 
 		} else {
 			//Si ce n'est pas ok on produit le message d'erreur en attribut de requête
-			request.setAttribute("message_erreur", message_erreur);
+			String message = message_erreur;
+			request.setAttribute("message", message);
 			//On fait suivre le tout à la jsp qui l'affichera en cas d'erreur de modif profil
 			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspModifierMonProfil.jsp").forward(request, response);
 		}

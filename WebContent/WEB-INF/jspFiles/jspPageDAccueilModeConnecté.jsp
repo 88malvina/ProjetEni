@@ -29,6 +29,12 @@
 	</c:if>
 	<!-- ------------------------ -->
 	
+	<!-- Message de confirmation si l'on vient juste de se créer un compte -->
+	<c:if test="${!empty inscriptionReussie}">
+    <p><c:out value="${inscriptionReussie }" /> </p>
+	</c:if>
+	<!-- ------------------------ -->
+	
 	<div class="titre"><h4>Liste des enchères</h4></div>
 	Filtres:<br>
 	<form method="post" action="/ProjetEni/encheres/ServletPageDAccueil"> 

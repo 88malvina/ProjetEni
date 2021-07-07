@@ -34,8 +34,8 @@ nécessitant import jstl -->
 	
 	<!-- Si une modif profil a été tentée et a échoué, on affiche un message d'erreur -->
 	
-	<c:if test="${!empty message_erreur}"> 
-		<h4> <c:out value="${message_erreur }" /> </h4>
+	<c:if test="${!empty message}"> 
+		<h4> <c:out value="${message }" /> </h4>
 	</c:if>
 	
 	<!-- Si une modif vient d'être faite et a réussi, on affiche message succès -->
@@ -124,9 +124,6 @@ nécessitant import jstl -->
 						size="40" maxlength="30" required="required" />
 						</div>
 						
-						<p>
-								<c:out value="${message_erreur }" />
-						</p>
 						
 						<!-------------------------------- BUTTONS -------------------------->
 						

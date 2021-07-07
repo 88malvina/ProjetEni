@@ -57,11 +57,17 @@ public class ServletVersJSPInscription extends HttpServlet {
 
 			mng.insert(u);
 			session.setAttribute("utilisateur", u);
-			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspPageDAccueil.jsp").forward(request, response);
+			String inscriptionReussie = "Inscription réussie";
+			session.setAttribute("inscriptionReussie", inscriptionReussie);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspPageDAccueilModeConnecté.jsp").forward(request, response);
 
 		} else {
 			// Si on n'a pas réussi à se connecter, on revient sur le formulaire mais déjà rempli avec nos infos
 			// Pour garder en mémoire la saisie utilisateur, on renvoie tout cela à la jsp
+			
+			if (message_erreur.equals("")) {
+				message_erreur = "Erreur inconnue";
+			}
 			
 			String pseudo = (request.getParameter("pseudo"));
 			String nom = (request.getParameter("nom"));

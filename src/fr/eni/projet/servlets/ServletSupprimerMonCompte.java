@@ -100,7 +100,7 @@ public class ServletSupprimerMonCompte extends HttpServlet {
 			String compteSupprime = "Votre compte a été supprimé avec succès";
 			request.setAttribute("compteSupprime", compteSupprime);
 			session.removeAttribute("utilisateur");
-			this.getServletContext().getRequestDispatcher("/encheres/ServletPageDAccueil").forward(request, response);
+			this.getServletContext().getRequestDispatcher("/ServletPageDAccueilModeConnecté").forward(request, response);
 		}
 	}
 
