@@ -14,7 +14,10 @@
 		<!----------------- logo et nom du site -->
 		
 		<nav class="menu navbar navbar-expand-sm justify-content-center">
-		<a class="nav-link navbar-brand" href="/ProjetEni/encheres/ServletPageDAccueil"><img src="/ProjetEni/images/logo.png" alt="Logo du site" title="logo du site" /></a>
+		<div id="logo_et_nom">
+			<div id="logo_site"><a href="/ProjetEni/encheres/ServletPageDAccueil"><img src="/ProjetEni/images/LogoMakr-2HYM8k.png" alt="Logo du site" title="logo du site" id="logo_site" /></a></div>
+			<div id="nom_site"><h1>ENI-Enchères</h1></div>
+		</div>
    	 
    	<!--  ======================== Nav Quand utilisateur connecte ============================================ -->
    	
@@ -67,6 +70,18 @@
 						</li>
 					</ul>
 					</c:when>
+					
+					<c:when test="${ pageActuelle == 'seConnecter' }">
+						  <ul class="navbar-nav">
+						  	<li class="nav-item">
+        						 <a class="nav-link" href="/ProjetEni/encheres/ServletPageDAccueil"><c:out value="Accueil" /></a>
+      						</li> 
+						  </ul>
+					
+					</c:when>
+					
+					
+					
 				</c:choose>
 				</c:when>
 		</c:choose>

@@ -29,53 +29,63 @@ nécessitant import jstl -->
 		<jsp:param value="pageActuelle" name="Connexion"/>
 	</jsp:include>
 
-	<!-- Message si erreur lors tentative de log -->
+	<div class="container" id="container_form">
 	
-	<c:if test="${!empty erreurLog}">
-    <p><c:out value="${erreurLog }" /> </p>
-	</c:if>
+		<!-- Message si erreur lors tentative de log -->
+		
+		<c:if test="${!empty erreurLog}">
+	    <p><c:out value="${erreurLog }" /> </p>
+		</c:if>
+		
+		<!-- ------------------------ -->
 	
-	<!-- ------------------------ -->
-
-<h1> Se connecter</h1>
-
-		<form action="<%=request.getContextPath()%>/ServletSeConnecter" method="post">
+	
+		<form action="<%=request.getContextPath()%>/ServletSeConnecter" method="post" id="form_inscription">
 						
-				<!-- TODO : L'autofocus ne marche pas -->
-				<!-- TODO : mise en page CSS -->
+			<!-- TODO : L'autofocus ne marche pas -->
+			<!-- TODO : mise en page CSS -->
+			
+			<fieldset>
+				<legend class="legend">Se connecter</legend>
 				
-				<div class=formLabel>
-				<label for="pseudo">pseudo :</label>
+				
+				<div class=form_space>
+				<label for="pseudo">Pseudo :</label>
 				
 				<input name="pseudo" placeholder="Mon pseudo" value="${pseudo}"required autofocus>
 				</div>
 				
-				<div class=formLabel>
+				<div class=form_space>
 				<label for="password">Mot de passe :</label>
 				
 				<input name="password" placeholder="Mon mot de passe" required type="password">
 				</div>
 				
-				<div class=formLabel>
-				<label for="souvenirDeMoi">Se souvenir de moi :</label>
+				<div class=form_space>
 				
 				<input name="seSouvenirDeMoi" type="checkbox" checked>
+				<label for="souvenirDeMoi">Se souvenir de moi</label>
+				
 				</div>
 				
-				<div class=formLabel>
-				<input type="button" value = "Oubli mot de passe">
+				<div class="row">
+					<div>
+					<input type="button" value = "Mot de passe oublié ?" class="btn btn-outline-dark btn-sm">
+					</div>
+					<div>
+					<input type="submit" value="Valider" class="btn btn-outline-dark btn-sm" >
+					</div>
+					
 				</div>
-				
-				<input type="submit" value="Valider"/>
-				
-				<!-- TODO : lien vers la page d'inscription a faire-->
-				
-				<div class=formLabel>
-				<a href ="<%=request.getContextPath()%>/ServletVersJSPInscription"> Créer un compte</a>
+				<div class="a">
+					<a href ="<%=request.getContextPath()%>/ServletVersJSPInscription" class="a"> Créer un compte</a>
+				</div>
+			</fieldset>
+		</form>	
+		
+	</div>
 
-				</div>
-			
-		</form>
+	
 
 	<!--  footer -->
 	

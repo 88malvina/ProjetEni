@@ -1,18 +1,19 @@
-@charset 'ISO-8859-1';
+@charset 'UTF-8';
 	section {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
 	.se_connecter{
-	width:30%;}
+	width:30%;
+	}
 	.titre{
 		margin-top:10px;
 		padding-bottom:50px;
 		width:100%;
 		text-align: center;
 	}
-	.enchère{
+	.enchÃ¨re{
 		width: 250px;
 		margin: 10px;
 		padding:5px;
@@ -21,7 +22,7 @@
 		display: flex;
 		flex-direction: row;
 	}
-	.liste_enchères{
+	.liste_enchÃ¨res{
 		
 		margin-bottom: 20px;
 		display: flex;
@@ -40,4 +41,59 @@
 		color: white;
 		padding-top: 40px;
 		background-image: url("https://img.freepik.com/free-vector/desert-landscape-background-video-conferencing-with-cactus_23-2148670212.jpg?size=626&ext=jpg");
+	}
+	#container_form {
+		text-align: center;
+		width:100%;
+		display: flex;
+		flex-direction: column;
+		margin: auto;
+		align-items: center;
+		padding-top: 1em;
+		padding-bottom: 1em;
+		
+	}
+	.legend{
+		text-align: center;
+		text-shadow: 0.07em 0.07em #C0C0C0;
+		margin: 1em;
+		font-size: xx-large;
+	}
+	#form_inscription{
+	text-align: right;
+	display: flex;
+	flex-direction: row;
+	
+	position: relative;
+	}
+	.form_space{
+	margin: 0.3em;
+	}
+	.btn{
+	margin: 1em;
+	padding: 10px;
+	box-shadow: 0.2em 0.2em;
+	}
+	.a{
+	text-align: center;
+	}
+	body {
+	padding: auto;
+	height: 100%;
+ 	font-family: "Trirong", serif;
+	}
+	#logo_site{
+	width: 45px;
+	height: 45px;
+	
+	}
+	#logo_et_nom{
+	display: flex;
+	flex-direction: row;
+	}
+	#nom_site {
+	margin-left: 10px;
+	margin-right: 20px;
+	color: white;
+	text-shadow: 0.1em 0.1em #CD5C5C;
 	}

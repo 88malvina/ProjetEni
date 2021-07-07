@@ -40,7 +40,7 @@ public class ServletSeConnecter extends HttpServlet {
 				}
 			}
 		}
-		
+		request.setAttribute("pageActuelle", "seConnecter");
 		
 		// On dirige vers la JSP connexion
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jspFiles/jspConnexion.jsp");
