@@ -50,88 +50,73 @@
 		  ----------------------------------------------------------------------->
 						
 						
-						<div class="row">
-						<div class="col-sm-12 col-md-6">
+						<div>
 						<label for="pseudo">Pseudo :</label>
 						<input type="text" name="pseudo" id="pseudo" placeholder="Un petit nom sympa"
 						size="40" maxlength="30" autofocus="autofocus" value = "${pseudo }" required="required" />
 						</div>
 						
-						<div class="col-sm-12 col-md-6">
+						<div>
 						<label for="rue">Rue :</label>
 						<input type="text" name="rue" id="rue" placeholder="Votre rue"
 						size="40" maxlength="30" value = "${rue }"required="required"/>
 						</div>
-						</div>
 						
-						<div class="row">
-						<div class="col-sm-12 col-md-6">
+						<div>
 						<label for="nom">Nom :</label>
 						<input type="text" name="nom" id="nom" placeholder="Votre nom"
 						size="40" maxlength="30" value = "${nom }" required="required" />
 						</div>
 						
-						<div class="col-sm-12 col-md-6">
+						<div>
 						<label for="ville">Ville :</label>
 						<input type="text" name="ville" id="ville" placeholder="Votre ville"
 						size="40" maxlength="30" value = "${ville }"required="required"/>
 						</div>
-						</div>
 						
-						
-						<div class="row">
-						<div class="col-sm-12 col-md-6">
+						<div>
 						<label for="prenom">Prénom :</label>
 						<input type="text" name="prenom" id="prenom" placeholder="Votre prénom"
 						size="40" maxlength="30" value = "${prenom }" required="required" />
 						</div>
 						
-						<div class="col-sm-12 col-md-6">
+						<div>
 						<label for="code_postal">Code postal :</label>
 						<input type="text" name="code_postal" id="code_postal" placeholder="Votre Code postal"
 						size="40" maxlength="10" value = "${code_postal }" required="required" />
 						</div>
-						</div>
 						
-						
-						<div class="row">
-						<div class="col-sm-12 col-md-6">
+						<div>
 						<label for="telephone">Téléphone :</label>
 						<input type="text" name="telephone" id="telephone" placeholder="(Optionel)"
 						size="40" maxlength="15" value = "${telephone }"/>
 						</div>
 						
-						<div class="row">
-						<div class="col-sm-12 col-md-6">
+						<div>
 						<label for="email">Email :</label>
 						<input type="email" name="email" id="email" placeholder="Votre email"
 						size="40" maxlength="20" value = "${email }"required="required" />
 						</div>
 						
-						<div class="col-sm-12 col-md-6">
+						<div>
 						<label for="mot_de_passe">Mot de passe :</label>
 						<input type="password" name="mot_de_passe" id="mot_de_passe" placeholder="Votre mot de passe"
 						size="40" maxlength="30" required="required" />
 						</div>
-						</div>
-						
-						<div class="col-sm-12 col-md-6">
+
+						<div>
 						<label for="confirmation_mot_de_passe">Confirmation :</label>
 						<input type="password" name="confirmation_mot_de_passe" id="confirmation_mot_de_passe" placeholder="Repetez votre mot de passe"
 						size="40" maxlength="30" required="required" />
 						</div>
-						</div>
 						
-						<div class="row">
-							<div class="col-sm-12 col-md-6">
+						<div>
 								<p>
 									<c:out value="${ message_erreur }" />
+								
 								</p>
-							</div>
 						</div>
-						
-						
-						
+					
 						<!-------------------------------- BUTTONS -------------------------->
 						
 						<div class="row">
