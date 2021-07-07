@@ -43,40 +43,40 @@
 	<option value="ameublement">Ameublement</option>
 	<option value="sport">Sport et Loisirs</option>
 	</select>
-	
+	</label>
+	</form>
 	<br>
 	<section>
-	<div class="achats">
-		<input type="radio" name="radio-achats" checked>Achats
-			<p>
+	<label for="radio-achats">
+		<input type="radio" id="radio-achats" name="radio-achats" checked>Achats
+			<br>
 			<input type="checkbox">enchères ouvertes<br>
 			<input type="checkbox">mes enchères en cours<br>
 			<input type="checkbox">mes enchères remportées<br>
-			</p>
-	</div>
-	<div class="ventes">
-		<input type="radio" name="radio-mes_ventes">Mes ventes
-			<p>
+			
+	</label>
+	<label for="radio-mes_ventes">
+		<input type="radio" id="radio-mes_ventes" name="radio-mes_ventes">Mes ventes
+			<br>
 			<input type="checkbox">mes ventes en cours<br>
 			<input type="checkbox">ventes non débutées<br>
 			<input type="checkbox">ventes terminées<br>
-			</p>
-	</div>
+			
+	</label>
 	</section>
 	<br>
 	<button type="submit" name="rechercher">Rechercher</button>
-	</label>
-	</form>
+
 	<div class="liste_enchères">
 	<br>
 		<c:forEach items="${encheres}" var="enchere">
 		<div class="enchère">
 		<div class="photo"><img src="https://pics.freeicons.io/uploads/icons/png/394198151553508653-512.png" width="50px" height="50px" alt="enchère"></div>
 		<div class="description">
-			<a href="">${enchere.article_vendu}</a><br>
-			Prix : ${enchere.montant_enchere} points<br>
-			Fin de l'enchère : ${enchere.date_enchere}<br>
-			Vendeur : ${enchere.utilisateur}
+			<a href="">${enchere.nomArticle}</a><br>
+			Prix : ${enchere.prixVente} points<br>
+			Fin de l'enchère : ${enchere.dateFinEncheres}<br>
+			Vendeur : ${enchere.no_utilisateur}
 		</div>
 		</div></c:forEach>
 	</div>

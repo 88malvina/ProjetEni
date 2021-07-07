@@ -1,3 +1,4 @@
+<%@page import="java.awt.List"%>
 <%@page import="fr.eni.projet.bo.Enchere"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -34,10 +35,10 @@
 			<div class="enchère">
 		<div class="photo"><img src="https://pics.freeicons.io/uploads/icons/png/394198151553508653-512.png" width="50px" height="50px" alt="enchère"></div>
 		<div class="description">
-			<a href="">${list.article_vendu}</a><br>
-			Prix : ${list.montant_enchere} points<br>
-			Fin de l'enchère : ${list.date_enchere}<br>
-			Vendeur : ${list.utilisateur}
+			<a href="">${list.nomArticle}</a><br>
+			Prix : ${list.prixVente} points<br>
+			Fin de l'enchère : ${list.dateFinEncheres}<br>
+			Vendeur : ${list.no_utilisateur}
 		</div>
 		</div>
 			</c:forEach>
