@@ -12,6 +12,8 @@ public class ArticleVendu {
 	private int prixVente;
 	private int no_utilisateur;
 	private int no_categorie;
+	private String pseudo;
+	
 	
 
 	public ArticleVendu(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres,
@@ -65,7 +67,14 @@ public class ArticleVendu {
 		this.no_utilisateur = no_utilisateur;
 		this.no_categorie = no_categorie;
 	}
-	
+	public ArticleVendu( String nomArticle, LocalDate dateFinEncheres, int miseAPrix, String pseudo)
+	{
+		this.nomArticle = nomArticle;
+		this.dateFinEncheres = dateFinEncheres;
+		this.miseAPrix = miseAPrix;
+		this.pseudo =pseudo;
+		
+	}
 	//---------------- constructeurs faits par Malvina (sans no_utilisateur et no_categorie)
 
 //	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
@@ -96,6 +105,13 @@ public class ArticleVendu {
 	public ArticleVendu() {
 	}
 
+	public String getPseudo() {
+		return pseudo;
+	}
+	public void setPseudo(String pseudo) {
+		this.pseudo= pseudo;
+	}
+	
 	public int getNoArticle() {
 		return noArticle;
 	}

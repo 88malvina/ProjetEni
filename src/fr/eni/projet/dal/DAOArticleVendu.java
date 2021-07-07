@@ -20,4 +20,6 @@ public interface DAOArticleVendu extends DAO<ArticleVendu> {
 	
 	public List<ArticleVendu> selectByCategorie(int no_categorie) throws SQLException;
 	
+	public List<ArticleVendu> selectAvecPseudo() throws SQLException;
+	
 }

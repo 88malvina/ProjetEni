@@ -48,7 +48,9 @@ public class ArticleVenduManager {
 				e.printStackTrace();
 			}
 		}
-		
+		public List<ArticleVendu> selectAvecPseudo() throws SQLException {
+			return daoArtVendu.selectAvecPseudo();
+		}
 		
 		public void update(ArticleVendu u) {
 			daoArtVendu.update(u);

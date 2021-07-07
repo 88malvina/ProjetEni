@@ -38,7 +38,7 @@
 			<a href="">${list.nomArticle}</a><br>
 			Prix : ${list.prixVente} points<br>
 			Fin de l'enchère : ${list.dateFinEncheres}<br>
-			Vendeur : ${list.no_utilisateur}
+			Vendeur : ${list.pseudo}
 		</div>
 		</div>
 			</c:forEach>

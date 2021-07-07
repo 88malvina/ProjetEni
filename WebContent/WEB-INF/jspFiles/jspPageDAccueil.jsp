@@ -43,7 +43,7 @@
 			<a href="">${enchere.nomArticle}</a><br>
 			Prix : ${enchere.prixVente} points<br>
 			Fin de l'enchère : ${enchere.dateFinEncheres}<br>
-			Vendeur : ${enchere.no_utilisateur}
+			Vendeur : ${enchere.pseudo}
 		</div>
 		</div></c:forEach>
 	</div>

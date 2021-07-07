@@ -30,11 +30,20 @@ public class ServletPageDAccueil extends HttpServlet {
 		//A régler avec vue statique
 		ArticleVenduManager manager = new ArticleVenduManager();
 		
-		List<ArticleVendu> list=manager.selectAll();
+		try {
+			List<ArticleVendu>list = manager.selectAvecPseudo();
+			request.setAttribute("encheres", list);
+			
+			request.setAttribute("pageActuelle", "accueil");
+			for(ArticleVendu art:list) {
+				System.out.println(art.getPseudo());
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		request.setAttribute("encheres", list);
 		
-		request.setAttribute("pageActuelle", "accueil");
 		RequestDispatcher rd=request.getRequestDispatcher("/WEB-INF/jspFiles/jspPageDAccueil.jsp");
 		rd.forward(request, response);
 	}
@@ -55,11 +64,12 @@ public class ServletPageDAccueil extends HttpServlet {
 			// "tel filtre a �t� mis" = contrainte 
 			// Conseil �ventuel : cr�er dynamiquement la requ�te selon les filtres s�lectionn�s
 			// Select all = donc seulement si on a mis aucun filtre
-			listAllEncheres = manager.selectAll();
+			listAllEncheres = manager.selectAvecPseudo();
 			request.setAttribute("encheres", listAllEncheres);
 		
 			
 		if(request.getParameter("rechercher")!=null) {
+			
 			String saisieUtilisateur=request.getParameter("saisieUtilisateur");
 			String select=request.getParameter("select");
 			int no_categorie=0;
@@ -94,7 +104,6 @@ public class ServletPageDAccueil extends HttpServlet {
 					
 					if(list_categorie2!=null) {
 					for(ArticleVendu enchere:list_categorie2) {
-						 
 						if(enchere.getNomArticle().toLowerCase().contains(saisieUtilisateur.toLowerCase()))
 							list_encheres.add(enchere);
 						}

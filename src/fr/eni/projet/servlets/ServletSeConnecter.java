@@ -102,6 +102,7 @@ public class ServletSeConnecter extends HttpServlet {
 			
 			//On lui enverra les listes articles vendus
 			
+
 			ArticleVenduManager manager = new ArticleVenduManager();
 			List<ArticleVendu> list=manager.selectAll();
 
@@ -109,7 +110,7 @@ public class ServletSeConnecter extends HttpServlet {
 			
 			request.setAttribute("pageActuelle", "accueil");
 			
-			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspPageDAccueilModeConnecté.jsp").forward(request, response);
+			this.getServletContext().getRequestDispatcher("/ServletModeConnecte").forward(request, response);
 		}
 		
 		//En cas de connexion not ok, on renvoie vers la jsp se connecter avec un message d'erreur
