@@ -1,6 +1,7 @@
 package fr.eni.projet.servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 import javax.servlet.ServletException;
@@ -11,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.eni.projet.bll.ArticleVenduManager;
+import fr.eni.projet.bll.CategorieManager;
 import fr.eni.projet.bll.RetraitManager;
 import fr.eni.projet.bo.ArticleVendu;
+import fr.eni.projet.bo.Categorie;
 import fr.eni.projet.bo.Retrait;
 import fr.eni.projet.bo.Utilisateur;
 
@@ -52,12 +55,25 @@ public class ServletVendreArticle extends HttpServlet {
 			u.setMiseAPrix(Integer.valueOf(request.getParameter("prix_initial")));
 		}
 		
+		
+		CategorieManager mngCat = new CategorieManager();
+		Categorie c = new Categorie();
+		try {
+			c = mngCat.selectById(u.getNo_categorie());
+			u.setCategorie(c);
+		} catch (SQLException e) {
+			// TODO PRISCILA
+			e.printStackTrace();
+		}
+		
+		
 		Retrait r = new Retrait();
 		RetraitManager mngRet = new RetraitManager();
 		
 		r.setRue(request.getParameter("rue"));
 		r.setCode_postal(request.getParameter("code_postal"));
 		r.setVille(request.getParameter("ville"));
+		u.setRetrait(r);
 
 		String message_erreur = mngArt.verifArticle(u);
 		message_erreur = mngRet.verifRetrait(r);

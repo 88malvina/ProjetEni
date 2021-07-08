@@ -12,6 +12,10 @@ import fr.eni.projet.dal.DAOFactory;
 public class CategorieManager {
 	private DAOCategorie daoCategorie = DAOFactory.getCategorieDAO();
 	
+	public Categorie selectById(int id) throws SQLException {
+		return daoCategorie.selectById(id);
+	}
+	
 	public List<Categorie> selectAll() throws SQLException {
 		return daoCategorie.selectAll();
 	} 

@@ -1,6 +1,7 @@
 package fr.eni.projet.bo;
 
 import java.time.LocalDate;
+
 public class ArticleVendu { 
 	
 	private int noArticle;
@@ -11,13 +12,17 @@ public class ArticleVendu {
 	private int miseAPrix;
 	private int prixVente;
 	private int no_utilisateur;
-	private int no_categorie;
+	private int no_categorie;		
 	private String pseudo;
+	
+	Categorie categorie;
+	Retrait retrait;
 	
 	
 
 	public ArticleVendu(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres,
-			int miseAPrix, int prixVente, int no_utilisateur, int no_categorie) {
+			int miseAPrix, int prixVente, int no_utilisateur, int no_categorie, String pseudo, Categorie categorie,
+			Retrait retrait) {
 		super();
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -27,35 +32,14 @@ public class ArticleVendu {
 		this.prixVente = prixVente;
 		this.no_utilisateur = no_utilisateur;
 		this.no_categorie = no_categorie;
+		this.pseudo = pseudo;
+		this.categorie = categorie;
+		this.retrait = retrait;
 	}
-
-	public ArticleVendu(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres,
-			int no_utilisateur, int no_categorie) {
-		super();
-		this.nomArticle = nomArticle;
-		this.description = description;
-		this.dateDebutEncheres = dateDebutEncheres;
-		this.dateFinEncheres = dateFinEncheres;
-		this.no_utilisateur = no_utilisateur;
-		this.no_categorie = no_categorie;
-	}
-
-	public ArticleVendu(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres,
-			int prixVente, int no_utilisateur, int no_categorie) {
-		super();
-		this.nomArticle = nomArticle;
-		this.description = description;
-		this.dateDebutEncheres = dateDebutEncheres;
-		this.dateFinEncheres = dateFinEncheres;
-		this.prixVente = prixVente;
-		this.no_utilisateur = no_utilisateur;
-		this.no_categorie = no_categorie;
-	}
-
 
 	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
-			LocalDate dateFinEncheres, int miseAPrix, int prixVente, int no_utilisateur,
-			int no_categorie) {
+			LocalDate dateFinEncheres, int miseAPrix, int prixVente, int no_utilisateur, int no_categorie,
+			String pseudo, Categorie categorie, Retrait retrait) {
 		super();
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
@@ -66,43 +50,30 @@ public class ArticleVendu {
 		this.prixVente = prixVente;
 		this.no_utilisateur = no_utilisateur;
 		this.no_categorie = no_categorie;
+		this.pseudo = pseudo;
+		this.categorie = categorie;
+		this.retrait = retrait;
 	}
-	public ArticleVendu( String nomArticle, LocalDate dateFinEncheres, int miseAPrix, String pseudo)
-	{
-		this.nomArticle = nomArticle;
-		this.dateFinEncheres = dateFinEncheres;
-		this.miseAPrix = miseAPrix;
-		this.pseudo =pseudo;
-		
-	}
-	//---------------- constructeurs faits par Malvina (sans no_utilisateur et no_categorie)
-
-//	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
-//			LocalDate dateFinEncheres, int miseAPrix, int prixVente, String etatVente) {
-//		super();
-//		this.noArticle = noArticle;
-//		this.nomArticle = nomArticle;
-//		this.description = description;
-//		this.dateDebutEncheres = dateDebutEncheres;
-//		this.dateFinEncheres = dateFinEncheres;
-//		this.miseAPrix = miseAPrix;
-//		this.prixVente = prixVente;
-//		this.etatVente = etatVente;
-//	}
-//
-//	public ArticleVendu(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres,
-//			int miseAPrix, int prixVente, String etatVente) {
-//		super();
-//		this.nomArticle = nomArticle;
-//		this.description = description;
-//		this.dateDebutEncheres = dateDebutEncheres;
-//		this.dateFinEncheres = dateFinEncheres;
-//		this.miseAPrix = miseAPrix;
-//		this.prixVente = prixVente;
-//		this.etatVente = etatVente;
-//	}
-
+	
 	public ArticleVendu() {
+	}
+
+	
+	
+	public Categorie getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
+
+	public Retrait getRetrait() {
+		return retrait;
+	}
+
+	public void setRetrait(Retrait retrait) {
+		this.retrait = retrait;
 	}
 
 	public String getPseudo() {

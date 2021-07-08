@@ -1,7 +1,7 @@
 package fr.eni.projet.dal.jdbc;
 
 import java.sql.Connection;
-
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -14,7 +14,10 @@ import fr.eni.projet.dal.DAOCategorie;
 
 public class DAOCategorieJDBCImpl implements DAOCategorie {
 	
-	String selectAll="Select * from CATEGORIES";
+	private String selectAll="Select * from CATEGORIES";
+	
+	private String selectById = "SELECT no_categorie, libelle FROM CATEGORIES WHERE no_categorie=?";
+
 
 	@Override
 	public void insert(Categorie t) {
@@ -58,8 +61,32 @@ public class DAOCategorieJDBCImpl implements DAOCategorie {
 
 	@Override
 	public Categorie selectById(int id) {
-		// TODO MALVINA définir méthode
-		return null;
+		Categorie u=null;
+
+		try (
+
+				//Remplacement par pool de connexion via ConnectionProvider
+				//Connection cnx = JdbcTools.getConnection();
+				Connection cnx = ConnectionProvider.getConnection();
+
+				PreparedStatement psmt = cnx.prepareStatement(selectById, PreparedStatement.RETURN_GENERATED_KEYS);) {
+
+			psmt.setInt(1, id);
+			ResultSet rs = psmt.executeQuery();
+
+			if(rs.next())
+			{
+				u = new Categorie();
+				u.setNo_categorie(rs.getInt("no_categorie"));
+				u.setLibelle(rs.getString("libelle"));
+
+				cnx.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			// TODO PRISCILA gérer exception
+		}
+		return u;
 	}
 
 	public List<Enchere> selectEncheresByCategorie(int i) throws SQLException {
