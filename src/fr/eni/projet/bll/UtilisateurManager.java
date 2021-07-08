@@ -526,11 +526,13 @@ public class UtilisateurManager {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		if(recherche==null) {
+		if((recherche==null) || (old.getTelephone().equals(u.getTelephone()))) {
 			telephoneOk=true;
 		} else {
 			messageErreur="Ce téléphone est déjà utilisé";
 		}
+		
+
 		
 		if(u.getTelephone()==null) {
 			telephoneOk=true;
