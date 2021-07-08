@@ -328,15 +328,17 @@ public class UtilisateurManager {
 		}
 		if(recherche==null) {
 			telephoneOk=true;
-		} 
-		
-		if(u.getTelephone().equals("")) {
-			telephoneOk=true;
-		}
-		
-		else {
+		} else {
 			messageErreur="Ce téléphone est déjà utilisé";
 		}
+		
+		if(u.getTelephone()==null) {
+			telephoneOk=true;
+		} else if (u.getTelephone()!=null && u.getTelephone().length()!=8) {
+			messageErreur="Le numéro de téléphone doit avoir 8 chiffres.";
+		}
+		
+		
 
 		System.out.println(messageErreur);
 		

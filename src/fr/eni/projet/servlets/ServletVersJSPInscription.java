@@ -44,13 +44,18 @@ public class ServletVersJSPInscription extends HttpServlet {
 		u.setNom(request.getParameter("nom"));
 		u.setPrenom(request.getParameter("prenom"));
 		u.setEmail(request.getParameter("email"));
-		u.setTelephone(request.getParameter("telephone"));
 		u.setRue(request.getParameter("rue"));
 		u.setCodePostal(request.getParameter("code_postal"));
 		u.setVille(request.getParameter("ville"));
 		u.setMotDePasse(request.getParameter("mot_de_passe"));
 		u.setCredit(0);
 		u.setAdministrateur(false);
+		if(!request.getParameter("telephone").equals("")) {
+			u.setTelephone(request.getParameter("telephone"));
+		}
+		
+		
+		
 		
 		String message_erreur = null;
 		
@@ -65,8 +70,6 @@ public class ServletVersJSPInscription extends HttpServlet {
 
 			mng.insert(u);
 			session.setAttribute("utilisateur", u);
-			String inscriptionReussie = "Inscription réussie ";
-			session.setAttribute("inscriptionReussie", inscriptionReussie);
 			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspPageDAccueilModeConnecté.jsp").forward(request, response);
 
 		} else {
