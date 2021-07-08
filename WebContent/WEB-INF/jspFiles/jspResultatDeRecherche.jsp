@@ -22,7 +22,7 @@
 	<!-- HEADER -->
 	
 	<jsp:include page="/WEB-INF/jspFiles/jspHeader.jsp">
-		<jsp:param value="pageActuelle" name="Recherche profil"/>
+		<jsp:param value="pageActuelle" name="resultat_de_recherche"/>
 	</jsp:include>
 
 		<div class="container">
@@ -45,10 +45,19 @@
 			<%} %>
 			
 		
-		<%if(request.getAttribute("aucune_trouvé")!=null) {%>
-		<%=request.getAttribute("aucune_trouvé") %>
-		<%} %>
 		
+		<%if(request.getAttribute("mes_articles")!=null) {%>
+		<c:forEach items="${mes_articles}" var="enchere">
+		<div class="enchère">
+		<div class="photo"><img src="https://pics.freeicons.io/uploads/icons/png/394198151553508653-512.png" width="50px" height="50px" alt="enchère"></div>
+		<div class="description">
+			<a href="">${enchere.nomArticle}</a><br>
+			Prix : ${enchere.prixVente} points<br>
+			Fin de l'enchère : ${enchere.dateFinEncheres}<br>
+			Vendeur : ${enchere.pseudo}
+		</div>
+		</div></c:forEach>
+		<%} %>
 		
 	</div>
 	</div>

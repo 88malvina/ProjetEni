@@ -49,40 +49,73 @@ public class ServletModeConnecte extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LocalDate date=LocalDate.now();
 		ArticleVenduManager manager = new ArticleVenduManager();
-		List<ArticleVendu> list=manager.selectAll();
+		try {
+			List<ArticleVendu>list = manager.selectAvecPseudo();
 		
 		List<ArticleVendu> list_en_cours = new ArrayList<ArticleVendu>();
-		
 		List<ArticleVendu> list_remportés = new ArrayList<ArticleVendu>();
 		
-		for(ArticleVendu article: list) {
-			if(article.getDateFinEncheres().isAfter(date)) {
-				list_remportés.add(article);
-			}
-			if(article.getDateFinEncheres().isBefore(date)) {
-				list_en_cours.add(article);
-			}
-			
-		}
+		
+		
 		
 		if(request.getParameter("rechercher")!=null) {
 			
 			if(request.getParameter("radio_button")!=null) {
-				System.out.println(request.getParameter("encheres"));
+				if(request.getParameter("radio_button").equals("radio-achats")){		
 				switch (request.getParameter("encheres")) {
-				case "encheres_ouvertes": request.setAttribute("encheres_afficher", list); 
-				System.out.println(list);
-				case "encheres_en_cours": request.setAttribute("encheres_afficher", list_en_cours); 
-				case "remportés": request.setAttribute("encheres_afficher", list_remportés); 
+				
+				case "encheres_ouvertes":
+					for(ArticleVendu article: list) {
+						if(article.getDateFinEncheres().isAfter(date)) {
+							list_en_cours.add(article);
+						} }
+					request.setAttribute("mes_articles", list_en_cours);
+					System.out.println(list_en_cours);
+					
+				case "encheres_en_cours":
+					for(ArticleVendu article: list) {
+						if(article.getDateFinEncheres().isAfter(date)) {
+							list_en_cours.add(article);
+						} }
+					request.setAttribute("mes_articles", list_en_cours);
+					
+				case "remportées": 
+					for(ArticleVendu article: list) {
+						if(article.getDateFinEncheres().isBefore(date)) {
+							list_remportés.add(article);	
+						} }
+					request.setAttribute("mes_articles", list_remportés);
 					break;
 
 				default:
 					break;
 				}
 			}
-			
+				else 
+					if(request.getParameter("radio_button").equals("radio-mes_ventes")){
+					switch (request.getParameter("ventes")) {
+					case "ventes_en_cours":
+					case "ventes_non_debutees":
+					case "ventes_terminees":
+						
+						break;
+
+					default:
+						break;
+					}
+				}
+					else {
+						request.setAttribute("null", "Aucune trouvé");
+					}
+			}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		RequestDispatcher rd=request.getRequestDispatcher("/WEB-INF/jspFiles/jspPageDAccueilModeConnecté.jsp");
+			request.setAttribute("pageActuelle", "resultat_de_recherche");
+			request.setAttribute("aucune_trouvé","Aucune trouvé");
+		RequestDispatcher rd=request.getRequestDispatcher("/WEB-INF/jspFiles/jspResultatDeRecherche.jsp");
 		rd.forward(request, response);
 	}
 
