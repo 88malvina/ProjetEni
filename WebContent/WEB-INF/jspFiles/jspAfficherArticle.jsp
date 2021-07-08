@@ -38,8 +38,28 @@
 			<c:out value=" Catégorie : ${ article.getLibelleCategorie() }"/>
 		</h3>
 		
+		<h3 class="form_space">
+			<c:out value=" Meilleure offre : ${ article.prixVente }"/>
+		</h3>
+		
+		<h3 class="form_space">
+			<c:out value=" Mise à prix : ${ article.miseAPrix }"/>
+		</h3>
+		
+		<h3 class="form_space">
+			<c:out value=" Fin de l'enchère : ${ article.dateFinEncheres }"/>
+		</h3>
+		
+		<h3 class="form_space">
+			<c:out value=" Retrait : ${ article.getAdresseRetrait() }"/>
+		</h3>
+		
+		<h3 class="form_space">
+			<c:out value=" Vendeur : ${ article.getPseudoVendeur() }"/>
+		</h3>
+		
 		<div class="form_space">
-			<a class="a" href="/ProjetEni/encheres/ServletPageDAccueil"> | Retour accueil |</a>
+			<a href="/ProjetEni/encheres/ServletPageDAccueil"><input type="button" value="Retour accueil" class="btn btn-outline-dark btn-sm"></a>
 		</div>
 		
 	</div>

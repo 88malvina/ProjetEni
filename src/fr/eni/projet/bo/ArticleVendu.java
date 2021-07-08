@@ -15,6 +15,7 @@ public class ArticleVendu {
 	private int no_categorie;		
 	private String pseudo;
 	
+	Utilisateur vendeur;
 	Categorie categorie;
 	Retrait retrait;
 	
@@ -58,8 +59,27 @@ public class ArticleVendu {
 	public ArticleVendu() {
 	}
 
+	public String getAdresseRetrait() {
+		
+		String adresse = retrait.getRue()+"\n\n"+retrait.getCode_postal()+" "+retrait.getVille();
+		
+		return adresse;
+	}
+	
 	public String getLibelleCategorie() {
 		return categorie.getLibelle();
+	}
+	
+	public String getPseudoVendeur() {
+		return vendeur.getPseudo();
+	}
+	
+	public Utilisateur getVendeur() {
+		return vendeur;
+	}
+
+	public void setVendeur(Utilisateur vendeur) {
+		this.vendeur = vendeur;
 	}
 	
 	public Categorie getCategorie() {
