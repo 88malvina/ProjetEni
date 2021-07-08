@@ -24,7 +24,7 @@
 		<jsp:param value="pageActuelle" name="afficherArticle"/>
 	</jsp:include>
 
-<div class="container" id="container_form"> 
+<div class="container" id="container_form" > 
 	<div>
 		<div class="legend">
 			<h2><c:out value=" Article : ${ article.nomArticle }"/></h2>
