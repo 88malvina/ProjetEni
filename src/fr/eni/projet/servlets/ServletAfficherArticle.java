@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.projet.bll.ArticleVenduManager;
+import fr.eni.projet.bo.ArticleVendu;
+
 /**
  * Servlet implementation class ServletAfficherArticle
  */
@@ -19,6 +22,11 @@ public class ServletAfficherArticle extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("pageActuelle", "afficherArticle");
+		int no_article = (int) request.getAttribute("no_article");
+		ArticleVenduManager mngArt = new ArticleVenduManager();
+		ArticleVendu article = mngArt.selectById(no_article);
+		System.out.println(article.getNomArticle());
+		request.setAttribute("article",article);
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspAfficherArticle.jsp").forward(request, response);
 	}
 

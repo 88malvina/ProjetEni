@@ -1,35 +1,40 @@
-<!-- 
-Antoine
-Jsp en réception de la servlet Afficher profil
-Recherche d'utilisateur
-Affiche infos utilisateur
-nécessitant import jstl -->
-    
-    
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Je suis la jspAfficherProfil</title>
-
-<!-- Bootstrap core CSS -->
-
-<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-<style>
-	<%@include file="/css/style.css"%>
-</style>
-
+	<meta charset="UTF-8">
+	<title>Detail : <c:out value=" ${ article.nomArticle }"></c:out></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Application ENI-Encheres - Afficher article">
+	<meta name="author" content="Priscila Conchou">
+	
+	<!-- Bootstrap core CSS -->
+	
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	
+	<style>
+		<%@include file="/css/style.css"%>
+	</style>
 </head>
+
 <body>
 	<!-- HEADER -->
 	
 	<jsp:include page="/WEB-INF/jspFiles/jspHeader.jsp">
-		<jsp:param value="pageActuelle" name="Afficher Profil"/>
+		<jsp:param value="pageActuelle" name="afficherArticle"/>
 	</jsp:include>
 
+<div class="container" id="container_form"> 
 
-<h2> Saisissez le pseudo de l'utilisateur à afficher</h2>
+</div>
+
+
+
+
+
+
+<h2> <c:out value=" Article : ${ article.nomArticle }"></c:out></h2>
+
 
 	<form action="<%=request.getContextPath()%>/ServletAfficherProfil" method="post">
 						
