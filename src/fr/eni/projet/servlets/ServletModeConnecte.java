@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.projet.bll.ArticleVenduManager;
 import fr.eni.projet.bo.ArticleVendu;
-
+ 
 /**
  * Servlet implementation class ServletModeConnecte
  */

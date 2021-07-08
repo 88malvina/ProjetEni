@@ -69,7 +69,7 @@ public class ServletPageDAccueil extends HttpServlet {
 			String select=request.getParameter("select");
 			int no_categorie=0;
 			
-			/*----cas chercher par nom------*/
+ 			/*----cas chercher par nom------*/
 			if(saisieUtilisateur!=null) {
 				if(select==null) {
 				
