@@ -35,7 +35,7 @@
 		</h3>
 		
 		<h3 class="form_space">
-			<c:out value=" Catégorie : ${ article.description }"/>
+			<c:out value=" Catégorie : ${ article.getLibelleCategorie() }"/>
 		</h3>
 		
 		<div class="form_space">

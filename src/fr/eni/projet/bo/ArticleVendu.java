@@ -58,7 +58,9 @@ public class ArticleVendu {
 	public ArticleVendu() {
 	}
 
-	
+	public String getLibelleCategorie() {
+		return categorie.getLibelle();
+	}
 	
 	public Categorie getCategorie() {
 		return categorie;

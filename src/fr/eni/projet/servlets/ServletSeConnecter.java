@@ -80,7 +80,7 @@ public class ServletSeConnecter extends HttpServlet {
 			session.setAttribute("utilisateur", u);
 			
 			//On enverra aussi un petit message a afficher en jsp accueil
-			String messageLog = "Bonjour " + pseudo + " Vous êtes bien connecte";
+			String messageLog = "Bonjour " + pseudo + "!";
 			request.setAttribute("messageLog", messageLog);
 			
 			// ----------------DEBUT gestion des cookies DEBUT--------------------------------
