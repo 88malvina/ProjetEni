@@ -27,9 +27,9 @@ public class DAOArticleVenduJDBCImpl implements DAOArticleVendu {
 
 	private String update = "UPDATE ARTICLES_VENDUS SET nom_article=?, description=?, date_debut_encheres=?, date_fin_encheres=?, prix_initial=?, prix_vente=?, no_utilisateur=?, no_categorie=? WHERE no_article=?;";
 
-	private String selectAll = "SELECT nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie FROM ARTICLES_VENDUS;";
+	private String selectAll = "SELECT no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie FROM ARTICLES_VENDUS;";
 
-	private String selectById = "SELECT nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie FROM ARTICLES_VENDUS WHERE no_article=?;";
+	private String selectById = "SELECT no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie FROM ARTICLES_VENDUS WHERE no_article=?;";
 
 	private String selectByNom_article = "select * from ARTICLES_VENDUS WHERE nom_article=? ";
 
@@ -37,7 +37,7 @@ public class DAOArticleVenduJDBCImpl implements DAOArticleVendu {
 	
 	private String selectByCategorie = "select * from ARTICLES_VENDUS WHERE no_categorie=?";
 	
-	private String selectAvecPseudo = "select nom_article, prix_vente, date_fin_encheres, pseudo from ARTICLES_VENDUS join UTILISATEURS on ARTICLES_VENDUS.no_utilisateur=UTILISATEURS.no_utilisateur";
+	private String selectAvecPseudo = "select no_article, nom_article, prix_vente, date_fin_encheres, pseudo from ARTICLES_VENDUS join UTILISATEURS on ARTICLES_VENDUS.no_utilisateur=UTILISATEURS.no_utilisateur";
 	
 	private String selectVentesNonDebutees = "select nom_article, prix_vente, date_fin_encheres, pseudo from ARTICLES_VENDUS join UTILISATEURS on ARTICLES_VENDUS.no_utilisateur=UTILISATEURS.no_utilisateur where date_debut_encheres > GETDATE()";
 
@@ -91,6 +91,7 @@ public class DAOArticleVenduJDBCImpl implements DAOArticleVendu {
 			while(rs.next())
 			{
 				u = new ArticleVendu();
+				u.setNoArticle(rs.getInt("no_article"));
 				u.setNomArticle(rs.getString("nom_article"));
 				u.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
 				u.setPrixVente(rs.getInt("prix_vente"));

@@ -22,11 +22,16 @@ public class ServletAfficherArticle extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("pageActuelle", "afficherArticle");
-		int no_article = (int) request.getAttribute("no_article");
+		
+		String action = request.getParameter("action");
+		System.out.println(action);
+		
+		int no_article = Integer.parseInt(action);
 		ArticleVenduManager mngArt = new ArticleVenduManager();
 		ArticleVendu article = mngArt.selectById(no_article);
 		System.out.println(article.getNomArticle());
 		request.setAttribute("article",article);
+		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspAfficherArticle.jsp").forward(request, response);
 	}
 
