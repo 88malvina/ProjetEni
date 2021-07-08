@@ -24,20 +24,22 @@
 	<!-- On NE FAIT QU AFFICHER ici -->
 	
 	<div class="container">
-	
-				<h3> Mon profil </h3>
-				<h4> Pseudo : ${pseudo }</h4>
-				<h4> Nom :${nom }</h4>
-				<h4> Prenom : ${prenom }</h4>
-				<h4> email : ${email }</h4>
-				<h4> tel. :${telephone }</h4>
-				<h4> Rue : ${rue } </h4>
-				<h4> Code postal : ${cp }</h4>
-				<h4> Ville : ${ville }</h4>
-				<h3> Nombre crédit : ${credit } </h3>
+	<form class="form">
+		<fieldset  >
+				<legend><h3> Mon profil </h3></legend>
 				
-				<h3> <a href="/ProjetEni/ServletModifierMonProfil"> Modifier </a> </h3>
+				<p> Pseudo : ${pseudo }</p>
+				<p> Nom :${nom }</p>
+				 <p>Prenom : ${prenom }</p>
+				<p> email : ${email }</p>
+				<p> tel. :${telephone }</p>
+				<p> Rue : ${rue } </p>
+				<p>Code postal : ${cp }</p>
+				<p>Ville : ${ville }</p>
+				<p> Nombre crédit : ${credit }</p>
 				
+				 <a href="/ProjetEni/ServletModifierMonProfil"> Modifier </a> 
+			</fieldset></form>
 	</div>
 	
 	
