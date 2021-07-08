@@ -1,6 +1,7 @@
 package fr.eni.projet.dal.jdbc;
 
 import java.sql.Connection;
+
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,9 +15,6 @@ import fr.eni.projet.dal.DAOEnchere;
 
 public class DAOEnchereJDBCImpl implements DAOEnchere{
 	
-	
-	
-	
 	private String insert = "INSERT INTO ENCHERES (no_utilisateur, no_article, date_enchere, montant_enchere) VALUES (?,?,?,?);";
 
 	private String delete = "DELETE FROM ENCHERES WHERE no_utilisateur=? and no_article=?";
@@ -27,9 +25,14 @@ public class DAOEnchereJDBCImpl implements DAOEnchere{
 
 	private String selectById = "SELECT no_utilisateur, no_article, date_enchere, montant_enchere FROM ENCHERES WHERE no_utilisateur=? and no_article=?;";
 	
+	private String selectByNo_utilisateur = "SELECT no_utilisateur, no_article, date_enchere, montant_enchere FROM ENCHERES WHERE no_utilisateur=?;";
+	
+	private String selectByNo_article = "SELECT no_utilisateur, no_article, date_enchere, montant_enchere FROM ENCHERES WHERE no_article=?;";
+	
 
 	@Override
 	public void insert(Enchere u) throws SQLException {
+
 		try (
 
 				//Remplacement par pool de connexion via ConnectionProvider
@@ -133,6 +136,7 @@ public class DAOEnchereJDBCImpl implements DAOEnchere{
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				// TODO PRISCILA gérer exception
 			}
 			return u;
 		}
@@ -162,7 +166,7 @@ public class DAOEnchereJDBCImpl implements DAOEnchere{
 
 				encheres.add(u);	
 			}
-
+			// TODO PRISCILA gérer exception
 			cnx.close();
 
 		} 
@@ -176,6 +180,68 @@ public class DAOEnchereJDBCImpl implements DAOEnchere{
 	@Override
 	public Enchere selectById(int id) {
 		return null;
+	}
+
+	@Override
+	public Enchere selectByNo_utilisateur(int no_utilisateur) throws SQLException {
+		Enchere u = null;
+
+		try (
+
+				//Remplacement par pool de connexion via ConnectionProvider
+				//Connection cnx = JdbcTools.getConnection();
+				Connection cnx = ConnectionProvider.getConnection();
+
+				PreparedStatement psmt = cnx.prepareStatement(selectByNo_utilisateur, PreparedStatement.RETURN_GENERATED_KEYS);) {
+
+			psmt.setInt(1, no_utilisateur);
+			ResultSet rs = psmt.executeQuery();
+
+			if(rs.next())
+			{
+				u = new Enchere();
+				u.setNo_utilisateur(rs.getInt("no_utilisateur"));
+				u.setNo_article(rs.getInt("no_article"));
+				u.setDate_enchere(rs.getDate("date_enchere").toLocalDate());
+				u.setMontant_enchere(rs.getInt("montant_enchere"));
+
+				cnx.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return u;
+	}
+
+	@Override
+	public Enchere selectByNo_article(int no_article) throws SQLException {
+		Enchere u = null;
+
+		try (
+
+				//Remplacement par pool de connexion via ConnectionProvider
+				//Connection cnx = JdbcTools.getConnection();
+				Connection cnx = ConnectionProvider.getConnection();
+
+				PreparedStatement psmt = cnx.prepareStatement(selectByNo_article, PreparedStatement.RETURN_GENERATED_KEYS);) {
+
+			psmt.setInt(1, no_article);
+			ResultSet rs = psmt.executeQuery();
+
+			if(rs.next())
+			{
+				u = new Enchere();
+				u.setNo_utilisateur(rs.getInt("no_utilisateur"));
+				u.setNo_article(rs.getInt("no_article"));
+				u.setDate_enchere(rs.getDate("date_enchere").toLocalDate());
+				u.setMontant_enchere(rs.getInt("montant_enchere"));
+
+				cnx.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return u;
 	}
 
 	
