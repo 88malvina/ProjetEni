@@ -147,12 +147,10 @@ public class ServletModifierMonProfil extends HttpServlet {
 			String message = message_erreur;
 			request.setAttribute("message", message);
 			//On fait suivre le tout à la jsp qui l'affichera en cas d'erreur de modif profil
+
 			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspModifierMonProfil.jsp").forward(request, response);
 		}
 		
-		
-		
-		doGet(request, response);
 	}
 
 }

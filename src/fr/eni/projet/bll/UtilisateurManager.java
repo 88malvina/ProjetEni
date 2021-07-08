@@ -334,8 +334,8 @@ public class UtilisateurManager {
 		
 		if(u.getTelephone()==null) {
 			telephoneOk=true;
-		} else if (u.getTelephone()!=null && u.getTelephone().length()!=8) {
-			messageErreur="Le numéro de téléphone doit avoir 8 chiffres.";
+		} else if (u.getTelephone()!=null && u.getTelephone().length()!=10) {
+			messageErreur="Le numéro de téléphone doit avoir 10 chiffres.";
 		}
 		
 		
@@ -385,8 +385,6 @@ public class UtilisateurManager {
 	 */
 	public String ControleModifProfil (Utilisateur u, Utilisateur old, String confirmation_mot_de_passe) throws BusinessException {
 		
-		//// START COPIE
-		
 		String messageErreur = "";
 		boolean motDePasseOk = false;
 		boolean confirmationMotDePasseOk = false;
@@ -426,6 +424,7 @@ public class UtilisateurManager {
 			pseudoOk=true;
 		}
 		
+		System.out.println(messageErreur);
 		System.out.println("verif pseudo est passé ");
 		System.out.println(pseudoOk);
 
@@ -475,6 +474,10 @@ public class UtilisateurManager {
 			messageErreur="Le mot de passe doit avoir au moins 1 caractere special.";
 		} else {
 			motDePasseOk=true;
+			if (old.getMotDePasse().equals(u.getMotDePasse())) {
+				motDePasseOk=true;
+		}
+
 		}
 		
 		System.out.println("verif mdp est passé");
@@ -520,29 +523,32 @@ public class UtilisateurManager {
 		recherche = null; 
 		try {
 			recherche = daoUtilisateur.selectByTelephone(u.getTelephone());
-			
-			if(old.getTelephone().equals(u.getTelephone())) {
-				recherche = null;
-			}
 		} catch (SQLException e) {
-			// TODO PRISCILA gérer exception
-			
 			e.printStackTrace();
 		}
-		
 		if(recherche==null) {
-			telephoneOk=true;
-		} else if(u.getTelephone().equals("")) {
 			telephoneOk=true;
 		} else {
 			messageErreur="Ce téléphone est déjà utilisé";
 		}
+		
+		if(u.getTelephone()==null) {
+			telephoneOk=true;
+		} else if (u.getTelephone()!=null && u.getTelephone().length()!=10) {
+			messageErreur="Le numéro de téléphone doit avoir 10 chiffres.";
+		}
+		
+		System.out.println(old.getTelephone());
+		System.out.println(u.getTelephone());
+		
+		if (
+				old.getTelephone()==null || old.getTelephone().equals(u.getTelephone())
+				)
+		
+		{
+			telephoneOk=true;
+		}
 
-		System.out.println(messageErreur);
-		
-		System.out.println("verif tel est passé");
-		System.out.println(telephoneOk);
-		
 		// ------------------- check code postal
 		
 		if(!OutilsVerification.onlyNumbers(u.getCodePostal()) || u.getCodePostal().length()<5) {
@@ -556,7 +562,7 @@ public class UtilisateurManager {
 
 		// ---------------------- verifier si toutes les conditions sont remplies
 
-		if(motDePasseOk && confirmationMotDePasseOk  && pseudoOk && nomOk && prenomOk && telephoneOk && emailOk && codePostalOk) {
+		if(motDePasseOk && confirmationMotDePasseOk && pseudoOk && nomOk && prenomOk && telephoneOk && emailOk && codePostalOk) {
 			messageErreur="Verificaton réussite.";
 		}
 
