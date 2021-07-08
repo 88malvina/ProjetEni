@@ -18,11 +18,7 @@
 		<jsp:param value="pageActuelle" name="inscription"/>
 	</jsp:include>
 	<div id="container_form">
-	<!-- Message de confirmation si suppression de compte vient d'être effectué -->
-	<c:if test="${!empty compteSupprime}">
-    <p><c:out value="${compteSupprime }" /> </p>
-	</c:if>
-	<!-- ------------------------ -->
+
 	
 	<!-- Message de confirmation si l'on vient juste de se connecter -->
 	<c:if test="${!empty messageLog}">
