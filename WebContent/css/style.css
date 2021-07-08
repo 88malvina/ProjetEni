@@ -107,3 +107,7 @@
 	.nav-link{
 		margin-left: 1em;
 	}
+	section{
+		width:200px;
+		text-align: left;
+		}

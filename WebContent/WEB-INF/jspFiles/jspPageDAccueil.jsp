@@ -13,7 +13,7 @@
 	<jsp:include page="/WEB-INF/jspFiles/jspHeader.jsp">
 		<jsp:param value="pageActuelle" name="accueil"/>
 	</jsp:include>
-	<div class="container">
+	<div id="container_form">
 	<div class="titre"><h4>Liste des enchères</h4></div>
 	Filtres:<br>
 	<form method="post" action=""> 

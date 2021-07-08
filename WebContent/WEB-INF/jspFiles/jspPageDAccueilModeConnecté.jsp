@@ -17,7 +17,7 @@
 <jsp:include page="/WEB-INF/jspFiles/jspHeader.jsp">
 		<jsp:param value="pageActuelle" name="inscription"/>
 	</jsp:include>
-	<div class="container">
+	<div id="container_form">
 	<!-- Message de confirmation si suppression de compte vient d'être effectué -->
 	<c:if test="${!empty compteSupprime}">
     <p><c:out value="${compteSupprime }" /> </p>
