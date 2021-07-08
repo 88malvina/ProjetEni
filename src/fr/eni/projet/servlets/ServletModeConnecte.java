@@ -50,13 +50,64 @@ public class ServletModeConnecte extends HttpServlet {
 		LocalDate date=LocalDate.now();
 		ArticleVenduManager manager = new ArticleVenduManager();
 		try {
+			List<ArticleVendu> list_encheres=new ArrayList<ArticleVendu>();
 			List<ArticleVendu>list = manager.selectAvecPseudo();
 		
+		List<ArticleVendu> listAllEncheres=manager.selectAvecPseudo();
 		List<ArticleVendu> list_en_cours = new ArrayList<ArticleVendu>();
 		List<ArticleVendu> list_remportés = new ArrayList<ArticleVendu>();
 		List<ArticleVendu> ventes_non_debutees = manager.selectVentesNonDebutees();
 		
+		
 		if(request.getParameter("rechercher")!=null) {
+			
+			String saisieUtilisateur=request.getParameter("saisieUtilisateur");
+			String select=request.getParameter("select");
+			int no_categorie=0;
+			
+			/*----cas chercher par nom------*/
+			if(request.getParameter("radio_button")==null) {
+				if(saisieUtilisateur!=null) {
+					if(select==null) {
+					
+					listAllEncheres.stream()
+					.filter(x-> x.getNomArticle().toLowerCase().contains(saisieUtilisateur.toLowerCase()) )
+					.forEach(x->list_encheres.add(x))
+					;	
+					request.setAttribute("list_encheres",list_encheres);
+					System.out.println(list_encheres);
+					}
+					else
+					{
+						switch (select) {
+						case "informatique": no_categorie=1;
+							break;
+						case "vetement": no_categorie=2;
+						break;
+						case "ameublement": no_categorie=3;
+						break;
+						case "sport": no_categorie=4;
+						break;
+						default:
+							break;
+						}
+						listAllEncheres=manager.selectByCategorie(no_categorie);
+						request.setAttribute("cat", listAllEncheres);
+						
+						if(listAllEncheres!=null) {
+						for(ArticleVendu enchere:listAllEncheres) {
+							if(enchere.getNomArticle().toLowerCase().contains(saisieUtilisateur.toLowerCase()))
+								list_encheres.add(enchere);
+							}
+								
+				 		}
+						else {
+						request.setAttribute("aucune_trouvé", "Rien n'a été trouvé");
+						}
+						request.setAttribute("list_encheres", list_encheres);	
+					}	
+				}
+			}
 			
 			if(request.getParameter("radio_button")!=null) {
 				if(request.getParameter("radio_button").equals("radio-achats")){		
@@ -126,7 +177,9 @@ public class ServletModeConnecte extends HttpServlet {
 						request.setAttribute("null", "Aucune trouvé");
 					}
 			}
+			
 			}
+		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

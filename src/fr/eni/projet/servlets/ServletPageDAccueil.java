@@ -54,17 +54,12 @@ public class ServletPageDAccueil extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArticleVenduManager manager = new ArticleVenduManager();
 		
-		List<ArticleVendu> listAllEncheres;
 		List<ArticleVendu> list_encheres=new ArrayList<ArticleVendu>();
 	
 		 List<ArticleVendu> list_categorie=null;
-		 List<ArticleVendu> list_categorie2=null;
 		try {
-			//On pourrait avoir un filtre ? Il ne faut pas faire le selectall d'office car cela d�pend des filtres actifs ou pas
-			// "tel filtre a �t� mis" = contrainte 
-			// Conseil �ventuel : cr�er dynamiquement la requ�te selon les filtres s�lectionn�s
-			// Select all = donc seulement si on a mis aucun filtre
-			listAllEncheres = manager.selectAvecPseudo();
+			
+			List<ArticleVendu> listAllEncheres = manager.selectAvecPseudo();
 			request.setAttribute("encheres", listAllEncheres);
 		
 			
@@ -99,11 +94,11 @@ public class ServletPageDAccueil extends HttpServlet {
 					default:
 						break;
 					}
-					list_categorie2=manager.selectByCategorie(no_categorie);
-					request.setAttribute("cat", list_categorie2);
+					listAllEncheres=manager.selectByCategorie(no_categorie);
+					request.setAttribute("cat", listAllEncheres);
 					
-					if(list_categorie2!=null) {
-					for(ArticleVendu enchere:list_categorie2) {
+					if(listAllEncheres!=null) {
+					for(ArticleVendu enchere:listAllEncheres) {
 						if(enchere.getNomArticle().toLowerCase().contains(saisieUtilisateur.toLowerCase()))
 							list_encheres.add(enchere);
 						}
