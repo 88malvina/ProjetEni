@@ -54,27 +54,28 @@
 						</div>
 						
 						<div class="form_space">
-						<label for="rue">Rue :</label>
-						<input type="text" name="rue" id="rue" placeholder="Votre rue"
-						size="40" maxlength="30" value = "${rue }"required="required"/>
-						</div>
-						
-						<div class="form_space">
 						<label for="nom">Nom :</label>
 						<input type="text" name="nom" id="nom" placeholder="Votre nom"
 						size="40" maxlength="30" value = "${nom }" required="required" />
 						</div>
 						
 						<div class="form_space">
-						<label for="ville">Ville :</label>
-						<input type="text" name="ville" id="ville" placeholder="Votre ville"
-						size="40" maxlength="30" value = "${ville }"required="required"/>
-						</div>
-						
-						<div class="form_space">
 						<label for="prenom">Prénom :</label>
 						<input type="text" name="prenom" id="prenom" placeholder="Votre prénom"
 						size="40" maxlength="30" value = "${prenom }" required="required" />
+						</div>
+						
+						
+						<div class="form_space">
+						<label for="rue">Rue :</label>
+						<input type="text" name="rue" id="rue" placeholder="Votre rue"
+						size="40" maxlength="30" value = "${rue }"required="required"/>
+						</div>
+						
+						<div class="form_space">
+						<label for="ville">Ville :</label>
+						<input type="text" name="ville" id="ville" placeholder="Votre ville"
+						size="40" maxlength="30" value = "${ville }"required="required"/>
 						</div>
 						
 						<div class="form_space">
