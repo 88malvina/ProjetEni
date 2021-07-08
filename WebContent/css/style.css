@@ -99,8 +99,11 @@
 	color: white;
 	text-shadow: 0.1em 0.1em #CD5C5C;
 	}
-.form{	
+	.form{	
 	margin-top: 10px;
 	border: 1px solid grey;
 		text-align: center;
 		margin: 1em;}
+	.nav-link{
+		margin-left: 1em;
+	}
