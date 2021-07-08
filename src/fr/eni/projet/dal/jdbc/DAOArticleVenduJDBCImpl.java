@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.projet.bo.ArticleVendu;
-import fr.eni.projet.bo.Enchere;
 import fr.eni.projet.dal.DAOArticleVendu;
 
 /**
@@ -221,7 +220,7 @@ public class DAOArticleVenduJDBCImpl implements DAOArticleVendu {
 				u = new ArticleVendu();
 				//en utilisant cette méthode j'ai eu une erreur comme quoi no_article n'est pas valide
 				//pour l'instant je mets ceci dans le commentaire
-				//u.setNoArticle(rs.getInt("no_article"));
+				u.setNoArticle(rs.getInt("no_article"));
 				u.setNomArticle(rs.getString("nom_article"));
 				u.setDescription(rs.getString("description"));
 				u.setDateDebutEncheres(rs.getDate("date_debut_encheres").toLocalDate());

@@ -130,6 +130,8 @@ public class DAORetraitJDBCImpl implements DAORetrait {
 		} 
 		catch (SQLException e) 
 		{
+			// TODO PRISCILA gérer exception
+
 			e.printStackTrace();
 		}
 		return retraits;
@@ -154,13 +156,15 @@ public class DAORetraitJDBCImpl implements DAORetrait {
 			{
 				u = new Retrait();
 				u.setNo_article(rs.getInt("no_article"));
-				u.setRue(rs.getString("nom_article"));
-				u.setCode_postal(rs.getString("description"));
-				u.setVille(rs.getString("date_debut_encheres"));
+				u.setRue(rs.getString("rue"));
+				u.setCode_postal(rs.getString("code_postal"));
+				u.setVille(rs.getString("ville"));
 
 				cnx.close();
 			}
 		} catch (SQLException e) {
+			// TODO PRISCILA gérer exception
+
 			e.printStackTrace();
 		}
 		return u;
