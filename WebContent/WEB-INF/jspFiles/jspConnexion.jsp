@@ -69,9 +69,7 @@ nécessitant import jstl -->
 				</div>
 				
 				<div class="row">
-					<div>
-					<input type="button" value = "Mot de passe oublié ?" class="btn btn-outline-dark btn-sm">
-					</div>
+
 					<div>
 					<input type="submit" value="Valider" class="btn btn-outline-dark btn-sm" >
 					</div>

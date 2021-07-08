@@ -53,6 +53,7 @@ public class ServletAfficherMonProfil extends HttpServlet {
 			String cp= u.getCodePostal();
 			String ville = u.getVille();
 			String motDePasse = u.getMotDePasse();
+			int credit = u.getCredit();
 
 			// ======== On charge tous les attributs dans les attributs de requête
 
@@ -65,6 +66,7 @@ public class ServletAfficherMonProfil extends HttpServlet {
 			request.setAttribute("cp", cp);
 			request.setAttribute("ville", ville);
 			request.setAttribute("motDePasse", motDePasse);
+			request.setAttribute("credit", credit);
 
 			// ======== On dirige
 

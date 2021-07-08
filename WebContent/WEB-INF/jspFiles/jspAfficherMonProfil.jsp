@@ -34,6 +34,7 @@
 				<h4> Rue : ${rue } </h4>
 				<h4> Code postal : ${cp }</h4>
 				<h4> Ville : ${ville }</h4>
+				<h3> Nombre crédit : ${credit } </h3>
 				
 				<h3> <a href="/ProjetEni/ServletModifierMonProfil"> Modifier </a> </h3>
 				

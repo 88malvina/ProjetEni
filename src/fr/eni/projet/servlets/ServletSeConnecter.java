@@ -1,7 +1,6 @@
 package fr.eni.projet.servlets;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -14,11 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.eni.projet.bll.ArticleVenduManager;
-import fr.eni.projet.bll.EnchereManager;
 import fr.eni.projet.bll.UtilisateurManager;
 import fr.eni.projet.bo.ArticleVendu;
-import fr.eni.projet.bo.Enchere;
 import fr.eni.projet.bo.Utilisateur;
+import fr.eni.projet.businessException.BusinessException;
 
 /**
  * Antoine 
@@ -56,14 +54,28 @@ public class ServletSeConnecter extends HttpServlet {
 
 		//Instanciation du gestionnaire de formulaire et on recupere ses infos
 		UtilisateurManager identifiants = new UtilisateurManager();
-		Boolean estConnecte = identifiants.verifConnexion(pseudo, password);
+		Boolean estConnecte = null;
+		
+		try {
+			estConnecte = identifiants.verifConnexion(pseudo, password);
+		} catch (BusinessException e) {
+			e.getMessage();
+			e.printStackTrace();
+		}
 
 		//en cas de connexion ok, on passe l'utilisateur en attribut de session
 		if (estConnecte) {
 			
 			UtilisateurManager mng = new UtilisateurManager();
 			Utilisateur u = new Utilisateur();
-			u = mng.selectByPseudo(pseudo);
+			
+			try {
+				u = mng.selectByPseudo(pseudo);
+			} catch (BusinessException e) {
+				e.getMessage();
+				e.printStackTrace();
+			}
+			
 			HttpSession session = request.getSession();
 			session.setAttribute("utilisateur", u);
 			

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import fr.eni.projet.bll.UtilisateurManager;
 import fr.eni.projet.bo.Utilisateur;
+import fr.eni.projet.businessException.BusinessException;
 
 /**
  * Servlet implementation class ServletVersJSPInscription
@@ -51,7 +52,14 @@ public class ServletVersJSPInscription extends HttpServlet {
 		u.setCredit(0);
 		u.setAdministrateur(false);
 		
-		String message_erreur = mng.controleInscription(u, confirmation_mot_de_passe);
+		String message_erreur = null;
+		
+		try {
+			message_erreur = mng.controleInscription(u, confirmation_mot_de_passe);
+		} catch (BusinessException e) {
+			e.getMessage();
+			e.printStackTrace();
+		}
 
 		if (message_erreur.equals("Verificaton réussite.")) {
 

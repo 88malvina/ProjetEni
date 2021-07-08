@@ -1,25 +1,25 @@
 /**
  * 
  */
-package fr.eni.projet.dal;
+package fr.eni.projet.businessException;
 
 /**
  * Classe en charge de gérer les exceptions
  * @author PConchou
  */
 
-public class DALException extends Exception {
+public class BusinessException extends Exception {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -7619148820145992570L;
 
-	public DALException(String message, Throwable cause) {
+	public BusinessException(String message, Throwable cause) {
 		super(message, cause);
 	}
 
-	public DALException(String message) {
+	public BusinessException(String message) {
 		super(message);
 	}
 

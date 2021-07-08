@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.projet.bo.Utilisateur;
-import fr.eni.projet.dal.DALException;
+import fr.eni.projet.businessException.BusinessException;
 import fr.eni.projet.dal.DAOUtilisateur;
 
 public class DAOUtilisateurJDBCImpl implements DAOUtilisateur {
@@ -208,7 +208,7 @@ public class DAOUtilisateurJDBCImpl implements DAOUtilisateur {
 
 	//Ajout Antoine selectByPseudo pour valider la connexion ====================
 
-	public Utilisateur selectByPseudo(String pseudo) throws DALException {
+	public Utilisateur selectByPseudo(String pseudo) throws BusinessException {
 		Utilisateur u = null;
 
 		try (
@@ -243,7 +243,7 @@ public class DAOUtilisateurJDBCImpl implements DAOUtilisateur {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new DALException("Erreur lors de l'interrogation Base de données select by pseudo");
+			throw new BusinessException("Erreur lors de l'interrogation Base de données select by pseudo");
 
 		}
 

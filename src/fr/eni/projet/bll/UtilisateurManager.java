@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.projet.bo.Utilisateur;
+import fr.eni.projet.businessException.BusinessException;
 import fr.eni.projet.dal.DAOFactory;
 import fr.eni.projet.dal.DAOUtilisateur;
 
@@ -22,14 +23,15 @@ public class UtilisateurManager {
 
 	// Méthodes ==========================================================================
 
-	public Utilisateur selectByPseudo(String pseudo) {
+	public Utilisateur selectByPseudo(String pseudo) throws BusinessException {
 
 		Utilisateur resultat = null;
 		try {
 			resultat = daoUtilisateur.selectByPseudo(pseudo);
-		} catch (SQLException e) {
-			// TODO ANTOINE gérer exception
+		} catch (SQLException | BusinessException e) {
 			e.printStackTrace();
+			throw new BusinessException("erreur Umng selectByPseudo");
+			
 		}
 		return resultat;	
 	}
@@ -108,7 +110,7 @@ public class UtilisateurManager {
 
 	//  ==========================================================================
 
-	public Boolean verifConnexion (String pseudo, String password) {
+	public Boolean verifConnexion (String pseudo, String password) throws BusinessException {
 
 		boolean connecte = false;
 
@@ -130,6 +132,10 @@ public class UtilisateurManager {
 		} catch (NullPointerException e) {
 			connecte = false;
 
+		} catch (BusinessException e) {
+			e.printStackTrace();
+			throw new BusinessException("erreur verifConnexion");
+
 		}
 
 		return connecte;
@@ -139,7 +145,7 @@ public class UtilisateurManager {
 	//  ==========================================================================
 
 	//Méthode pour vérifier l'existence d'un utilisateur par son pseudo
-	public Boolean verifUtilisateurExiste (String pseudo) {
+	public Boolean verifUtilisateurExiste (String pseudo) throws BusinessException {
 
 		boolean utilisateurExiste = false;
 
@@ -183,7 +189,7 @@ public class UtilisateurManager {
 
 	//  ==========================================================================
 
-	public String controleInscription(Utilisateur u, String confirmation_mot_de_passe) {
+	public String controleInscription(Utilisateur u, String confirmation_mot_de_passe) throws BusinessException {
 
 
 		String messageErreur = "";
@@ -373,8 +379,9 @@ public class UtilisateurManager {
 	 * @param old l'utilisateur initial (avant saisie de formulaire)
 	 * @param confirmation_mot_de_passe
 	 * @return
+	 * @throws BusinessException 
 	 */
-	public String ControleModifProfil (Utilisateur u, Utilisateur old, String confirmation_mot_de_passe) {
+	public String ControleModifProfil (Utilisateur u, Utilisateur old, String confirmation_mot_de_passe) throws BusinessException {
 		
 		//// START COPIE
 		

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import fr.eni.projet.bll.UtilisateurManager;
 import fr.eni.projet.bo.Utilisateur;
+import fr.eni.projet.businessException.BusinessException;
 
 /**
  * Servlet en charge de permettre aux utilisateurs connectés de modifer leur profil
@@ -108,7 +109,14 @@ public class ServletModifierMonProfil extends HttpServlet {
 		// On utilise la méthode controleModifProfil de l'utilisateur manager pour vérifier que c'est bon
 		
 		UtilisateurManager mng = new UtilisateurManager();
-		String message_erreur = mng.ControleModifProfil(u, old, confirmation_mot_de_passe);
+		String message_erreur = null;
+		
+		try {
+			message_erreur = mng.ControleModifProfil(u, old, confirmation_mot_de_passe);
+		} catch (BusinessException e) {
+			e.getMessage();
+			e.printStackTrace();
+		}
 
 		if (message_erreur.equals("Verificaton réussite.")) {
 			//Si c'est ok on update et on change l'utilisateur en attribut de session
