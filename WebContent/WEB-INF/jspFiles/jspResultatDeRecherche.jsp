@@ -29,7 +29,6 @@
 			<div class="titre"><h4>Liste des enchères</h4></div>
 	<div class="liste_enchères">
 	<br>
-			
 			<%if(request.getAttribute("list_encheres")!=null) {%>
 			<c:forEach items="${list_encheres}" var="list">
 			<div class="enchère">
@@ -44,7 +43,7 @@
 			</c:forEach>
 			<%} %>
 			
-		
+	
 		
 		<%if(request.getAttribute("mes_articles")!=null) {%>
 		<c:forEach items="${mes_articles}" var="enchere">
@@ -58,7 +57,7 @@
 		</div>
 		</div></c:forEach>
 		<%} %>
-		
+	
 	</div>
 	</div>
 	<!--  footer -->

@@ -54,9 +54,7 @@ public class ServletModeConnecte extends HttpServlet {
 		
 		List<ArticleVendu> list_en_cours = new ArrayList<ArticleVendu>();
 		List<ArticleVendu> list_remportés = new ArrayList<ArticleVendu>();
-		
-		
-		
+		List<ArticleVendu> ventes_non_debutees = manager.selectVentesNonDebutees();
 		
 		if(request.getParameter("rechercher")!=null) {
 			
@@ -70,21 +68,22 @@ public class ServletModeConnecte extends HttpServlet {
 							list_en_cours.add(article);
 						} }
 					request.setAttribute("mes_articles", list_en_cours);
-					System.out.println(list_en_cours);
-					
+					break;
 				case "encheres_en_cours":
 					for(ArticleVendu article: list) {
 						if(article.getDateFinEncheres().isAfter(date)) {
 							list_en_cours.add(article);
 						} }
 					request.setAttribute("mes_articles", list_en_cours);
-					
-				case "remportées": 
+					break;
+				case "remportees": System.out.println(list_remportés+"k");
 					for(ArticleVendu article: list) {
 						if(article.getDateFinEncheres().isBefore(date)) {
+							
 							list_remportés.add(article);	
 						} }
 					request.setAttribute("mes_articles", list_remportés);
+					
 					break;
 
 				default:
@@ -95,8 +94,27 @@ public class ServletModeConnecte extends HttpServlet {
 					if(request.getParameter("radio_button").equals("radio-mes_ventes")){
 					switch (request.getParameter("ventes")) {
 					case "ventes_en_cours":
+						for(ArticleVendu article: list) {
+							if(article.getDateFinEncheres().isAfter(date)) {
+								list_en_cours.add(article);
+							} }
+						request.setAttribute("mes_articles", list_en_cours);
+						break;
 					case "ventes_non_debutees":
+						if(ventes_non_debutees==null) {
+							System.out.println("null");
+							}
+						else
+							request.setAttribute("mes_articles", ventes_non_debutees);
+						
+						break;
 					case "ventes_terminees":
+						for(ArticleVendu article: list) {
+							if(article.getDateFinEncheres().isBefore(date)) {
+								System.out.println(article);
+								list_remportés.add(article);	
+							} }
+						request.setAttribute("mes_articles", list_remportés);
 						
 						break;
 
