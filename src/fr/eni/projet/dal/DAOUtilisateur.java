@@ -12,7 +12,9 @@ import fr.eni.projet.bo.Utilisateur;
 
 public interface DAOUtilisateur extends DAO<Utilisateur> {
 
-	public Utilisateur selectByPseudo(String pseudo) throws SQLException;
+	// A noter : ajout dal exception sera sans doute à faire
+	
+	public Utilisateur selectByPseudo(String pseudo) throws SQLException, DALException;
 
 	public Utilisateur selectByEmail(String email) throws SQLException;
 	
