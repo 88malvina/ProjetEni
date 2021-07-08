@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.css">	
 <style>
 	.menu {
-		background-color: #E7A8A0;
+		background-color: #0f9084;
 		
 		}
 		.nav-link {
@@ -15,8 +15,7 @@
 		
 		<nav class="menu navbar navbar-expand-sm justify-content-center">
 		<div id="logo_et_nom">
-			<div id="logo_site"><a href="/ProjetEni/encheres/ServletPageDAccueil"><img src="/ProjetEni/images/LogoMakr-2HYM8k.png" alt="Logo du site" title="logo du site" id="logo_site" /></a></div>
-			<div id="nom_site"><h1>ENI-Enchères</h1></div>
+			<div id="logo_site"><a href="/ProjetEni/encheres/ServletPageDAccueil"><img src="/ProjetEni/images/logo.png" alt="Logo du site" title="logo du site" id="logo_site" /></a></div>
 		</div>
    	 
    	<!--  ======================== Nav Quand utilisateur connecte ============================================ -->
