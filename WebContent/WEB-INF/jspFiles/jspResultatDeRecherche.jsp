@@ -25,13 +25,13 @@
 		<jsp:param value="pageActuelle" name="resultat_de_recherche"/>
 	</jsp:include>
 
-		<div class="container">
-			<div class="titre"><h4>Liste des enchères</h4></div>
+		<div id="container_form">
+			<div class="titre"><h4>Résultat de recherche</h4></div>
 	<div class="liste_enchères">
 	<br>
 			<%if(request.getAttribute("list_encheres")!=null) {%>
 			<c:forEach items="${list_encheres}" var="list">
-			<div class="enchère">
+			<div class="form">
 		<div class="photo"><img src="https://pics.freeicons.io/uploads/icons/png/394198151553508653-512.png" width="50px" height="50px" alt="enchère"></div>
 		<div class="description">
 			<a href="">${list.nomArticle}</a><br>
@@ -47,7 +47,7 @@
 		
 		<%if(request.getAttribute("mes_articles")!=null) {%>
 		<c:forEach items="${mes_articles}" var="enchere">
-		<div class="enchère">
+		<div class="form">
 		<div class="photo"><img src="https://pics.freeicons.io/uploads/icons/png/394198151553508653-512.png" width="50px" height="50px" alt="enchère"></div>
 		<div class="description">
 			<a href="">${enchere.nomArticle}</a><br>

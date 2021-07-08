@@ -37,7 +37,7 @@
 	<br>
 		
 		<c:forEach items="${encheres}" var="enchere">
-		<div class="enchère">
+		<div class="form">
 		<div class="photo"><img src="https://pics.freeicons.io/uploads/icons/png/394198151553508653-512.png" width="50px" height="50px" alt="enchère"></div>
 		<div class="description">
 			<a href="/ProjetEni/ServletAfficherArticle?action=${ enchere.getNoArticle() }">${enchere.nomArticle}</a><br>
