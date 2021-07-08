@@ -57,11 +57,15 @@
 		<h3 class="form_space">
 			<c:out value=" Vendeur : ${ article.getPseudoVendeur() }"/>
 		</h3>
-		
+				
 		<div class="form_space">
-			<a href="/ProjetEni/encheres/ServletPageDAccueil"><input type="button" value="Retour accueil" class="btn btn-outline-dark btn-sm"></a>
+			<form name="formulaireEnchere" method="post" action="ServletEncherir">
+				<label for="montant_enchere">Ma proposition :</label>
+				<input type="number" name="montant_enchere" id="montant_enchere" min="${ article.prixVente }"/>
+				<input type="submit" value="Enchérir" class="btn btn-outline-dark btn-sm">
+			</form>
 		</div>
-		
+
 	</div>
 </div>
  				

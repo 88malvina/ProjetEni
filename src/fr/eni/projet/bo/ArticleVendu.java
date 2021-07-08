@@ -18,6 +18,7 @@ public class ArticleVendu {
 	Utilisateur vendeur;
 	Categorie categorie;
 	Retrait retrait;
+	Enchere enchereGagnante;
 	
 	
 
@@ -72,6 +73,14 @@ public class ArticleVendu {
 	
 	public String getPseudoVendeur() {
 		return vendeur.getPseudo();
+	}
+	
+	public Enchere getEnchereGagnante() {
+		return enchereGagnante;
+	}
+
+	public void setEnchereGagnante(Enchere enchereGagnante) {
+		this.enchereGagnante = enchereGagnante;
 	}
 	
 	public Utilisateur getVendeur() {

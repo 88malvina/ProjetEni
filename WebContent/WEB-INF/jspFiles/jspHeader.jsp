@@ -76,7 +76,6 @@
         						 <a class="nav-link" href="/ProjetEni/encheres/ServletPageDAccueil"><c:out value="Accueil" /></a>
       						</li> 
 						  </ul>
-					
 					</c:when>
 					
 					
