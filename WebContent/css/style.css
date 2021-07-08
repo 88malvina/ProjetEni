@@ -1,8 +1,4 @@
 @charset 'UTF-8';
-
-.container{
-	text-align: center;
-}
 	section {
 		display: flex;
 		justify-content: center;
@@ -44,7 +40,7 @@
 		text-align: center;
 		color: white;
 		padding-top: 40px;
-		background-image: url("https://img.freepik.com/free-vector/desert-landscape-background-video-conferencing-with-cactus_23-2148670212.jpg?size=626&ext=jpg");
+		background-color : #0f9084;
 	}
 	#container_form {
 		text-align: center;
@@ -86,9 +82,11 @@
 	height: 100%;
  	font-family: "Trirong", serif;
 	}
+	
 	#logo_site{
-	width: 45px;
-	height: 45px;
+	
+	width: 478px;
+	height: 120px;
 	
 	}
 	#logo_et_nom{
@@ -101,8 +99,3 @@
 	color: white;
 	text-shadow: 0.1em 0.1em #CD5C5C;
 	}
-.form{	
-	margin-top: 10px;
-	border: 1px solid grey;
-		text-align: center;
-		margin: 1em;}
