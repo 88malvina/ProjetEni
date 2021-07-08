@@ -28,15 +28,15 @@
 		<fieldset  >
 				<legend><h3> Mon profil </h3></legend>
 				
-				<p> Pseudo : ${pseudo }</p>
-				<p> Nom :${nom }</p>
-				 <p>Prenom : ${prenom }</p>
-				<p> email : ${email }</p>
-				<p> tel. :${telephone }</p>
-				<p> Rue : ${rue } </p>
-				<p>Code postal : ${cp }</p>
-				<p>Ville : ${ville }</p>
-				<p> Nombre crédit : ${credit }</p>
+				 Pseudo : ${pseudo }<br>
+				Nom :${nom }<br>
+				Prenom : ${prenom }<br>
+				email : ${email }<br>
+				tel. :${telephone }<br>
+				 Rue : ${rue }<br>
+				Code postal : ${cp }<br>
+				Ville : ${ville }<br>
+				 Nombre crédit : ${credit }<br>
 				
 				 <a href="/ProjetEni/ServletModifierMonProfil"> Modifier </a> 
 			</fieldset></form>
