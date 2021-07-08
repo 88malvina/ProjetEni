@@ -30,6 +30,11 @@
 	</c:if>
 	<!-- ------------------------ -->
 	
+	<!--  Message confirmation si inscription réussie -->
+	<c:if test="${!empty inscriptionReussie}">
+    <p><c:out value="${inscriptionReussie }" /> </p>
+	</c:if>
+	
 	<div class="titre"><h4>Liste des enchères</h4></div>
 	Filtres:<br>
 	

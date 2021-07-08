@@ -65,7 +65,7 @@ public class ServletVersJSPInscription extends HttpServlet {
 
 			mng.insert(u);
 			session.setAttribute("utilisateur", u);
-			String inscriptionReussie = "Inscription réussie";
+			String inscriptionReussie = "Inscription réussie ";
 			session.setAttribute("inscriptionReussie", inscriptionReussie);
 			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspPageDAccueilModeConnecté.jsp").forward(request, response);
 
