@@ -1,3 +1,6 @@
+USE ENCHERES 
+GO
+
 INSERT INTO UTILISATEURS (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) VALUES ('toto','Ambrosy','Mael','maelambros@gmail.com','0623454545','Lavoisiers','33000','Bordeaux','eniecole',550,0);
 INSERT INTO UTILISATEURS (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) VALUES ('coco55','Guisnet','Michel', 'michelguis@gmail.com','0983457845','Lavout','37000','Tours','Pa$$w0rd',150,0);
 INSERT INTO UTILISATEURS (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) VALUES ('juli8','Merleau','Julie', 'julie.mu@gmail.com','0727455545','Carnot','31000','Toulouse','helloworld',240,1);
@@ -8,11 +11,14 @@ INSERT INTO CATEGORIES (libelle) VALUES ('Ameublement');
 INSERT INTO CATEGORIES (libelle) VALUES ('Vetement');
 INSERT INTO CATEGORIES (libelle) VALUES ('Sport&Loisirs');
 
+INSERT INTO ARTICLES_VENDUS (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente,no_utilisateur,no_categorie) 
+VALUES ('PCGamer pour travailler','pc game','2018-08-05','2018-08-10','210','250',1,1);
+INSERT INTO ARTICLES_VENDUS (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente,no_utilisateur,no_categorie) 
+VALUES ('Fortnite','jeu video','2021-05-06','2021-08-06','25','30',2,1);
+
 INSERT INTO RETRAITS (no_article,rue,code_postal, ville) VALUES (1,'Chemin de Lavou', '33000','Bordeaux');
 INSERT INTO RETRAITS (no_article,rue,code_postal, ville) VALUES (2,'Montgallet', '31000','Toulouse');
 
-INSERT INTO ARTICLES_VENDUS (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente,no_utilisateur,no_categorie) VALUES ('PCGamer pour travailler','pc game','2018-08-05','2018-08-10','210','210',1,1);
-INSERT INTO ARTICLES_VENDUS (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente,no_utilisateur,no_categorie) VALUES ('Fortnite','jeu video','20210506','20210706','25','30',2,2);
-
-INSERT INTO ENCHERES (no_utilisateur,no_article,date_enchere,montant_enchere) VALUES (2,1,2015-05-05,250);
-INSERT INTO ENCHERES (no_utilisateur,no_article,date_enchere,montant_enchere) VALUES (1,1,2018-08-10,210);
+INSERT INTO ENCHERES (no_utilisateur,no_article,date_enchere,montant_enchere) VALUES (2,2,'2015-05-05',30);
+INSERT INTO ENCHERES (no_utilisateur,no_article,date_enchere,montant_enchere) VALUES (1,1,'2018-08-13',250);
+INSERT INTO ENCHERES (no_utilisateur,no_article,date_enchere,montant_enchere) VALUES (3,1,'2018-08-10',230);
