@@ -22,4 +22,6 @@ public interface DAOArticleVendu extends DAO<ArticleVendu> {
 	
 	public List<ArticleVendu> selectAvecPseudo() throws SQLException;
 	
+	public List<ArticleVendu> selectVentesNonDebutees();
+	
 }

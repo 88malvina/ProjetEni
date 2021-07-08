@@ -52,6 +52,10 @@ public class ArticleVenduManager {
 			return daoArtVendu.selectAvecPseudo();
 		}
 		
+		public List<ArticleVendu> selectVentesNonDebutees() throws SQLException {
+			return daoArtVendu.selectVentesNonDebutees();
+		}
+		
 		public void update(ArticleVendu u) {
 			daoArtVendu.update(u);
 		}

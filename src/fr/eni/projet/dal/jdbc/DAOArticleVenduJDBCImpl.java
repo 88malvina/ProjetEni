@@ -39,7 +39,44 @@ public class DAOArticleVenduJDBCImpl implements DAOArticleVendu {
 	private String selectByCategorie = "select * from ARTICLES_VENDUS WHERE no_categorie=?";
 	
 	private String selectAvecPseudo = "select nom_article, prix_vente, date_fin_encheres, pseudo from ARTICLES_VENDUS join UTILISATEURS on ARTICLES_VENDUS.no_utilisateur=UTILISATEURS.no_utilisateur";
+	
+	private String selectVentesNonDebutees = "select nom_article, prix_vente, date_fin_encheres, pseudo from ARTICLES_VENDUS join UTILISATEURS on ARTICLES_VENDUS.no_utilisateur=UTILISATEURS.no_utilisateur where date_debut_encheres > GETDATE()";
 
+	public List<ArticleVendu> selectVentesNonDebutees(){
+		List<ArticleVendu> articlesVendus = new ArrayList<ArticleVendu>();
+		try (
+				//Remplacement par pool de connexion via ConnectionProvider
+				//Connection cnx = JdbcTools.getConnection();
+				Connection cnx = ConnectionProvider.getConnection();
+
+
+				Statement smt = cnx.createStatement()) 
+		{
+			ResultSet rs = smt.executeQuery(selectVentesNonDebutees);
+			ArticleVendu u = null;
+			while(rs.next())
+			{
+				u = new ArticleVendu();
+				u.setNomArticle(rs.getString("nom_article"));
+				u.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
+				u.setPrixVente(rs.getInt("prix_vente"));
+				u.setPseudo(rs.getString("pseudo"));
+
+				articlesVendus.add(u);	
+			}
+
+			cnx.close();
+
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		return articlesVendus;
+		
+	}
+	
 	public List<ArticleVendu> selectAvecPseudo() {
 		List<ArticleVendu> articlesVendus = new ArrayList<ArticleVendu>();
 		try (
@@ -203,6 +240,7 @@ public class DAOArticleVenduJDBCImpl implements DAOArticleVendu {
 		catch (SQLException e) 
 		{
 			e.printStackTrace();
+			
 		}
 		return articlesVendus;
 	}
