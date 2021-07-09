@@ -32,6 +32,8 @@ public class DAOArticleVenduJDBCImpl implements DAOArticleVendu {
 	private String selectById = "SELECT no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie FROM ARTICLES_VENDUS WHERE no_article=?;";
 
 	private String selectByNom_article = "select * from ARTICLES_VENDUS WHERE nom_article=? ";
+	
+	private String selectNomByNumero = "select nom_article from ARTICLES_VENDUS where no_article=?;";
 
 	private String selectByUtilisateur = "select * from ARTICLES_VENDUS WHERE no_utilisateur=? ";
 	
@@ -41,7 +43,249 @@ public class DAOArticleVenduJDBCImpl implements DAOArticleVendu {
 	
 	private String selectVentesNonDebutees = "select nom_article, prix_vente, date_fin_encheres, pseudo from ARTICLES_VENDUS join UTILISATEURS on ARTICLES_VENDUS.no_utilisateur=UTILISATEURS.no_utilisateur where date_debut_encheres > GETDATE()";
 
+	private String selectVentesNonDebuteesParCategorie = "select nom_article, prix_vente, date_fin_encheres, pseudo from ARTICLES_VENDUS join UTILISATEURS on ARTICLES_VENDUS.no_utilisateur=UTILISATEURS.no_utilisateur where date_debut_encheres > GETDATE() and no_categorie=?";
+	
+	private String selectMesEncheresEnCours = "select nom_article, prix_vente, date_fin_encheres, pseudo from ARTICLES_VENDUS join UTILISATEURS on ARTICLES_VENDUS.no_utilisateur=UTILISATEURS.no_utilisateur where date_fin_encheres > GETDATE() and no_categorie=?";
+	
+	private String selectMesEncheresTermineesByCategorie = "select nom_article, prix_vente, date_fin_encheres, pseudo from ARTICLES_VENDUS join UTILISATEURS on ARTICLES_VENDUS.no_utilisateur=UTILISATEURS.no_utilisateur where date_fin_encheres < GETDATE() and no_categorie=?";
+	
+	private String selectMesEncheresEnCoursByCategorieEtNom="select nom_article, prix_vente, date_fin_encheres, pseudo from ARTICLES_VENDUS join UTILISATEURS on ARTICLES_VENDUS.no_utilisateur=UTILISATEURS.no_utilisateur where date_fin_encheres > GETDATE() and no_categorie=? and nom_article like ?";
+	
+	private String selectMesEncheresNonDebuteesByCategorieEtNom= "select nom_article, prix_vente, date_fin_encheres, pseudo from ARTICLES_VENDUS join UTILISATEURS on ARTICLES_VENDUS.no_utilisateur=UTILISATEURS.no_utilisateur where date_debut_encheres > GETDATE() and no_categorie=? and nom_article like ?";
+	
+	private String selectMesEncheresTermineesByCategorieEtNom = "select nom_article, prix_vente, date_fin_encheres, pseudo from ARTICLES_VENDUS join UTILISATEURS on ARTICLES_VENDUS.no_utilisateur=UTILISATEURS.no_utilisateur where date_fin_encheres < GETDATE() and no_categorie=? and nom_article like ?";
+	
+	public ArticleVendu selectNomByNumero(int id){
+		ArticleVendu u=null;
 
+		try (
+
+				Connection cnx = ConnectionProvider.getConnection();
+
+				PreparedStatement psmt = cnx.prepareStatement(selectNomByNumero, PreparedStatement.RETURN_GENERATED_KEYS);) {
+
+			psmt.setInt(1, id);
+			ResultSet rs = psmt.executeQuery();
+
+			if(rs.next())
+			{
+				u = new ArticleVendu();
+				u.setNoArticle(rs.getInt("no_article"));
+				u.setNomArticle(rs.getString("nom_article"));
+				u.setDescription(rs.getString("description"));
+				u.setDateDebutEncheres(rs.getDate("date_debut_encheres").toLocalDate());
+				u.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
+				u.setMiseAPrix(rs.getInt("prix_initial"));
+				u.setPrixVente(rs.getInt("prix_vente"));
+				u.setNo_utilisateur(rs.getInt("no_utilisateur"));
+				u.setNo_categorie(rs.getInt("no_categorie"));
+
+				cnx.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return u;
+	}	
+	public List<ArticleVendu> selectMesEncheresTermineesByCategorieEtNom(int no_categorie,String nom){
+		List<ArticleVendu> articlesVendus = new ArrayList<ArticleVendu>();
+		ArticleVendu u=new ArticleVendu();
+		try (
+			
+				Connection cnx = ConnectionProvider.getConnection();
+				
+				PreparedStatement psmt = cnx.prepareStatement(selectMesEncheresTermineesByCategorieEtNom, PreparedStatement.RETURN_GENERATED_KEYS);) {
+			psmt.setInt(1, no_categorie);
+			psmt.setString(2,"%"+nom+"%");
+			
+			ResultSet rs = psmt.executeQuery();
+
+			if(rs.next())
+			{
+				u.setNomArticle(rs.getString("nom_article"));
+				u.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
+				u.setPrixVente(rs.getInt("prix_vente"));
+				u.setPseudo(rs.getString("pseudo"));
+				
+				articlesVendus.add(u);
+			}
+			cnx.close();
+
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		return articlesVendus;
+		
+	}
+	
+	public List<ArticleVendu> selectMesEncheresNonDebuteesByCategorieEtNom(int no_categorie,String nom){
+		List<ArticleVendu> articlesVendus = new ArrayList<ArticleVendu>();
+		ArticleVendu u=new ArticleVendu();
+		try (
+			
+				Connection cnx = ConnectionProvider.getConnection();
+				
+				PreparedStatement psmt = cnx.prepareStatement(selectMesEncheresNonDebuteesByCategorieEtNom, PreparedStatement.RETURN_GENERATED_KEYS);) {
+			psmt.setInt(1, no_categorie);
+			psmt.setString(2,"%"+nom+"%");
+			
+			ResultSet rs = psmt.executeQuery();
+
+			if(rs.next())
+			{
+				u.setNomArticle(rs.getString("nom_article"));
+				u.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
+				u.setPrixVente(rs.getInt("prix_vente"));
+				u.setPseudo(rs.getString("pseudo"));
+				
+				articlesVendus.add(u);
+			}
+			cnx.close();
+
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		return articlesVendus;
+		
+	}
+	
+	
+	public List<ArticleVendu> selectMesEncheresEnCoursByCategorieEtNom(int no_categorie,String nom){
+		List<ArticleVendu> articlesVendus = new ArrayList<ArticleVendu>();
+		ArticleVendu u=new ArticleVendu();
+		try (
+			
+				Connection cnx = ConnectionProvider.getConnection();
+				
+				PreparedStatement psmt = cnx.prepareStatement(selectMesEncheresEnCoursByCategorieEtNom, PreparedStatement.RETURN_GENERATED_KEYS);) {
+			psmt.setInt(1, no_categorie);
+			psmt.setString(2,"%"+nom+"%");
+			
+			ResultSet rs = psmt.executeQuery();
+
+			if(rs.next())
+			{
+				u.setNomArticle(rs.getString("nom_article"));
+				u.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
+				u.setPrixVente(rs.getInt("prix_vente"));
+				u.setPseudo(rs.getString("pseudo"));
+				
+				articlesVendus.add(u);
+			}
+			cnx.close();
+
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		return articlesVendus;
+		
+	}
+	
+	
+	public List<ArticleVendu> selectMesEncheresTermineesByCategorie(int no_categorie){
+		List<ArticleVendu> articlesVendus = new ArrayList<ArticleVendu>();
+		ArticleVendu u=new ArticleVendu();
+		try (
+			
+				Connection cnx = ConnectionProvider.getConnection();
+				
+				PreparedStatement psmt = cnx.prepareStatement(selectMesEncheresTermineesByCategorie, PreparedStatement.RETURN_GENERATED_KEYS);) {
+			psmt.setInt(1, no_categorie);
+			ResultSet rs = psmt.executeQuery();
+
+			if(rs.next())
+			{
+				u.setNomArticle(rs.getString("nom_article"));
+				u.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
+				u.setPrixVente(rs.getInt("prix_vente"));
+				u.setPseudo(rs.getString("pseudo"));
+				
+				articlesVendus.add(u);
+			}
+			cnx.close();
+
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		return articlesVendus;
+		
+	}
+	
+	public List<ArticleVendu> selectMesEncheresEnCours(int no_categorie){
+		List<ArticleVendu> articlesVendus = new ArrayList<ArticleVendu>();
+		ArticleVendu u=new ArticleVendu();
+		try (
+			
+				Connection cnx = ConnectionProvider.getConnection();
+				
+				PreparedStatement psmt = cnx.prepareStatement(selectMesEncheresEnCours, PreparedStatement.RETURN_GENERATED_KEYS);) {
+			psmt.setInt(1, no_categorie);
+			ResultSet rs = psmt.executeQuery();
+
+			if(rs.next())
+			{
+				u.setNomArticle(rs.getString("nom_article"));
+				u.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
+				u.setPrixVente(rs.getInt("prix_vente"));
+				u.setPseudo(rs.getString("pseudo"));
+				
+				articlesVendus.add(u);
+			}
+			cnx.close();
+
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		return articlesVendus;
+		
+	}
+	
+	public List<ArticleVendu> selectVentesNonDebuteesParCategorie(int no_categorie){
+		List<ArticleVendu> articlesVendus = new ArrayList<ArticleVendu>();
+		ArticleVendu u=new ArticleVendu();
+		try (
+			
+				Connection cnx = ConnectionProvider.getConnection();
+				
+				PreparedStatement psmt = cnx.prepareStatement(selectVentesNonDebuteesParCategorie, PreparedStatement.RETURN_GENERATED_KEYS);) {
+			psmt.setInt(1, no_categorie);
+			ResultSet rs = psmt.executeQuery();
+
+			if(rs.next())
+			{
+				u.setNomArticle(rs.getString("nom_article"));
+				u.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
+				u.setPrixVente(rs.getInt("prix_vente"));
+				u.setPseudo(rs.getString("pseudo"));
+				
+				articlesVendus.add(u);
+			}
+			cnx.close();
+
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		return articlesVendus;
+		
+	}
 	
 	public List<ArticleVendu> selectVentesNonDebutees(){
 		List<ArticleVendu> articlesVendus = new ArrayList<ArticleVendu>();
