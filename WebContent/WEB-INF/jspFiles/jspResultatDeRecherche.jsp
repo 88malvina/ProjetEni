@@ -34,7 +34,7 @@
 			<div class="form">
 		<div class="photo"><img src="https://pics.freeicons.io/uploads/icons/png/394198151553508653-512.png" width="50px" height="50px" alt="enchère"></div>
 		<div class="description">
-			<a href="/ProjetEni/ServletAfficherArticle?action=${ enchere.getNoArticle() }">${enchere.nomArticle}</a><br>
+			<a href="/ProjetEni/ServletModifierArticle?action=${ list.getNoArticle() }">${list.nomArticle}</a><br>
 			Prix : ${list.prixVente} points<br>
 			Fin de l'enchère : ${list.dateFinEncheres}<br>
 			Vendeur : ${list.pseudo}
@@ -50,7 +50,7 @@
 		<div class="form">
 		<div class="photo"><img src="https://pics.freeicons.io/uploads/icons/png/394198151553508653-512.png" width="50px" height="50px" alt="enchère"></div>
 		<div class="description">
-			<a href="">${enchere.nomArticle}</a><br>
+			<a href="/ProjetEni/ServletModifierArticle?action=${ enchere.getNoArticle() }">${enchere.nomArticle}</a><br>
 			Prix : ${enchere.prixVente} points<br>
 			Fin de l'enchère : ${enchere.dateFinEncheres}<br>
 			Vendeur : ${enchere.pseudo}

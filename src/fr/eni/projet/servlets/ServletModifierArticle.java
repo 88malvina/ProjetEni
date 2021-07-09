@@ -50,7 +50,7 @@ public class ServletModifierArticle extends HttpServlet {
 		request.setAttribute("nomArticle", u.getNomArticle());
 		
 		request.setAttribute("description", u.getDescription());
-		request.setAttribute("getLibelleCategorie", u.getLibelleCategorie());
+		//request.setAttribute("getLibelleCategorie", u.getLibelleCategorie());
 		request.setAttribute("prixVente", u.getMiseAPrix());
 		request.setAttribute("dateDebutEncheres", u.getDateDebutEncheres());
 		request.setAttribute("dateFinEncheres", u.getDateFinEncheres());
