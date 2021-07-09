@@ -48,7 +48,7 @@ public class ServletAfficherProfil extends HttpServlet {
 			if (!utilisateurExiste) {
 				messageJsp = "Cet utilisateur n'existe pas";
 			} else {
-				messageJsp = "Voici les informations concernant" + pseudo;
+				messageJsp = "Voici les informations concernant " + pseudo;
 			}
 
 			request.setAttribute("messageJsp", messageJsp);
@@ -84,8 +84,9 @@ public class ServletAfficherProfil extends HttpServlet {
 				request.setAttribute("cpCherche", cpCherche);
 				request.setAttribute("villeCherche", villeCherche);
 
-				this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspAfficherProfil.jsp").forward(request, response);
 			} 
+			
+			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspAfficherProfil.jsp").forward(request, response);
 
 		}
 		
