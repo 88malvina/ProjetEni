@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.projet.bo.ArticleVendu;
+import fr.eni.projet.businessException.BusinessException;
 import fr.eni.projet.dal.DAOArticleVendu;
 import fr.eni.projet.dal.DAOFactory;
 
@@ -26,6 +27,54 @@ public class ArticleVenduManager {
 
 			ArticleVendu resultat = null;
 			resultat = daoArtVendu.selectById(id);
+			return resultat;	
+		}
+		
+		public ArticleVendu selectNomByNumero(int id) throws BusinessException {
+
+			ArticleVendu resultat = null;
+			resultat = daoArtVendu.selectNomByNumero(id);
+			return resultat;	
+		}
+		
+		public List<ArticleVendu> selectMesEncheresTermineesByCategorieEtNom(int no_categorie, String nom) throws BusinessException {
+
+			List<ArticleVendu> resultat = null;
+			resultat = daoArtVendu.selectMesEncheresTermineesByCategorieEtNom(no_categorie,nom);
+			return resultat;	
+		}
+		
+		public List<ArticleVendu> selectMesEncheresNonDebuteesByCategorieEtNom(int no_categorie, String nom) throws BusinessException {
+
+			List<ArticleVendu> resultat = null;
+			resultat = daoArtVendu.selectMesEncheresNonDebuteesByCategorieEtNom(no_categorie,nom);
+			return resultat;	
+		}
+		
+		public List<ArticleVendu> selectMesEncheresEnCoursByCategorieEtNom(int no_categorie, String nom) throws BusinessException {
+
+			List<ArticleVendu> resultat = null;
+			resultat = daoArtVendu.selectMesEncheresEnCoursByCategorieEtNom(no_categorie,nom);
+			return resultat;	
+		}
+		
+		public List<ArticleVendu> selectMesEncheresTermineesByCategorie(int no_categorie) throws BusinessException {
+
+			List<ArticleVendu> resultat = null;
+			resultat = daoArtVendu.selectMesEncheresTermineesByCategorie(no_categorie);
+			return resultat;	
+		}
+		public List<ArticleVendu> selectVentesNonDebuteesParCategorie(int no_categorie) throws BusinessException {
+
+			List<ArticleVendu> resultat = null;
+			resultat = daoArtVendu.selectVentesNonDebuteesParCategorie(no_categorie);
+			return resultat;	
+		}
+		
+		public List<ArticleVendu> selectMesEncheresEnCours(int no_categorie) throws BusinessException {
+
+			List<ArticleVendu> resultat = null;
+			resultat = daoArtVendu.selectMesEncheresEnCours(no_categorie);
 			return resultat;	
 		}
 
@@ -162,6 +211,4 @@ public class ArticleVenduManager {
 
 			return messageErreur;
 		}
-		
-
 }
