@@ -93,6 +93,8 @@ public class ServletEncherir extends HttpServlet {
 		EnchereManager mngEnc = new EnchereManager();
 		verifEnchere = mngEnc.verifierEnchere(enchere, article_a_vendre, payant, vendeur);
 		
+		
+		
 		if(verifEnchere.equals("Vérification d'enchère réussite.")) {
 			try {
 				mngEnc.insert(enchere);
@@ -102,15 +104,15 @@ public class ServletEncherir extends HttpServlet {
 				request.setAttribute("msg_erreur_encherir", msg_erreur_encherir);
 				
 				mngArt.update(article_a_vendre);
-				//request.setAttribute("article",article_a_vendre);
-				this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspAfficherArticle.jsp").forward(request, response);
+				request.setAttribute("article_enc",article_a_vendre);
+				this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspEncherir.jsp").forward(request, response);
 			} catch (SQLException e) {
-				// TODO PRISCILA
+				request.setAttribute("msg_erreur_encherir", "Problème au moment de l'enchère. Veiullez réessayer");
 				e.printStackTrace();
 			}
 		} else {
 			request.setAttribute("msg_erreur_encherir", verifEnchere);
-			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspAfficherArticle.jsp").forward(request, response);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspEncherir.jsp").forward(request, response);
 		}
 		
 	}
