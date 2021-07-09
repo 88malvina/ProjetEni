@@ -53,7 +53,9 @@ public class ServletVendreArticle extends HttpServlet {
 		u.setVendeur(vendeur);
 		u.setNo_categorie(Integer.valueOf(request.getParameter("no_categorie")));
 		if(!request.getParameter("prix_initial").equals("")) {
-			u.setMiseAPrix(Integer.valueOf(request.getParameter("prix_initial")));
+			int prix_initial = Integer.valueOf(request.getParameter("prix_initial"));
+			u.setMiseAPrix(prix_initial);
+			u.setPrixVente(prix_initial);
 		}
 		
 		
@@ -77,20 +79,27 @@ public class ServletVendreArticle extends HttpServlet {
 		u.setRetrait(r);
 
 		String message_erreur = mngArt.verifArticle(u);
-		message_erreur = mngRet.verifRetrait(r);
+		String message_erreur_retrait = mngRet.verifRetrait(r);
 
-		if (message_erreur.equals("Verificaton réussite.")) {
+		if (message_erreur.equals("Verificaton réussite.") && message_erreur_retrait.equals("Verificaton réussite.")) {
 
 			mngArt.insert(u);
 			
 			r.setNo_article(u.getNoArticle());
 			mngRet.insert(r);
 			
-			// TODO PRISCILA changer lien 
-			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspPageDAccueil.jsp").forward(request, response);
-
-		} else {
+			message_erreur="Félicitations ! Votre article a été publié";
 			session.setAttribute("message_erreur_article", message_erreur);
+
+			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspVendreArticle.jsp").forward(request, response);
+			
+		} else {
+			
+			if(!message_erreur_retrait.equals("Verificaton réussite.")) {
+				session.setAttribute("message_erreur_retrait", message_erreur_retrait);
+			} else {
+				session.setAttribute("message_erreur_article", message_erreur);
+			}
 			doGet(request, response);
 			//this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspVendreArticle.jsp").forward(request, response);
 		}

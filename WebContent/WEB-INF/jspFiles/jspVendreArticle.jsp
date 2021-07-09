@@ -95,6 +95,7 @@
 							<div>
 								<p>
 									<c:out value="${ message_erreur_article }" />
+									<c:out value="${ message_erreur_retrait }" />
 								</p>
 							</div>
 						
