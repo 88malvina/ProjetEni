@@ -112,7 +112,7 @@
 							</div>
 							
 							<div class="col-sm-4">
-								<a href="/ProjetEni/encheres/ServletPageDAccueil"><input type="button" value="Annuler" class="btn btn-outline-dark btn-sm"></a>
+								<a href="/ProjetEni/ServletModeConnecte"><input type="button" value="Annuler" class="btn btn-outline-dark btn-sm"></a>
 							</div>
 						</div>
 					</fieldset>
