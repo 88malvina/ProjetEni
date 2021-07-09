@@ -23,22 +23,40 @@
 	
 	<!-- On NE FAIT QU AFFICHER ici -->
 	
-	<div class="container">
-	<form class="form">
-		<fieldset  >
-				<legend><h3> Mon profil </h3></legend>
-				
-				 Pseudo : ${pseudo }<br>
-				Nom :${nom }<br>
-				Prenom : ${prenom }<br>
-				email : ${email }<br>
-				tel. :${telephone }<br>
-				 Rue : ${rue }<br>
-				Code postal : ${cp }<br>
-				Ville : ${ville }<br>
-				 Nombre crédit : ${credit }<br>
-				
-				 <a href="/ProjetEni/ServletModifierMonProfil"> Modifier </a> 
+	<div id="container_form">
+	<form id="form_inscription" class="form">
+		<fieldset id="monprofil" >
+				<legend class="legend">Mon profil</legend>
+				<div class="form_space">
+				Pseudo : ${pseudo }
+				</div>
+				<div class="form_space">
+				Nom : ${nom }
+				</div>
+				<div class="form_space">
+				Prenom : ${prenom }
+				</div>
+				<div class="form_space">
+				Email : ${email }
+				</div>
+				<div class="form_space">
+				Téléphone :${telephone }
+				</div>
+				<div class="form_space">
+				Rue : ${rue }
+				</div>
+				<div class="form_space">
+				Code postal : ${cp }
+				</div>
+				<div class="form_space">
+				Ville : ${ville }
+				</div>
+				<div class="form_space">
+				Nombre crédit : ${credit }
+				</div>
+				<div class="form_space">
+				 <a href="/ProjetEni/ServletModifierMonProfil" class="btn btn-outline-dark btn-sm"> Modifier </a> 
+				</div>
 			</fieldset></form>
 	</div>
 	

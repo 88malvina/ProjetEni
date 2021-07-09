@@ -10,7 +10,7 @@ nécessitant import jstl -->
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Je suis la jspAfficherProfil</title>
+<title>Afficher profil</title>
 
 <!-- Bootstrap core CSS -->
 
@@ -28,24 +28,25 @@ nécessitant import jstl -->
 		<jsp:param value="pageActuelle" name="Afficher Profil" />
 	</jsp:include>
 
-
-	<h2>Saisissez le pseudo de l'utilisateur à afficher</h2>
+	<div id="container_form">
+	<div id="form_inscription" >
+	
 
 	<form action="<%=request.getContextPath()%>/ServletAfficherProfil"
-		method="post">
+		method="post" class="form">
 
 		<!-- Ci dessous le formulaire qui permet de récupérer le pseudo cherché  -->
 
-		<div class=formLabel>
-			<label for="pseudo">Saisissez le pseudonyme utilisateur à
+		<div class=form_space>
+			<label for="pseudo" class="legend">Saisissez le pseudonyme utilisateur à
 				chercher :</label>
 		</div>
-		<div class=formInput>
-			<input name="pseudo" placeholder="saisir pseudo"
+		<div class=form_space>
+			<input name="pseudo" placeholder="Saisir pseudo"
 				autofocus="autofocus">
 		</div>
+			<input type="submit" value="Valider" class="btn btn-outline-dark btn-sm"/>
 
-		<input type="submit" value="Valider" />
 
 	</form>
 
@@ -53,12 +54,11 @@ nécessitant import jstl -->
 
 	<c:if test="${!empty pseudo}">
 
-		<h2>Voici les informations de l'utilisateur</h2>
 
-	<div class="container">
-	<form class="form">
+	<div class="form_inscription">
+	<form>
 		<fieldset  >
-				<legend><h3> profil de ${pseudo } </h3></legend>
+				<legend class="legend">Profil de ${pseudo }</legend>
 				
 				Nom :${nomCherche }<br>
 				Prenom : ${prenomCherche }<br>
@@ -68,7 +68,16 @@ nécessitant import jstl -->
 				Code postal : ${cpCherche }<br>
 				Ville : ${villeCherche }<br>
 				
-			</fieldset></form>
+				<a class="a" href="/ProjetEni/encheres/ServletPageDAccueil">
+				Retour accueil </a>
+				
+					<!-- Message par défaut si le pseudo est empty -->
+			
+				<c:if test="${empty pseudo}">
+					<h4>Renseignez un pseudo existant sur le site</h4>
+				</c:if>
+			</fieldset>
+	</form>
 	</div>
 
 	</c:if>
@@ -113,15 +122,14 @@ nécessitant import jstl -->
 	-->
 
 
-	<!-- Message par défaut si le pseudo est empty -->
 
-	<c:if test="${empty pseudo}">
-		<h4>Renseignez un pseudo existant sur le site</h4>
-	</c:if>
 
-	<a class="nav-link" href="/ProjetEni/encheres/ServletPageDAccueil">
-		| Retour accueil |</a>
+	
+	
+	</div>
+	</div>
 
+	
 	<!--  footer -->
 
 	<jsp:include page="/WEB-INF/jspFiles/jspFooter.jsp">

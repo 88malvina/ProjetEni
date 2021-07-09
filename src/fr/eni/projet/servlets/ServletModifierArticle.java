@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 import fr.eni.projet.bll.ArticleVenduManager;
 import fr.eni.projet.bo.ArticleVendu;
 import fr.eni.projet.bo.Utilisateur;
-import fr.eni.projet.businessException.BusinessException;
 
 /**
  * Servlet implementation class ServletModifierArticle

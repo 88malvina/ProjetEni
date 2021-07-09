@@ -22,7 +22,10 @@
 		<jsp:param value="pageActuelle" name="accueil"/>
 	</jsp:include>
 	<div id="container_form">
-	<div class="titre"><h4>Liste des enchères</h4></div>
+	<div id="form_inscription">
+	<div id="content">
+	<div class="recherche">
+		<div class="legend titre">Liste des enchères</div>
 	Filtres:<br>
 	<form method="post" action=""> 
 	<label>
@@ -41,7 +44,9 @@
 	<button type="submit" name="rechercher">Rechercher</button>
 	</label>
 	</form>
-	<div class="liste_enchères">
+	</div>
+	
+	<div class="liste_encheres">
 	<br>
 		
 		<c:forEach items="${encheres}" var="enchere">
@@ -56,6 +61,10 @@
 		</div></c:forEach>
 	</div>
 	</div>
+	</div>
+	
+	</div>
+	
 	<!--  footer -->
 	
 	<jsp:include page="/WEB-INF/jspFiles/jspFooter.jsp">
