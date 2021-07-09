@@ -55,6 +55,13 @@ public class ServletAfficherArticle extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		int mise_a_prix = article.getMiseAPrix();
+		int prix_vente = article.getPrixVente();
+		if(prix_vente<mise_a_prix) {
+			article.setPrixVente(mise_a_prix);
+		}
+		
+		
 		RetraitManager mngRet = new RetraitManager();
 		Retrait retrait = mngRet.selectById(no_article);
 		article.setRetrait(retrait);

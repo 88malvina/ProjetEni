@@ -64,9 +64,11 @@ public class EnchereManager {
 			message="Vous ne pouvez pas enchérir votre propre article !";
 		} else if(article_a_vendre.getEnchereGagnante()==enchere) {
 			message = "Vous êtes le gagneur pour l'instant !";
+		} else if(!verifierDate(article_a_vendre, enchere)) { 
+			message="La date de fin de l'enchère est passé.";
 		} else {
 			message="Vérification d'enchère réussite.";
-		}
+		} 
 		
 		return message;
 	}
@@ -113,6 +115,12 @@ public class EnchereManager {
 		return gagnante;
 	}
 
-
+	public boolean verifierDate(ArticleVendu article_a_vendre, Enchere offre) {
+		if(article_a_vendre.getDateFinEncheres().compareTo(offre.getDate_enchere())>=0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 }

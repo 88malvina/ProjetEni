@@ -100,8 +100,9 @@ public class ServletEncherir extends HttpServlet {
 				article_a_vendre.setEnchereGagnante(enchere);
 				String msg_erreur_encherir = "Félicitations ! Vous venez d'enchérir cet article";
 				request.setAttribute("msg_erreur_encherir", msg_erreur_encherir);
-				request.setAttribute("article",article_a_vendre);
+				
 				mngArt.update(article_a_vendre);
+				//request.setAttribute("article",article_a_vendre);
 				this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspAfficherArticle.jsp").forward(request, response);
 			} catch (SQLException e) {
 				// TODO PRISCILA

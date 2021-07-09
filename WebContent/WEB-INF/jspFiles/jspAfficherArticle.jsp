@@ -58,6 +58,7 @@
 			<c:out value=" Vendeur : ${ article.getPseudoVendeur() }"/>
 		</h3>
 		
+		
 		<div>
 			<p>
 				<c:out value="${ msg_erreur_encherir }" />
@@ -74,7 +75,9 @@
 						min="${ article.prixVente+1 }" placeholder="${ article.prixVente+1 }" />
 					
 					<input type="submit" value="Enchérir" class="btn btn-outline-dark btn-sm">
-					
+					<p>
+					<c:out value="Vous avez ${ utilisateur.getCredit() } crédits." />
+					</p>
 				</fieldset>
 			</form>
 		</div>
