@@ -56,7 +56,6 @@ public class ServletPageDAccueil extends HttpServlet {
 		
 		List<ArticleVendu> list_encheres=new ArrayList<ArticleVendu>();
 	
-		 List<ArticleVendu> list_categorie=null;
 		try {
 			
 			List<ArticleVendu> listAllEncheres = manager.selectAvecPseudo();
@@ -95,37 +94,20 @@ public class ServletPageDAccueil extends HttpServlet {
 						break;
 					}
 					listAllEncheres=manager.selectByCategorie(no_categorie);
-					request.setAttribute("cat", listAllEncheres);
-					
-					if(listAllEncheres!=null) {
+
 					for(ArticleVendu enchere:listAllEncheres) {
 						if(enchere.getNomArticle().toLowerCase().contains(saisieUtilisateur.toLowerCase()))
-							list_encheres.add(enchere);
-						}
-							
+							list_encheres.add(enchere);		
 			 		}
-					else {
-					request.setAttribute("aucune_trouvé", "Rien n'a été trouvé");
-					}
 					request.setAttribute("list_encheres", list_encheres);	
 				}
 			}
-			else {
+			else 
 				if(select!=null) {
 
-					 list_categorie=manager.selectByCategorie(no_categorie);
-					
-					 if(list_categorie!=null)
-						{request.setAttribute("list_encheres", list_categorie);}
-					 else {
-						 request.setAttribute("aucune_trouvé", "Rien n'a été trouvé");}
-					
-				}
-				else {
-					request.setAttribute("aucune_trouvé", "Rien n'a été trouvé");
-				}
-			}
-			
+					listAllEncheres=manager.selectByCategorie(no_categorie);
+					request.setAttribute("list_encheres", listAllEncheres);}
+
 		}
 		
 			} catch (SQLException e) {
