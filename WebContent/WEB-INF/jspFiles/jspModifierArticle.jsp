@@ -38,7 +38,7 @@
 						
 							<div class="form_space">
 								<label for="nom_article">Nom :</label>
-								<input type="text" name="nom_article" id="nom_article" value="${ article.nomArticle }"
+								<input type="text" name="nom_article" id="nom_article" value="<%=request.getAttribute("nomArticle") %>"
 								size="40" maxlength="30" autofocus="autofocus" required="required" />
 							</div>
 							<div class="form_space">
@@ -54,24 +54,24 @@
 							<div class="form_space">
 								<label for="description">Description :</label>
 								<textarea name="description" id="description" rows="3" cols="40" maxlength="300" 
-								value="${ article.description }" required="required"></textarea>
+								<%=request.getAttribute("description") %> required="required"><%=request.getAttribute("description") %></textarea>
 							</div>
 						
 							<div class="form_space">
 								<label for="date_debut_encheres">Date début de l'enchère :</label>
 								<input type="date" id="date_debut_encheres"
-								       name="date_debut_encheres" required="required" value="${ article.dateDebutEncheres }">
+								       name="date_debut_encheres" required="required" value="<%=request.getAttribute("dateDebutEncheres") %>">
 							</div>
 						
 							<div class="form_space">
 								<label for="date_fin_encheres">Date fin de l'enchère :</label>
 								<input type="date" id="date_fin_encheres"
-								       name="date_fin_encheres" required="required" value="${ article.dateFinEncheres }">
+								       name="date_fin_encheres" required="required" value="<%=request.getAttribute("dateFinEncheres") %>">
 							</div>
 						
 							<div class="form_space">
 								<label for="prix_initial">Prix de départ :</label>
-								<input type="number" value="${ article.miseAPrix }" name="prix_initial" id="prix_initial"/>
+								<input type="number" value="<%=request.getAttribute("prixVente") %>" name="prix_initial" id="prix_initial"/>
 							</div>
 						
 							<div class="form_space">

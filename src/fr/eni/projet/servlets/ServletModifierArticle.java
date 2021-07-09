@@ -38,17 +38,12 @@ public class ServletModifierArticle extends HttpServlet {
 		Utilisateur vendeur = (Utilisateur) session.getAttribute("utilisateur");
 		
 		String action = request.getParameter("action");
-		System.out.println(action+"g");
 		int no_article = Integer.parseInt(action);
 		System.out.println(no_article);
-		try {
-			 u=mngArt.selectNomByNumero(no_article);
-		} catch (BusinessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		u= mngArt.selectById(no_article);
+		 System.out.println(u);
 		request.setAttribute("nomArticle", u.getNomArticle());
-		
+		System.out.println(u.getNomArticle());
 		request.setAttribute("description", u.getDescription());
 		//request.setAttribute("getLibelleCategorie", u.getLibelleCategorie());
 		request.setAttribute("prixVente", u.getMiseAPrix());
