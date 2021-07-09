@@ -97,11 +97,11 @@ public class ServletEncherir extends HttpServlet {
 		
 		if(verifEnchere.equals("Vérification d'enchère réussite.")) {
 			try {
-				Enchere ancienne_gagnante = article_a_vendre.getEnchereGagnante();
-				int no_anc_gagnant = ancienne_gagnante.getNo_utilisateur();
-				Utilisateur ancien_payant = mngUti.selectById(no_anc_gagnant);
-				ancien_payant.setCredit(ancien_payant.getCredit()+montant_enchere);
-				mngUti.update(ancien_payant);
+				//Enchere ancienne_gagnante = article_a_vendre.getEnchereGagnante();
+				//int no_anc_gagnant = ancienne_gagnante.getNo_utilisateur();
+				//Utilisateur ancien_payant = mngUti.selectById(no_anc_gagnant);
+				//ancien_payant.setCredit(ancien_payant.getCredit()+montant_enchere);
+				//mngUti.update(ancien_payant);
 				
 				mngEnc.insert(enchere);
 				article_a_vendre.setPrixVente(montant_enchere);

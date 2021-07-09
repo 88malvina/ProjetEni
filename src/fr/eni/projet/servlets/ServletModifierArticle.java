@@ -34,7 +34,9 @@ public class ServletModifierArticle extends HttpServlet {
 		ArticleVendu u = new ArticleVendu();
 		HttpSession session = request.getSession();
 		ArticleVenduManager mngArt = new ArticleVenduManager();
-		Utilisateur vendeur = (Utilisateur) session.getAttribute("utilisateur");
+		Utilisateur courant = (Utilisateur) session.getAttribute("utilisateur");
+		
+		
 		
 		String action = request.getParameter("action");
 		int no_article = Integer.parseInt(action);
@@ -50,11 +52,17 @@ public class ServletModifierArticle extends HttpServlet {
 		request.setAttribute("dateFinEncheres", u.getDateFinEncheres());
 		request.setAttribute("dateFinEncheres", u.getDateFinEncheres());
 		
-		request.setAttribute("rue",vendeur.getRue());
-		request.setAttribute("cp",vendeur.getCodePostal());
-		request.setAttribute("ville", vendeur.getVille());
+		request.setAttribute("rue",courant.getRue());
+		request.setAttribute("cp",courant.getCodePostal());
+		request.setAttribute("ville", courant.getVille());
 		
-		this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspModifierArticle.jsp").forward(request, response);
+		if(u.getNo_utilisateur()==courant.getNoUtilisateur()) {
+			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspModifierArticle.jsp").forward(request, response);
+		} else {
+			request.setAttribute("action", no_article);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspAfficherArticle.jsp").forward(request, response);
+		}
+		
 	}
 
 	/**
