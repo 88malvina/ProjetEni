@@ -97,11 +97,20 @@ public class ServletEncherir extends HttpServlet {
 		
 		if(verifEnchere.equals("Vérification d'enchère réussite.")) {
 			try {
+				Enchere ancienne_gagnante = article_a_vendre.getEnchereGagnante();
+				int no_anc_gagnant = ancienne_gagnante.getNo_utilisateur();
+				Utilisateur ancien_payant = mngUti.selectById(no_anc_gagnant);
+				ancien_payant.setCredit(ancien_payant.getCredit()+montant_enchere);
+				mngUti.update(ancien_payant);
+				
 				mngEnc.insert(enchere);
 				article_a_vendre.setPrixVente(montant_enchere);
 				article_a_vendre.setEnchereGagnante(enchere);
 				String msg_erreur_encherir = "Félicitations ! Vous venez d'enchérir cet article";
 				request.setAttribute("msg_erreur_encherir", msg_erreur_encherir);
+				
+				payant.setCredit(payant.getCredit()-montant_enchere);
+				mngUti.update(payant);
 				
 				mngArt.update(article_a_vendre);
 				request.setAttribute("article_enc",article_a_vendre);

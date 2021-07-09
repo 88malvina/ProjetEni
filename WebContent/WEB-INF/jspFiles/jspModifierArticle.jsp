@@ -108,10 +108,6 @@
 							</div>
 							
 							<div class="col-sm-4">
-								<input type="reset" value="Réinitialiser" class="btn btn-outline-dark btn-sm">
-							</div>
-							
-							<div class="col-sm-4">
 								<a href="/ProjetEni/ServletModeConnecte"><input type="button" value="Annuler" class="btn btn-outline-dark btn-sm"></a>
 							</div>
 						</div>
