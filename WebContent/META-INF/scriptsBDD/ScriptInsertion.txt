@@ -15,6 +15,10 @@ INSERT INTO ARTICLES_VENDUS (nom_article,description,date_debut_encheres,date_fi
 VALUES ('PCGamer pour travailler','pc game','2018-08-05','2018-08-10','210','250',1,1);
 INSERT INTO ARTICLES_VENDUS (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente,no_utilisateur,no_categorie) 
 VALUES ('Fortnite','jeu video','2021-05-06','2021-08-06','25','30',2,1);
+INSERT INTO ARTICLES_VENDUS (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente,no_utilisateur,no_categorie) 
+VALUES ('Lit bébé','Lit pour bébé en bon état','2021-08-06','2021-09-06','25','30',4,2);
+INSERT INTO ARTICLES_VENDUS (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente,no_utilisateur,no_categorie) 
+VALUES ('Robe noire','Robe Halashkani noire taille M','2021-05-16','2021-06-06','25','30',3,3);
 
 INSERT INTO RETRAITS (no_article,rue,code_postal, ville) VALUES (1,'Chemin de Lavou', '33000','Bordeaux');
 INSERT INTO RETRAITS (no_article,rue,code_postal, ville) VALUES (2,'Montgallet', '31000','Toulouse');
