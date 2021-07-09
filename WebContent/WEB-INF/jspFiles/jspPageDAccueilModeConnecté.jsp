@@ -52,7 +52,7 @@
 	<br>
 	<section>
 	<label for="radio-achats">
-		<input type="radio" value="radio-achats" name="radio_button" checked>Achats
+		<input type="radio" value="radio-achats" name="radio_button" >Achats
 			<br>
 			<input type="checkbox" name="encheres" value="encheres_ouvertes"/>enchères ouvertes<br>
 			<input type="checkbox" name="encheres" value="encheres_en_cours"/>mes enchères en cours<br>
