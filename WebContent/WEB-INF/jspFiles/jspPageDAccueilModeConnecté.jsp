@@ -18,7 +18,9 @@
 		<jsp:param value="pageActuelle" name="inscription"/>
 	</jsp:include>
 	<div id="container_form">
-
+	<div id="form_inscription">
+	<div id="content">
+	<div class="recherche">
 	
 	<!-- Message de confirmation si l'on vient juste de se connecter -->
 	<c:if test="${!empty messageLog}">
@@ -31,7 +33,7 @@
     <p><c:out value="${inscriptionReussie }" /> </p>
 	</c:if>
 	
-	<div class="titre"><h4>Liste des enchères</h4></div>
+	<div class="legend titre"><h4>Liste des enchères</h4></div>
 	Filtres:<br>
 	
 	<form action="/ProjetEni/ServletModeConnecte" method="post"> 
@@ -78,7 +80,9 @@
 		
 	</div>
 	</div>
-
+	</div>
+	</div>
+	</div>
 	<jsp:include page="/WEB-INF/jspFiles/jspFooter.jsp">
 			<jsp:param value="footer" name="footer"/>
 		</jsp:include>
