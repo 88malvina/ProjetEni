@@ -41,6 +41,8 @@ public class DAOArticleVenduJDBCImpl implements DAOArticleVendu {
 	
 	private String selectVentesNonDebutees = "select nom_article, prix_vente, date_fin_encheres, pseudo from ARTICLES_VENDUS join UTILISATEURS on ARTICLES_VENDUS.no_utilisateur=UTILISATEURS.no_utilisateur where date_debut_encheres > GETDATE()";
 
+
+	
 	public List<ArticleVendu> selectVentesNonDebutees(){
 		List<ArticleVendu> articlesVendus = new ArrayList<ArticleVendu>();
 		try (

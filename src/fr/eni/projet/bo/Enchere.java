@@ -10,8 +10,10 @@ public class Enchere {
 	private LocalDate date_enchere;
 	private int montant_enchere;
 	
-	
-	
+	Utilisateur payant;
+	ArticleVendu article_a_vendre;
+
+
 	public Enchere() {
 	}
 
@@ -65,6 +67,32 @@ public class Enchere {
 	}
 	
 	
+	public Utilisateur getPayant() {
+		return payant;
+	}
+
+
+	public void setPayant(Utilisateur payant) {
+		this.payant = payant;
+	}
+
+
+	public ArticleVendu getArticleAVendre() {
+		return article_a_vendre;
+	}
+
+
+	public void setArticleAVendre(ArticleVendu articleAVendre) {
+		this.article_a_vendre = articleAVendre;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Enchere [no_utilisateur=" + no_utilisateur + ", no_article=" + no_article + ", date_enchere="
+				+ date_enchere + ", montant_enchere=" + montant_enchere + "]";
+	}
+
 	
 	
 	

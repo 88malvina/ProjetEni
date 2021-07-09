@@ -68,6 +68,7 @@ public class ArticleVendu {
 	}
 	
 	public String getLibelleCategorie() {
+		
 		return categorie.getLibelle();
 	}
 	
@@ -190,8 +191,11 @@ public class ArticleVendu {
 	public String toString() {
 		return "ArticleVendu [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", description=" + description
 				+ ", dateDebutEncheres=" + dateDebutEncheres + ", dateFinEncheres=" + dateFinEncheres + ", miseAPrix="
-				+ miseAPrix + ", prixVente=" + prixVente;
+				+ miseAPrix + ", prixVente=" + prixVente + ", no_utilisateur=" + no_utilisateur + ", no_categorie="
+				+ no_categorie + ", pseudo=" + pseudo + "]";
 	}
+	
+	
 	
 	
 	

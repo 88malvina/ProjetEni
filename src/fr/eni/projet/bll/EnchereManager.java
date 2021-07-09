@@ -3,7 +3,9 @@ package fr.eni.projet.bll;
 import java.sql.SQLException;
 import java.util.List;
 
+import fr.eni.projet.bo.ArticleVendu;
 import fr.eni.projet.bo.Enchere;
+import fr.eni.projet.bo.Utilisateur;
 import fr.eni.projet.dal.DAOEnchere;
 import fr.eni.projet.dal.DAOFactory;
 
@@ -36,13 +38,7 @@ public class EnchereManager {
 		Enchere resultat = daoEnchere.selectByNo_utilisateur(no_utilisateur);
 		return resultat;
 	}
-	
-	public Enchere selectByNo_article(int no_article) throws SQLException{
 
-		Enchere resultat = daoEnchere.selectByNo_article(no_article);
-		return resultat;
-	}
-	
 	public void insert(Enchere u) throws SQLException {
 		daoEnchere.insert(u);
 	}
@@ -56,4 +52,67 @@ public class EnchereManager {
 	public void delete(Enchere u) {
 		daoEnchere.delete(u);
 	}
+
+	public String verifierEnchere(Enchere enchere, ArticleVendu article_a_vendre, Utilisateur payant, Utilisateur vendeur) {
+		String message = "";
+
+		if(!verifierCredit(payant, article_a_vendre)) {
+			message="Vous n'avez pas assez de crédits :(";
+		} else if (!verifierMontant(article_a_vendre, enchere)){
+			message="La valeur doit être plus signifiante que le prix de vente.";
+		} else if(estLeVendeur(vendeur, payant)) {
+			message="Vous ne pouvez pas enchérir votre propre article !";
+		} else if(article_a_vendre.getEnchereGagnante()==enchere) {
+			message = "Vous êtes le gagneur pour l'instant !";
+		} else {
+			message="Vérification d'enchère réussite.";
+		}
+		
+		return message;
+	}
+
+	public boolean verifierMontant(ArticleVendu article_a_vendre, Enchere enchere) {
+		if(article_a_vendre.getPrixVente()>=enchere.getMontant_enchere()) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public boolean estLeVendeur(Utilisateur vendeur, Utilisateur payant) {	
+		if (vendeur.getNoUtilisateur()==payant.getNoUtilisateur()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+
+	public boolean verifierCredit(Utilisateur payant, ArticleVendu article_a_vendre) {
+		int prix = article_a_vendre.getPrixVente();
+		int credit = payant.getCredit();
+
+		if(prix>credit) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public Enchere getEnchereGagnante(ArticleVendu article_a_vendre) throws SQLException {
+		Enchere gagnante=null;
+		List<Enchere> encheres = daoEnchere.selectByNo_article(article_a_vendre.getNoArticle());
+		int plusGdValeur=0;
+
+		for(Enchere e : encheres) {
+			if(e.getMontant_enchere()>plusGdValeur) {
+				gagnante = e;
+			}
+		}
+
+		return gagnante;
+	}
+
+
+
 }

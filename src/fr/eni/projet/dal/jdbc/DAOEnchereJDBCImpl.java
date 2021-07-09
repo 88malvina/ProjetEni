@@ -27,7 +27,7 @@ public class DAOEnchereJDBCImpl implements DAOEnchere{
 	
 	private String selectByNo_utilisateur = "SELECT no_utilisateur, no_article, date_enchere, montant_enchere FROM ENCHERES WHERE no_utilisateur=?;";
 	
-	private String selectByNo_article = "SELECT no_utilisateur, no_article, date_enchere, montant_enchere FROM ENCHERES WHERE no_article=?;";
+	private String selectByNo_article = "SELECT * FROM ENCHERES WHERE no_article=?;";
 	
 
 	@Override
@@ -214,21 +214,19 @@ public class DAOEnchereJDBCImpl implements DAOEnchere{
 	}
 
 	@Override
-	public Enchere selectByNo_article(int no_article) throws SQLException {
-		Enchere u = null;
+	public List<Enchere> selectByNo_article(int no_article) throws SQLException {
+		List<Enchere> encheres = new ArrayList<Enchere>();
 
 		try (
-
 				//Remplacement par pool de connexion via ConnectionProvider
 				//Connection cnx = JdbcTools.getConnection();
 				Connection cnx = ConnectionProvider.getConnection();
-
 				PreparedStatement psmt = cnx.prepareStatement(selectByNo_article, PreparedStatement.RETURN_GENERATED_KEYS);) {
 
 			psmt.setInt(1, no_article);
-			ResultSet rs = psmt.executeQuery();
-
-			if(rs.next())
+			ResultSet rs = psmt.executeQuery(); 
+			Enchere u = null;
+			while(rs.next())
 			{
 				u = new Enchere();
 				u.setNo_utilisateur(rs.getInt("no_utilisateur"));
@@ -236,12 +234,18 @@ public class DAOEnchereJDBCImpl implements DAOEnchere{
 				u.setDate_enchere(rs.getDate("date_enchere").toLocalDate());
 				u.setMontant_enchere(rs.getInt("montant_enchere"));
 
-				cnx.close();
+				encheres.add(u);	
 			}
-		} catch (SQLException e) {
+			// TODO PRISCILA gérer exception
+			cnx.close();
+
+		} 
+		catch (SQLException e) 
+		{
 			e.printStackTrace();
 		}
-		return u;
+		return encheres;
+		
 	}
 
 	

@@ -8,13 +8,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.eni.projet.bll.ArticleVenduManager;
 import fr.eni.projet.bll.CategorieManager;
+import fr.eni.projet.bll.EnchereManager;
 import fr.eni.projet.bll.RetraitManager;
 import fr.eni.projet.bll.UtilisateurManager;
 import fr.eni.projet.bo.ArticleVendu;
 import fr.eni.projet.bo.Categorie;
+import fr.eni.projet.bo.Enchere;
 import fr.eni.projet.bo.Retrait;
 import fr.eni.projet.bo.Utilisateur;
 
@@ -35,6 +38,9 @@ public class ServletAfficherArticle extends HttpServlet {
 		System.out.println(action);
 		int no_article = Integer.parseInt(action);
 		
+		HttpSession session = request.getSession();
+		session.setAttribute("no_article", action);
+		
 		ArticleVenduManager mngArt = new ArticleVenduManager();
 		ArticleVendu article = mngArt.selectById(no_article);
 		System.out.println(article.getNomArticle());
@@ -50,13 +56,23 @@ public class ServletAfficherArticle extends HttpServlet {
 		}
 		
 		RetraitManager mngRet = new RetraitManager();
-		Retrait r = mngRet.selectById(no_article);
-		article.setRetrait(r);
+		Retrait retrait = mngRet.selectById(no_article);
+		article.setRetrait(retrait);
 		
 		UtilisateurManager mngUti = new UtilisateurManager();
-		Utilisateur u = mngUti.selectById(article.getNo_utilisateur());
-		article.setVendeur(u);
+		Utilisateur vendeur = mngUti.selectById(article.getNo_utilisateur());
+		article.setVendeur(vendeur);
 		
+		EnchereManager mngEnc = new EnchereManager();
+		Enchere enchereGagnante = null;
+		try {
+			enchereGagnante = mngEnc.getEnchereGagnante(article);
+		} catch (SQLException e) {
+			// TODO PRISCILA
+			e.printStackTrace();
+		}
+		
+		request.setAttribute("enchereGagnante", enchereGagnante);
 		request.setAttribute("article",article);
 		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/jspFiles/jspAfficherArticle.jsp").forward(request, response);
